@@ -1,7 +1,16 @@
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
+import SignIn from "./Pages/Sign"
+import LogIn from "./Pages/LogIn"
+import LandingPage from "./Pages/LandingPage"
+
 export default function App() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <Router>
+      <Routes>
+        <Route path="/" element={<LandingPage/>}/>
+        <Route path="/sign-in" element={<SignIn/>}/>
+        <Route path="/log-in" element={<LogIn/>}/>
+      </Routes>
+    </Router>
   )
 }
