@@ -1,0 +1,40 @@
+Sidebar.css .sidebar {
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    background-color: #001529;
+    /* Dark color for the sidebar */
+}
+
+.logo {
+    height: 32px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 16px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+}
+
+.profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    /* Add some padding for better separation */
+    border-bottom: 1px solid #356680;
+    /* Border color for separation */
+}
+
+.profile-photo {
+    width: 60px;
+    height: 60px;
+    background-color: #a9cdff;
+    /* Example color, replace with your own styling */
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.profile-name {
+    color: rgb(0, 0, 0);
+}
