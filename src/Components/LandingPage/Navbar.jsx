@@ -1,6 +1,28 @@
-import React from 'react'
-import login from "./Dropdown(login/register)"
-import { Dropdown, Space } from 'antd';
+
+import React from 'react';
+import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
+import { Menu } from 'antd';
+import { Button, Dropdown } from 'antd';
+import { Link } from 'react-router-dom';
+import { DownOutlined } from '@ant-design/icons';
+function getItem(label, key, icon, children, type) {
+  return {
+    key,
+    icon,
+    children,
+    label,
+    type,
+  };
+}
+
+const menu = (
+  <Menu>
+    <Menu.Item key="login"><Link to={"/log-in"}>Login</Link></Menu.Item>
+    <Menu.Item key="register"><Link to={"/sign-in"}>Register</Link></Menu.Item>
+    {/* <Menu.Item key="register">Register as Issuer</Menu.Item> */}
+  </Menu>
+);
+
 export default function Navbar() {
   return (
     <div>
@@ -33,25 +55,37 @@ export default function Navbar() {
 
               <div className="flex items-center gap-4">
                 <div className="sm:flex sm:gap-4">
-                  
+                  <Dropdown overlay={menu} className="mx-4">
+                    <Button
+                      type="primary"
+                      style={{
+                        backgroundColor: '#483d8b	',
+                        border: '1px solid',
+                        color: 'white',
+                      }}
+                    >
+                      Login/Register <DownOutlined  />
+                    </Button>
+                    
+                  </Dropdown>
 
-                  <div className="hidden sm:flex">
+                  {/* <div className="hidden sm:flex">
                     <a
                       className="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-indigo-500"
                       href="/sign-in"
                     >
                       Register
                     </a>
-                  </div>
+                  </div> */}
 
-                  <div className="hidden sm:flex">
+                  {/* <div className="hidden sm:flex">
                     <a
                       className="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-indigo-500"
                       href="/registration"
                     >
                       Registration From
                     </a>
-                  </div>
+                  </div> */}
                 </div>
 
                 <div className="block md:hidden">

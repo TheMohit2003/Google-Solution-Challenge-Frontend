@@ -22,7 +22,7 @@ export default function Login() {
         <div className="relative">
           <input
             type="email"
-            className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+            className="w-full rounded-lg border p-4 pe-12 text-sm shadow-sm"
             placeholder="Enter email"
           />
 
@@ -51,7 +51,7 @@ export default function Login() {
         <div className="relative">
           <input
             type="password"
-            className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+            className="w-full rounded-lg border p-4 pe-12 text-sm shadow-sm"
             placeholder="Enter password"
           />
 
