@@ -1,4 +1,5 @@
-import Navbar from "../Components/LandingPage/Navbar";
+import Navbar from "../Components/LandingPage/Navbar"
+import { Link } from "react-router-dom"
 
 export default function Login() {
   return (
@@ -7,26 +8,17 @@ export default function Login() {
         <Navbar />
         <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-lg">
-            <h1 className="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">
-              Welcome back
-            </h1>
+            <h1 className="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">Welcome back</h1>
 
             <p className="mx-auto mt-4 max-w-md text-center text-gray-500">
               Unlock access to seamless project collaboration by logging in now
             </p>
 
-            <form
-              action="#"
-              className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8"
-            >
-              <p className="text-center text-lg font-medium">
-                Log in to your account
-              </p>
+            <form action="#" className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8">
+              <p className="text-center text-lg font-medium">Log in to your account</p>
 
               <div>
-                <label htmlFor="email" className="sr-only">
-                  Email
-                </label>
+                <label htmlFor="email" className="sr-only">Email</label>
 
                 <div className="relative">
                   <input
@@ -55,9 +47,7 @@ export default function Login() {
               </div>
 
               <div>
-                <label htmlFor="password" className="sr-only">
-                  Password
-                </label>
+                <label htmlFor="password" className="sr-only">Password</label>
 
                 <div className="relative">
                   <input
@@ -100,9 +90,7 @@ export default function Login() {
 
               <p className="text-center text-sm text-gray-500">
                 No account?
-                <a className="underline" href="/sign-in">
-                  Register
-                </a>
+                <Link to={"/sign-up"} className="underline" >Register</Link>
               </p>
             </form>
           </div>
