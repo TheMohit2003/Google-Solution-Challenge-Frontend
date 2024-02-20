@@ -31,11 +31,12 @@ export const login = (formData) => {
     }
   };
 };
-export const signup = (formData) => {
+
+export const signup = (formData, navigate) => {
   return async (dispatch) => {
     try {
       const role = sessionStorage.getItem('role');
-      const response = await fetch(`https://servimatch.onrender.com/auth/register`, {
+      const response = await fetch(`${API_URL}/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,6 +49,7 @@ export const signup = (formData) => {
       // Assuming the server response has a 'token' property
       const token = data.token;
       console.log("Token:", token);
+
       // Save the token to local storage
       localStorage.setItem('token', token);
 
@@ -55,11 +57,16 @@ export const signup = (formData) => {
         type: GET_LOGIN_DATA,
         payload: data,
       });
-      // Assuming your server sends back some data, you can dispatch an action with that data
 
+      // Check if the signup was successful based on the response data
+      if (token) {
+        // Redirect to /vendor-form if signup was successful
+        navigate("/vendor-form");
+      }
     } catch (error) {
-      console.error("Login failed:", error);
+      console.error("Signup failed:", error);
       // Handle any error or dispatch an error action if needed
     }
   };
 };
+

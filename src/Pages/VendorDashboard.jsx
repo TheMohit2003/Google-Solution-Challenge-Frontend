@@ -1,13 +1,13 @@
 // App.jsx
 import React from "react";
 import { Layout } from "antd";
-import Navbar from "./Navbar";
-import Sidebar from "./Sidebar";
-import Services from "./Services";
+import Navbar from "../Components/Dashboard/Navbar";
+import Sidebar from "../Components/Dashboard/Sidebar";
+import Services from "../Components/Dashboard/Services";
 
 const { Content } = Layout;
 
-const Dashboard = () => {
+const VendorDashboard = () => {
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -25,4 +25,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default VendorDashboard;

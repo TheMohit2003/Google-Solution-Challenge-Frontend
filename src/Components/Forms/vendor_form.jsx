@@ -3,6 +3,8 @@ import React from 'react';
 
 
 const vender_form = () => {
+    const token = localStorage.getItem("token");
+    console.log("Token:", token);
     return (
         <div>
             <Navbar />
