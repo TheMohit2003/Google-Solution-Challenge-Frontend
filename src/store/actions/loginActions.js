@@ -14,7 +14,10 @@ export const login = (formData) => {
       });
 
       const data = await response.json();
-
+      const token = data.token;
+      console.log("Token:", token);
+      // Save the token to local storage
+      localStorage.setItem('token', token);
       // Assuming your server sends back some data, you can dispatch an action with that data
       dispatch({
         type: GET_LOGIN_DATA,

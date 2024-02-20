@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Navbar from "../Components/LandingPage/Navbar";
 import { login } from "../store/actions/loginActions";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom"
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,12 +16,10 @@ export default function Login() {
 
   return (
     <div>
-      <Navbar />
-      <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-lg">
-          <h1 className="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">
-            Welcome back
-          </h1>
+        <Navbar />
+        <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-lg">
+            <h1 className="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">Welcome back</h1>
 
           <p className="mx-auto mt-4 max-w-md text-center text-gray-500">
             Unlock access to seamless project collaboration by logging in now
