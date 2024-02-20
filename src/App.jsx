@@ -6,6 +6,7 @@ import VendorFrom from "./Components/Forms/vendor_form";
 import IssuerFrom from "./Components/Forms/issuer_form";
 import Example from "./Components/Forms/Example";
 import NewBid from "./Components/Forms/new_bid";
+import IssuerDashboard from "./Pages/IssuerDashboard";
 
 import Dashboard from "./Components/Dashboard/Dashboard";
 
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/new-bid" element={<NewBid />} />
         <Route path="/example" element={<Example />} />
+        <Route path="/issuer-dashboard" element={<IssuerDashboard/>}/>
       </Routes>
     </Router>
   );
