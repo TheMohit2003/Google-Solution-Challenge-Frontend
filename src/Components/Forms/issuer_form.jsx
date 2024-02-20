@@ -4,11 +4,11 @@ import React from 'react';
 
 const Issuer_form = () => {
     return (
-       
+
         <div >
             <Navbar />
             <div style={{
-                display: "flex", flexWrap: "wrap", 
+                display: "flex", flexWrap: "wrap",
             }}
                 className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8" >
 
@@ -150,7 +150,7 @@ const Issuer_form = () => {
 
                     </form>
                 </div>
-                <div style={{ position: "relative", top: "120px", left: "50px"}}
+                <div style={{ position: "relative", top: "120px", left: "50px", }}
                     className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
                     <img src="src\Components\Forms\memphis.png" alt="img" />
                 </div>

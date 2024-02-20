@@ -18,7 +18,7 @@ function getItem(label, key, icon, children, type) {
 const menu = (
   <Menu>
     <Menu.Item key="login"><Link to={"/log-in"}>Login</Link></Menu.Item>
-    <Menu.Item key="register"><Link to={"/sign-in"}>Register</Link></Menu.Item>
+    <Menu.Item key="register"><Link to={"/sign-up"}>Register</Link></Menu.Item>
     {/* <Menu.Item key="register">Register as Issuer</Menu.Item> */}
   </Menu>
 );

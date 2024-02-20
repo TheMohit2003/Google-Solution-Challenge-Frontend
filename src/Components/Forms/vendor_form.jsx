@@ -83,46 +83,49 @@ const vender_form = () => {
                                 </span>
                             </div>
                         </div>
-                        <div>
-                            <label htmlFor="aadhar" className="sr-only">Aadhar</label>
-                            <tr>Aadhar no.</tr>
+                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                            <div>
+                                <label htmlFor="aadhar" className="sr-only">Aadhar</label>
+                                <tr>Aadhar no.</tr>
 
-                            <div className="relative">
+                                <div className="relative">
+                                    <input
+                                        type="number"
+                                        className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
+                                        placeholder="Enter Aadhar No."
+                                        required
+                                    />
+
+                                    <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            className="size-4 text-gray-400"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth="2"
+                                            />
+
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                            <div>
+                                <label htmlFor="name" className="sr-only">GST no.</label>
+                                <tr>GST no.</tr>
                                 <input
-                                    type="number"
+                                    type="varchar"
                                     className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
-                                    placeholder="Enter Aadhar No."
+                                    placeholder="Enter GST no."
                                     required
                                 />
-
-                                <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        className="size-4 text-gray-400"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth="2"
-                                        />
-
-                                    </svg>
-                                </span>
                             </div>
                         </div>
-                        <div>
-                            <label htmlFor="name" className="sr-only">GST no.</label>
-                            <tr>GST no.</tr>
-                            <input
-                                type="varchar"
-                                className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
-                                placeholder="Enter GST no."
-                                required
-                            />
-                        </div>
+                        
                         <div>
                             <label htmlFor="name" className="sr-only">Shop/business name</label>
                             <tr>Shop/business name</tr>
@@ -143,48 +146,39 @@ const vender_form = () => {
                                 required
                             />
                         </div>
-                        <div>
-                            <label htmlFor="name" className="sr-only">year of experience</label>
-                            <tr>Year of experience</tr>
-                            <input
-                                type="number"
-                                className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
-                                placeholder=" Year of Experience"
-                                required
-                            />
+                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                            <div style={{ width: "48%" }}>
+                                <label htmlFor="year" className="sr-only">Year of experience</label>
+                                <tr>Year of experience</tr>
+                                <input
+                                    type="number"
+                                    className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
+                                    placeholder="Year of Experience"
+                                    required
+                                />
+                            </div>
+                            <div style={{ width: "48%" }}>
+                                <label htmlFor="teamSize" className="sr-only">Team size</label>
+                                <tr>Team size</tr>
+                                <input
+                                    type="number"
+                                    className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
+                                    placeholder="Enter team size"
+                                    required
+                                />
+                            </div>
                         </div>
-                        <div>
-                            <label htmlFor="name" className="sr-only">team size</label>
-                            <tr>Team size</tr>
-                            <input
-                                type="number"
+                        
+                        <div className="col-span-2">
+                            <label htmlFor="workDescription">Work Description</label>
+                            <textarea
                                 className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
-                                placeholder="Enter team size"
-                                required
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="name" className="sr-only">largest work done</label>
-                            <tr>Largest work done</tr>
-                            <input
-                                type="varchar"
-                                className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
-                                placeholder="largest work done"
-                                required
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="name" className="sr-only">description-box</label>
-                            <tr>Description-box</tr>
-                            <input
-                                type="text"
-                                className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
-                                placeholder="description box"
-
+                                placeholder="Description of Work"
+                                rows={5}
                             />
                         </div>
                         <button
-                            
+
                             type="submit"
                             className="block w-full rounded-sm bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
                         >
@@ -196,6 +190,7 @@ const vender_form = () => {
                 <div style={{ position: "relative", top: "120px", left: "50px" }}
                     className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
                     <img src="src\Components\Forms\memphis.png" alt="img" />
+
                 </div>
             </div>
         </div>
