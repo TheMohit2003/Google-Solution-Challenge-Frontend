@@ -35,7 +35,7 @@ export const signup = (formData) => {
   return async (dispatch) => {
     try {
       const role = sessionStorage.getItem('role');
-      const response = await fetch(`https://servimatch.onrender.com/auth/register`, {
+      const response = await fetch(`${API_URL}/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,8 +1,15 @@
+import React, { useState } from "react";
 import Navbar from "../LandingPage/Navbar"
-import React from 'react';
-
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const vender_form = () => {
+    const navigate = useNavigate();
+
+    const handleSubmit = () => {
+        navigate("/dashboard");
+    }
+
     return (
         <div>
             <Navbar />
@@ -18,7 +25,7 @@ const vender_form = () => {
                         Join the community by creating an identity
                     </p>
 
-                    <form action="#" className="mb-0 mt-6 space-y-4 rounded-sm p-2 shadow-lg sm:p-6 lg:p-8">
+                    <form action="#" className="mb-0 mt-6 space-y-4 rounded-sm p-2 shadow-lg sm:p-6 lg:p-8" onSubmit={() => handleSubmit()}>
                         <p className="text-center text-lg font-medium">Registration For Vender</p>
 
                         <div>
@@ -31,29 +38,31 @@ const vender_form = () => {
                                 required
                             />
                         </div>
+                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                            <div>
+                                <label htmlFor="name" className="sr-only">Office location</label>
+                                <tr>Office Location</tr>
+                                <input
+                                    type="text"
+                                    className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
+                                    placeholder="Location"
+                                />
+                            </div>
 
-                        <div>
-                            <label htmlFor="name" className="sr-only">location</label>
-                            <tr>Prefered Location</tr>
-                            <input
-                                type="text"
-                                className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
-                                placeholder="Location"
-                            />
+                            <div>
+                                <label htmlFor="name" className="sr-only">Phone No.</label>
+                                <tr>Phone no.</tr>
+                                <input
+                                    type="number"
+                                    className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
+                                    placeholder="Enter Phone No."
+                                    required
+                                />
+                            </div>
+
                         </div>
 
-                        <div>
-                            <label htmlFor="name" className="sr-only">Phone No.</label>
-                            <tr>Phone no.</tr>
-                            <input
-                                type="number"
-                                className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
-                                placeholder="Enter Phone No."
-                                required
-                            />
-                        </div>
-
-                        <div>
+                        {/* <div>
                             <label htmlFor="email" className="sr-only">Email</label>
                             <tr>Email</tr>
 
@@ -82,7 +91,7 @@ const vender_form = () => {
                                     </svg>
                                 </span>
                             </div>
-                        </div>
+                        </div> */}
                         <div style={{ display: "flex", justifyContent: "space-between" }}>
                             <div>
                                 <label htmlFor="aadhar" className="sr-only">Aadhar</label>
@@ -125,7 +134,7 @@ const vender_form = () => {
                                 />
                             </div>
                         </div>
-                        
+
                         <div>
                             <label htmlFor="name" className="sr-only">Shop/business name</label>
                             <tr>Shop/business name</tr>
@@ -142,11 +151,11 @@ const vender_form = () => {
                             <input
                                 type="text"
                                 className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
-                                placeholder="Enter Occupation"
+                                placeholder="eg:- Carpenter, Software solutions etc."
                                 required
                             />
                         </div>
-                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                        {/* <div style={{ display: "flex", justifyContent: "space-between" }}>
                             <div style={{ width: "48%" }}>
                                 <label htmlFor="year" className="sr-only">Year of experience</label>
                                 <tr>Year of experience</tr>
@@ -167,14 +176,15 @@ const vender_form = () => {
                                     required
                                 />
                             </div>
-                        </div>
-                        
+                        </div> */}
+
                         <div className="col-span-2">
                             <label htmlFor="workDescription">Work Description</label>
                             <textarea
                                 className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
-                                placeholder="Description of Work"
-                                rows={5}
+                                placeholder="Example, We are a software solutions company providing services to various clients. We have a team of 10 people and have been in this field for 5 years."
+
+                                rows={3}
                             />
                         </div>
                         <button
