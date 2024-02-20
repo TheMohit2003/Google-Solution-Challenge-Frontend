@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import Navbar from "../Components/LandingPage/Navbar";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
+  const navigate = useNavigate();
+  const [role, setrole] = useState("");
   const [email, setEmail] = useState(""); // State variable to hold email input value
   const [password, setPassword] = useState(""); // State variable to hold password input value
+
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -13,6 +17,15 @@ export default function SignUp() {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
+console.log(role)
+
+  const handleSubmit = () => {
+    if (role === "ISSUER") {
+      navigate("/issuer-form");
+    } else if (role === "VENDOR") {
+      navigate("/vendor-form");
+    }
+  }
 
   return (
     <div>
@@ -25,7 +38,7 @@ export default function SignUp() {
             Start connecting with service issuers and contractors. Ready to streamline your project collaborations? Sign in to ServiMatch and get started today
           </p>
 
-          <form action="#" className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8">
+          <form action="#" className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8" onSubmit={() => handleSubmit()}>
             <p className="text-center text-lg font-medium">Sign up to your account</p>
 
             <div>
@@ -63,7 +76,7 @@ export default function SignUp() {
             </div>
 
             <div>
-              <select className="block w-full rounded-lg border px-5 py-3 shadow-sm text-sm font-medium text-gray-500">
+              <select onChange={e => setrole(e.target.value)} className="block w-full rounded-lg border px-5 py-3 shadow-sm text-sm font-medium text-gray-500">
                 <option value="">Select Role</option>
                 <option value="ISSUER">Issuer</option>
                 <option value="VENDOR">Vendor</option>
@@ -71,14 +84,15 @@ export default function SignUp() {
             </div>
 
             {/* Always show the "Sign Up" button */}
-            <Link to={"/vendor-form"}>
+            <div>
               <button
                 type="submit"
                 className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
               >
                 Sign Up
               </button>
-            </Link>
+            
+            </div>
 
             <p className="text-center text-sm text-gray-500">
               Already have an account?
