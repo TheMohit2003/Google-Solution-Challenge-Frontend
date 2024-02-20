@@ -48,22 +48,22 @@ const NewBid = () => {
                 />
               </div>
               <div>
-                <label htmlFor="duration">Duration</label>
+                <label htmlFor="duration">Date</label>
                 <input
-                  type="text"
+                  type="date"
                   className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
                   placeholder="Enter Time Duration"
                 />
               </div>
-              <div>
+              {/* <div>
                 <label htmlFor="peopleRequired">People Required</label>
                 <input
                   type="number"
                   className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
                   placeholder="Enter Number of People Required"
                 />
-              </div>
-              <div>
+              </div> */}
+              {/* <div>
                 <label htmlFor="bidingTimeSlot">Biding Time Slot</label>
                 <input
                   type="text"
@@ -71,7 +71,7 @@ const NewBid = () => {
                   placeholder="Enter Biding Time Slot"
                   required
                 />
-              </div>
+              </div> */}
               <div className="col-span-2">
                 <label htmlFor="workDescription">Work Description</label>
                 <textarea
