@@ -102,18 +102,28 @@ export default function Login() {
               </div>
             </div>
 
-            <button
-              type="submit"
-              className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
-            >
-              Log in
-            </button>
+            <div>
+              <select onChange={e => setrole(e.target.value)} className="block w-full rounded-lg border px-5 py-3 shadow-sm text-sm font-medium text-gray-500">
+                <option value="">Select Role</option>
+                <option value="ISSUER">Issuer</option>
+                <option value="VENDOR">Vendor</option>
+              </select>
+            </div>
+
+            {/* Always show the "Sign Up" button */}
+            <div>
+              <button
+                type="submit"
+                className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
+              >
+                Log in
+              </button>
+
+            </div>
 
             <p className="text-center text-sm text-gray-500">
-              No account?
-              <a className="underline" href="/sign-in">
-                Register
-              </a>
+              Already have an account?
+              <a className="underline" href="/log-in">Log In</a>
             </p>
           </form>
         </div>
