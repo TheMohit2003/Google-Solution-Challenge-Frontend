@@ -1,10 +1,11 @@
 export const GET_LOGIN_DATA = "GET_LOGIN_DATA";
 export const GET_SIGNIN_DATA = "GET_SIGNIN_DATA";
+//removed api , add api url via env
 export const login = (formData) => {
   return async (dispatch) => {
     try {
       const role = sessionStorage.getItem('role');
-      const response = await fetch(`https://servimatch.onrender.com/auth/login`, {
+      const response = await fetch(``, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
