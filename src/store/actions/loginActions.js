@@ -1,10 +1,12 @@
 export const GET_LOGIN_DATA = "GET_LOGIN_DATA";
 export const GET_SIGNIN_DATA = "GET_SIGNIN_DATA";
+const API_URL = import.meta.env.VITE_API_URL;
+
 export const login = (formData) => {
   return async (dispatch) => {
     try {
       const role = sessionStorage.getItem('role');
-      const response = await fetch(`https://servimatch.onrender.com/auth/login`, {
+      const response = await fetch(`${API_URL}/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
