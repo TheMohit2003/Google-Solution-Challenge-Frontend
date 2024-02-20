@@ -8,16 +8,15 @@ import Example from "./Components/Forms/Example";
 import NewBid from "./Components/Forms/new_bid";
 import IssuerDashboard from "./Pages/IssuerDashboard";
 import VendorDashboard from "./Pages/VendorDashboard";
-import Profile from "./Components/Dashboard/Profile";
+import Profile from "./Pages/Profile";
 
 export default function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/profile" element={<Profile />} />
+        
         <Route path="/sign-up" element={<Signup />} />
-
         <Route path="/log-in" element={<LogIn />} />
         <Route path="/vendor-form" element={<VendorFrom />} />
         <Route path="/issuer-form" element={<IssuerFrom />} />
@@ -25,6 +24,7 @@ export default function App() {
         <Route path="/new-bid" element={<NewBid />} />
         <Route path="/example" element={<Example />} />
         <Route path="/issuer-dashboard" element={<IssuerDashboard />} />
+        <Route path="/profile" element={<Profile />} />
 
       </Routes>
     </Router>

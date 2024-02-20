@@ -8,7 +8,8 @@ import Services from "../Components/Dashboard/Services";
 const { Content } = Layout;
 
 const VendorDashboard = () => {
-
+  const role = sessionStorage.getItem("role");
+  console.log(role);
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Navbar />

@@ -35,7 +35,7 @@ const Sidebar = () => {
       </div>
       <Menu mode="vertical" theme="light" defaultSelectedKeys={["1"]}>
         <Menu.Item key="1" icon={<DashboardOutlined />} title="Dashboard">
-          <Link to="/dashboard">Dashboard</Link>
+          <Link to="/vendor-dashboard">Dashboard</Link>
         </Menu.Item>
         <Menu.Item key="2" icon={<AppstoreAddOutlined />} title="Apps">
           <Link to="/live-bids">Live bids</Link>
