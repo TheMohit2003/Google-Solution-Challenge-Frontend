@@ -7,7 +7,6 @@ import IssuerFrom from "./Components/Forms/issuer_form";
 import Example from "./Components/Forms/Example";
 import NewBid from "./Components/Forms/new_bid";
 
-
 import Dashboard from "./Components/Dashboard/Dashboard";
 
 export default function App() {
