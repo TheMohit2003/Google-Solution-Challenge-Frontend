@@ -10,16 +10,17 @@ export default function Login() {
   const dispatch = useDispatch();
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch (login({ email, password }));
+    dispatch(login({ email, password }));
     console.log("Email:", email, "Password:", password);
+    
   };
-
+ 
   return (
     <div>
-        <Navbar />
-        <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-lg">
-            <h1 className="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">Welcome back</h1>
+      <Navbar />
+      <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-lg">
+          <h1 className="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">Welcome back</h1>
 
           <p className="mx-auto mt-4 max-w-md text-center text-gray-500">
             Unlock access to seamless project collaboration by logging in now
@@ -122,8 +123,8 @@ export default function Login() {
             </div>
 
             <p className="text-center text-sm text-gray-500">
-              Already have an account?
-              <a className="underline" href="/log-in">Log In</a>
+              No account?{" "}
+              <a className="underline" href="/sign-up">Register</a>
             </p>
           </form>
         </div>
