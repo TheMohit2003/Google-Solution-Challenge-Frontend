@@ -1,11 +1,13 @@
 const initialState = {
-  name: "",
+  data: {}
 };
 
 const loginReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "SAVE_NAME":
-      return { ...state, name: action.payload };
+    case "GET_LOGIN_DATA":
+      return { ...state, data: action.data };
+    case "GET_SIGNIN_DATA":
+      return { ...state, data: action.data };
     default:
       return state;
   }

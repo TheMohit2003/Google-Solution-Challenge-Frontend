@@ -1,7 +1,9 @@
-import { createStore } from "redux";
+// /src/store/configureStore.js
 
-import rootReducer from "./reducers";
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import rootReducer from './reducers'; // Adjust the path based on your actual structure
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
-export default store;
+module.exports = store;
