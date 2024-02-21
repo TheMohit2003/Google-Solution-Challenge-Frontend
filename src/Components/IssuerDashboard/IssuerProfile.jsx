@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react'
 import { getAllServices } from '../../store/actions/vendorActions'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getIssuerDetails } from '../../store/actions/issuerAction';
 export default function Profile() {
   const dispatch = useDispatch();
+  const data = useSelector(state => state.vendor)
+  
   useEffect(() => {
     // Assuming getVendorDetails returns a Promise with vendor details
     dispatch(getIssuerDetails());
+	console.log(data)
   }, []);
   return (
     <section className="p-6 bg-gray-100 text-gray-900">
