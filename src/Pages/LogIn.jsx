@@ -132,8 +132,8 @@ export default function Login() {
             </div>
 
             <p className="text-center text-sm text-gray-500">
-              Already have an account?
-              <a className="underline" href="/log-in">Log In</a>
+              No account?{" "}
+              <a className="underline" href="/sign-up">Register</a>
             </p>
           </form>
         </div>
