@@ -8,7 +8,8 @@ import Example from "./Components/Forms/Example";
 import IssuerDashboard from "./Pages/IssuerDashboard";
 import VendorDashboard from "./Pages/VendorDashboard";
 import Profile from "./Pages/Profile";
-// import BiddingPage from "./Pages/BiddingPage";
+import ServiceInfo from "./Components/Dashboard/ServiceInfo";
+// import LiveBids from "./Components/LiveBidding/livebids";
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="/issuer-form" element={<IssuerFrom />} />
         <Route path="/vendor-dashboard" element={<VendorDashboard />} />
         <Route path="/example" element={<Example />} />
+        <Route path="/service-info" element={<ServiceInfo />} />
         <Route path="/issuer-dashboard" element={<IssuerDashboard />} />
         <Route path="/profile" element={<Profile />} />
 

@@ -1,11 +1,9 @@
 // ServiceList.jsx
 import {useEffect} from "react";
 import { Card } from "antd";
+
+import { useDispatch, useSelector } from "react-redux";
 import { getAllServices } from "../../store/actions/vendorActions";
-import { useDispatch } from "react-redux";
-
-
-
 const Services = () => {
   const dispatch = useDispatch();
   useEffect(() => {

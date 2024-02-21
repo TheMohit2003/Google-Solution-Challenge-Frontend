@@ -1,3 +1,5 @@
+
+
 import React, { useState } from 'react';
 import { Modal} from 'antd';
 
@@ -121,7 +123,15 @@ export default function NewBidCard() {
                   placeholder="Description of Work"
                   rows={5}
                 />
-              </div>
+                  </div>
+                  <div className="col-span-2">
+                    <label htmlFor="workDescription">File</label>
+                    <input
+                      type="file"
+                      className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
+                      placeholder="Enter Time Duration"
+                    />
+                  </div>    
             </div>
 
             <div>
