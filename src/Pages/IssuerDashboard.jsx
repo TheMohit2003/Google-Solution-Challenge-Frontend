@@ -5,7 +5,7 @@ import Sidebar from "../Components/IssuerDashboard/Sidebar";
 import BreadCrumb from "../Components/IssuerDashboard/Dashboard/BreadCrumb";
 import NewBidCard from "../Components/IssuerDashboard/Dashboard/NewBidCard";
 import AllBids from "../Components/IssuerDashboard/Dashboard/AllBids";
-import Profile from "../Components/IssuerDashboard/Profile";
+import Profile from "../Components/IssuerDashboard/IssuerProfile";
 import Stopwatch from "../Components/IssuerDashboard/Stopwatch"
 const { Content } = Layout;
 

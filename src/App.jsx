@@ -5,7 +5,6 @@ import LandingPage from "./Pages/LandingPage";
 import VendorFrom from "./Components/Forms/vendor_form";
 import IssuerFrom from "./Components/Forms/issuer_form";
 import Example from "./Components/Forms/Example";
-import NewBid from "./Components/Forms/new_bid";
 import IssuerDashboard from "./Pages/IssuerDashboard";
 import VendorDashboard from "./Pages/VendorDashboard";
 import Profile from "./Pages/Profile";
@@ -24,7 +23,6 @@ export default function App() {
         {/* <Route path="/bidding-page" element={<BiddingPage />} /> */}
         <Route path="/issuer-form" element={<IssuerFrom />} />
         <Route path="/vendor-dashboard" element={<VendorDashboard />} />
-        <Route path="/new-services" element={<NewBid />} />
         <Route path="/example" element={<Example />} />
         <Route path="/issuer-dashboard" element={<IssuerDashboard />} />
         <Route path="/profile" element={<Profile />} />

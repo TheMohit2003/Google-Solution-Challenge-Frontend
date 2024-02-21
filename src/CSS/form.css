@@ -1,0 +1,13 @@
+@media (max-width: 1100px) {
+    #img-1 {
+        display: none;
+    }
+
+    #img-2 {
+        display: none;
+    }
+
+    #form1 {
+        width: auto;
+    }
+}
