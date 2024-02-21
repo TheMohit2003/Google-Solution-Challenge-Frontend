@@ -1,10 +1,13 @@
 import { useNavigate } from "react-router-dom"
+import { useState } from 'react';
+
 
 export default function NewBidCard() {
   const navigate = useNavigate()
   const handleClick = () =>{
     navigate("/new-bid")
   }
+
   return (
     <>
         <article className="rounded-xl bg-white p-4 ring ring-indigo-50 sm:p-6 lg:p-8 my-10">
@@ -33,7 +36,6 @@ export default function NewBidCard() {
       </p>
 
       <button type="button" className="px-8 py-2 my-3 font-medium rounded bg-indigo-500 text-gray-100" onClick={() => handleClick()}>Create</button>
-
 
     </div>
   </div>
