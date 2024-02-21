@@ -18,9 +18,10 @@ export default function App() {
         <Route path="/" element={<LandingPage />} />
 
         <Route path="/sign-up" element={<Signup />} />
-        {/* <Route path="/live-bids" element={<LiveBids />} /> */}
+
         <Route path="/log-in" element={<LogIn />} />
         <Route path="/vendor-form" element={<VendorFrom />} />
+        {/* <Route path="/bidding-page" element={<BiddingPage />} /> */}
         <Route path="/issuer-form" element={<IssuerFrom />} />
         <Route path="/vendor-dashboard" element={<VendorDashboard />} />
         <Route path="/example" element={<Example />} />

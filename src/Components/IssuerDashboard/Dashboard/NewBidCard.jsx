@@ -1,17 +1,10 @@
 
 
 import React, { useState } from 'react';
-import { Modal, Button } from 'antd';
-import { useNavigate } from "react-router-dom";
-// import NewServiceModal from "./NewServiceModal";
+import { Modal} from 'antd';
 
 export default function NewBidCard() {
-  const navigate = useNavigate();
   const [modalVisible, setModalVisible] = useState(false);
-
-  const handleCreateBid = () => {
-    navigate("/new-services");
-  };
 
   const handleModalOpen = () => {
     setModalVisible(true);
@@ -71,7 +64,7 @@ export default function NewBidCard() {
               title=""
               visible={modalVisible}
               onCancel={handleModalClose}
-              
+              footer={null}
             >
               <form
             action="#"
