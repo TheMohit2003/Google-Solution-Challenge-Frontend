@@ -1,7 +1,9 @@
 // ServiceList.jsx
 import React from "react";
 import { Card } from "antd";
-
+import { useEffect } from "react";
+import { getAllServices } from "../../store/actions/vendorActions";
+import { useDispatch } from "react-redux";
 const services = [
   {
     title: "Web Development",
@@ -28,6 +30,10 @@ const services = [
 ];
 
 const Services = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllServices());
+  }, []);
   return (
     <div>
       {services.map((service, index) => (
