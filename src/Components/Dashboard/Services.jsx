@@ -1,6 +1,8 @@
 // ServiceList.jsx
-import React from "react";
+import {useEffect} from "react";
 import { Card } from "antd";
+import { getAllServices } from "../../store/actions/vendorActions";
+import { useDispatch } from "react-redux";
 
 
 

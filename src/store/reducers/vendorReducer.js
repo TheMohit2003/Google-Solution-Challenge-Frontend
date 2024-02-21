@@ -10,7 +10,7 @@ const vendorReducer = (state = initialState, action) => {
   console.log(action);
   switch (action.type) {
     case GET_VENDOR_DETAILS:
-      return { ...state, vendorDetails: action.data, loading: false };
+      return { ...state, vendor: action.data, loading: false };
     // case GET_ALL_SERVICES:
     //   return { ...state, services: action.services, loading: false };
     // case types.GET_ALL_VENDORS:
