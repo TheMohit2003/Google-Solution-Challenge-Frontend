@@ -3,6 +3,7 @@ import Navbar from "../LandingPage/Navbar"
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { register_vendor } from "../../store/actions/loginActions";
 
 
 const vender_form = () => {
@@ -10,15 +11,19 @@ const vender_form = () => {
     console.log("Token:", token);
     const [name, setName] = useState("");
     const [officeAddress, setOfficeAddress] = useState("");
-    const [contact, setContact] = useState("");
+    const [contactInt, setContact] = useState("");
     const [aadhar, setAadhar] = useState("");
-    const [GST, setGST] = useState("");
+    const [GSTint, setGST] = useState("");
     const [OrganizationName, setOrganizationName] = useState("");
     const [WorkDescription, setWorkDescription] = useState("");
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const handleSubmit = (event) => {
         event.preventDefault();
+        const contact = parseInt(contactInt)
+        console.log(typeof (contact))
+        const GST = parseInt(GSTint)
+        console.log(typeof (GST))
         dispatch(register_vendor({ name, officeAddress, contact, aadhar, GST, OrganizationName, WorkDescription }, navigate));
         console.log("Email:", email, "Password:", password, "Role:", role);
     };
@@ -73,7 +78,7 @@ const vender_form = () => {
                                     type="number"
                                     className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
                                     placeholder="Enter Phone No."
-                                    value={contact}
+                                    value={contactInt}
                                     onChange={(e) => setContact(e.target.value)}
                                     required
                                 />
@@ -151,7 +156,7 @@ const vender_form = () => {
                                     type="varchar"
                                     className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
                                     placeholder="Enter GST no."
-                                    value={GST}
+                                    value={GSTint}
                                     onChange={(e) => setGST(e.target.value)}
                                     required
                                 />

@@ -39,7 +39,7 @@ export const getVendorDetails = () => {
             console.log(data);
             dispatch({
                 type: GET_VENDOR_DETAILS,
-                payload: data,
+                data: data,
             });
         } catch (error) {
             console.error("Get Vendor Details failed:", error);

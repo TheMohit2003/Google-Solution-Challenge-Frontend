@@ -4,14 +4,33 @@ import '../../CSS/vendorProfile.css';
 
 
 import { getVendorDetails } from '../../store/actions/vendorActions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { GET_VENDOR_DETAILS } from '../../store/actions/vendorActions';
+
+
 const VendorProfile = () => {
     const [vendorDetails, setVendorDetails] = useState(null);
     const dispatch = useDispatch();
+    const vendorDetailsData = useSelector((state) => state.vendorDetails); // Check this line
+    const vendorData = GET_VENDOR_DETAILS.data;
+
+    // Assuming this is how the details are stored in the state
+    console.log(vendorDetailsData);
     useEffect(() => {
-          // Assuming getVendorDetails returns a Promise with vendor details
-         dispatch(getVendorDetails());
-        }, []);
+        const fetchData = async () => {
+            try {
+                await getVendorDetails();
+                // The data is now available in vendorDetailsData
+                console.log(vendorDetailsData);
+            } catch (error) {
+                console.error("Error fetching vendor details:", error);
+            }
+        };
+
+        fetchData();
+    }, [getVendorDetails, vendorDetailsData]);
+    console.log(vendorData);
+    console.log(vendorDetailsData);
 
     return (
         <div className="full-page-content">
