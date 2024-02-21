@@ -1,6 +1,13 @@
-import React from 'react'
-
+import React, { useEffect } from 'react'
+import { getAllServices } from '../../store/actions/vendorActions'
+import { useDispatch } from 'react-redux'
+import { getIssuerDetails } from '../../store/actions/issuerAction';
 export default function Profile() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    // Assuming getVendorDetails returns a Promise with vendor details
+    dispatch(getIssuerDetails());
+  }, []);
   return (
     <section className="p-6 bg-gray-100 text-gray-900">
 	<form novalidate="" action="" className="container flex flex-col mx-auto space-y-12">
