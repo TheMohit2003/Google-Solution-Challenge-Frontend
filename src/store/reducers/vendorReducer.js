@@ -1,17 +1,18 @@
-import * as types from '../actions/vendorActions';
+import { GET_VENDOR_DETAILS } from '../actions/vendorActions';
 const initialState = {
-  vendorDetails: [],
+  vendorDetails: null,
   vendor: {},
-  services:{},
+  services: {},
   loading: false,
   error: null,
 };
 const vendorReducer = (state = initialState, action) => {
+  console.log(action);
   switch (action.type) {
-    case types.GET_VENDOR_DETAILS:
-      return { ...state, vendor: action.vendorDetails, loading: false };
-    case types.GET_ALL_SERVICES:
-        return { ...state, services: action.services, loading: false };
+    case GET_VENDOR_DETAILS:
+      return { ...state, vendorDetails: action.data, loading: false };
+    // case GET_ALL_SERVICES:
+    //   return { ...state, services: action.services, loading: false };
     // case types.GET_ALL_VENDORS:
     //   return { ...state, vendors: action.payload, loading: false };
     // case types.VENDOR_LOADING:
