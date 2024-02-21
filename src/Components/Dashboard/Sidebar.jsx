@@ -6,7 +6,7 @@ import {
   DashboardOutlined,
   AppstoreAddOutlined,
 } from "@ant-design/icons";
-
+import { Link } from "react-router-dom";
 import "./Sidebar.css"; // Import the CSS file for styling
 
 const { Sider } = Layout;
@@ -35,13 +35,13 @@ const Sidebar = () => {
       </div>
       <Menu mode="vertical" theme="light" defaultSelectedKeys={["1"]}>
         <Menu.Item key="1" icon={<DashboardOutlined />} title="Dashboard">
-          Dashboard
+          <Link to="/vendor-dashboard">Dashboard</Link>
         </Menu.Item>
         <Menu.Item key="2" icon={<AppstoreAddOutlined />} title="Apps">
-          Live bids
+          <Link to="/live-bids">Live bids</Link>
         </Menu.Item>
         <Menu.Item key="3" icon={<UserOutlined />} title="Profile">
-          Profile
+          <Link to="/profile">Profile</Link>
         </Menu.Item>
       </Menu>
     </Sider>

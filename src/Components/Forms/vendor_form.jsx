@@ -5,12 +5,8 @@ import { Link } from "react-router-dom";
 
 
 const vender_form = () => {
-    const navigate = useNavigate();
-
-    const handleSubmit = () => {
-        navigate("/dashboard");
-    }
-
+    const token = localStorage.getItem("token");
+    console.log("Token:", token);
     return (
         <div>
 
