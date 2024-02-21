@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
+
 const vender_form = () => {
     const token = localStorage.getItem("token");
     console.log("Token:", token);
@@ -22,15 +23,15 @@ const vender_form = () => {
         console.log("Email:", email, "Password:", password, "Role:", role);
     };
     return (
-        <div>
+        <div >
 
             <Navbar />
-            <div style={{
+            <div  style={{
                 display: "flex", flexWrap: "wrap",
             }}
                 className="mx-auto max-w-screen-xl  px-4 py-16  sm:px-6 lg:px-8">
-                <div style={{ width: "48%", height: "100%" }}
-                    className="mx-auto ml-4 max-w-lg">
+                <div id="formdiv" style={{ width: "48%", height: "100%" }}
+                    className="mx-auto  max-w-lg">
                     <h1 className="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">Welcome to the community</h1>
 
                     <p className="mx-auto mt-4 max-w-md text-center text-gray-500">
