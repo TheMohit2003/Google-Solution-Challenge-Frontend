@@ -3,6 +3,7 @@ import Navbar from "../LandingPage/Navbar"
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
+
 const vender_form = () => {
     const navigate = useNavigate();
 
@@ -18,15 +19,15 @@ const vender_form = () => {
                 display: "flex", flexWrap: "wrap",
             }}
                 className="mx-auto max-w-screen-xl  px-4 py-16  sm:px-6 lg:px-8">
-                <div style={{ width: "48%", height: "100%" }}
-                    className="mx-auto ml-4 max-w-lg">
+                <div id="formdiv" style={{ width: "48%", height: "100%" }}
+                    className="mx-auto  max-w-lg">
                     <h1 className="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">Welcome to the community</h1>
 
                     <p className="mx-auto mt-4 max-w-md text-center text-gray-500">
                         Join the community by creating an identity
                     </p>
 
-                    <form action="#" className="mb-0 mt-6 space-y-4 rounded-sm p-2 shadow-lg sm:p-6 lg:p-8" onSubmit={() => handleSubmit()}>
+                    <form action="#" id="form"  className=" mb-0 mt-6 space-y-4 rounded-sm p-2 shadow-lg sm:p-6 lg:p-8" onSubmit={() => handleSubmit()}>
                         <p className="text-center text-lg font-medium">Registration For Vender</p>
 
                         <div>
