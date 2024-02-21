@@ -3,15 +3,31 @@ import Navbar from "../Components/LandingPage/Navbar";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { signup } from "../store/actions/loginActions";
+import { useNavigate } from "react-router-dom"
 export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
+  const [isLoading, setIsLoading] = useState(false); // State for loader
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(signup({ email, password, role })); // Fix the typo here: `rolr` to `role`
-    // console.log("Email:", email, "Password:", password, "Role:", role);
+    setIsLoading(true);
+    try {
+      // Set loading to true when starting the signup process
+      setIsLoading(true);
+
+      // Call the signup action and pass the history object
+      dispatch(signup({ email, password, role }, navigate));
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Error during signup:", error);
+    } finally {
+      // Set loading back to false when signup is complete (whether success or failure)
+      setIsLoading(false);
+    } // Fix the typo here: `rolr` to `role`
+    console.log("Email:", email, "Password:", password, "Role:", role);
   };
   return (
     <div>
@@ -80,8 +96,9 @@ export default function SignUp() {
             <button
               type="submit"
               className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
+              disabled={isLoading}
             >
-              Sign Up
+              {isLoading ? "Signing Up..." : "Sign Up"}
             </button>
             {/* </Link> */}
 
