@@ -36,7 +36,6 @@ const Sidebar = ({ onMenuItemSelect }) => {
         <div className="profile-photo" />
         <span className="profile-name">John Doe</span>
       </div>
-<<<<<<< HEAD
       <Menu
         mode="vertical"
         theme="light"
@@ -51,17 +50,6 @@ const Sidebar = ({ onMenuItemSelect }) => {
         </Menu.Item>
         <Menu.Item key="profile" icon={<UserOutlined />} title="Profile">
           Profile
-=======
-      <Menu mode="vertical" theme="light" defaultSelectedKeys={["1"]}>
-        <Menu.Item key="1" icon={<DashboardOutlined />} title="Dashboard">
-          <Link to="/issuer-dashboard">Dashboard</Link>
-        </Menu.Item>
-        <Menu.Item key="2" icon={<AppstoreAddOutlined />} title="Apps">
-          <Link to="/live-bids">Live bids</Link>
-        </Menu.Item>
-        <Menu.Item key="3" icon={<UserOutlined />} title="Profile">
-          <Link to="/profile">Profile</Link>
->>>>>>> 5df0bf50ebabab1c08bf1c628e28be4ab0376cfd
         </Menu.Item>
       </Menu>
     </Sider>

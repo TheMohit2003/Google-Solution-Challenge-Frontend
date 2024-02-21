@@ -21,7 +21,7 @@ export default function App() {
         <Route path="/vendor-form" element={<VendorFrom />} />
         <Route path="/issuer-form" element={<IssuerFrom />} />
         <Route path="/vendor-dashboard" element={<VendorDashboard />} />
-        <Route path="/new-bid" element={<NewBid />} />
+        <Route path="/new-services" element={<NewBid />} />
         <Route path="/example" element={<Example />} />
         <Route path="/issuer-dashboard" element={<IssuerDashboard />} />
         <Route path="/profile" element={<Profile />} />
