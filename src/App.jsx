@@ -9,7 +9,7 @@ import NewBid from "./Components/Forms/new_bid";
 import IssuerDashboard from "./Pages/IssuerDashboard";
 import VendorDashboard from "./Pages/VendorDashboard";
 import Profile from "./Pages/Profile";
-import LiveBids from "./Components/LiveBidding/livebids";
+// import LiveBids from "./Components/LiveBidding/livebids";
 
 export default function App() {
   return (
@@ -18,12 +18,12 @@ export default function App() {
         <Route path="/" element={<LandingPage />} />
 
         <Route path="/sign-up" element={<Signup />} />
-        <Route path="/live-bids" element={<LiveBids />} />
+        {/* <Route path="/live-bids" element={<LiveBids />} /> */}
         <Route path="/log-in" element={<LogIn />} />
         <Route path="/vendor-form" element={<VendorFrom />} />
         <Route path="/issuer-form" element={<IssuerFrom />} />
         <Route path="/vendor-dashboard" element={<VendorDashboard />} />
-        <Route path="/new-bid" element={<NewBid />} />
+        <Route path="/new-services" element={<NewBid />} />
         <Route path="/example" element={<Example />} />
         <Route path="/issuer-dashboard" element={<IssuerDashboard />} />
         <Route path="/profile" element={<Profile />} />
