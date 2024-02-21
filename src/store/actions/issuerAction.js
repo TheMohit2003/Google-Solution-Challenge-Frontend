@@ -3,7 +3,7 @@
 
 
 const API_URL = import.meta.env.VITE_API_URL;
-export const GET_VENDOR_DETAILS = "GET_VENDOR_DETAILS";
+export const GET_ISSUER_DETAILS = "GET_ISSUER_DETAILS";
 
 export const getIssuerDetails = () => {
     return async (dispatch) => {
@@ -18,7 +18,7 @@ export const getIssuerDetails = () => {
             const data = await response.json();
             console.log(data);
             dispatch({
-                type: GET_VENDOR_DETAILS,
+                type: GET_ISSUER_DETAILS,
                 payload: data,
             });
         } catch (error) {
