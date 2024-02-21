@@ -4,18 +4,22 @@ import { login } from "../store/actions/loginActions";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import ClipLoader from "react-spinners/ClipLoader";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setrole] = useState("");
+  const  [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  
 
   // localStorage.setItem("role");
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(login({ email, password, role }, navigate));
+    setLoading(true)
     console.log("Email:", email, "Password:", password, "Role:", role);
   };
   useEffect(() => {
@@ -127,8 +131,18 @@ export default function Login() {
                 className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
               >
                 Log in
+                
               </button>
-
+              <div className="flex justify-center pt-3">
+              <ClipLoader
+        color="blue"
+        loading={loading}
+        size={50}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+        className="text-center flex justify-center items-center w-full h-full"
+      />
+      </div>
             </div>
 
             <p className="text-center text-sm text-gray-500">
@@ -138,6 +152,7 @@ export default function Login() {
           </form>
         </div>
       </div>
+      
     </div>
   );
 }
