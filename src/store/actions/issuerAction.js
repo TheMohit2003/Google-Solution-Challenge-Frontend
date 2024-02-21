@@ -8,7 +8,7 @@ export const GET_VENDOR_DETAILS = "GET_VENDOR_DETAILS";
 export const getIssuerDetails = () => {
     return async (dispatch) => {
         try {
-            const response = await fetch(`${API_URL}/issuer/getIssuerDetails`, {
+            const response = await fetch(`${API_URL}/issuers/getIssuerDetail`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

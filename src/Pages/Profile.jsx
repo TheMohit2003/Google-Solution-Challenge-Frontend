@@ -7,7 +7,7 @@ import IssuerProfile from '../Components/IssuerDashboard/IssuerProfile';
 
 const { Content } = Layout;
 
-const Profile = () => {
+const Profile = (props) => {
     const role = sessionStorage.getItem("role");
     console.log(role);
     return (
