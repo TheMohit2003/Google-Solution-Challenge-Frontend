@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { UserOutlined } from '@ant-design/icons';
 import '../../CSS/vendorProfile.css';
 
 
+import { getVendorDetails } from '../../store/actions/vendorActions';
+import { useDispatch } from 'react-redux';
 const VendorProfile = () => {
+    const [vendorDetails, setVendorDetails] = useState(null);
+    const dispatch = useDispatch();
+    useEffect(() => {
+          // Assuming getVendorDetails returns a Promise with vendor details
+         dispatch(getVendorDetails());
+        }, []);
+
     return (
         <div className="full-page-content">
             <div className="profile-header">

@@ -5,6 +5,10 @@ import { Card } from "antd";
 
 
 const Services = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllServices());
+  }, []);
   return (
     <section className="text-gray-600 body-font">
       <h1 style={{ fontSize: "3rem", margin: "auto 33%" }}>Your services</h1>

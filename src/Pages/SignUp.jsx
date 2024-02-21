@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../Components/LandingPage/Navbar";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -29,6 +29,10 @@ export default function SignUp() {
     } // Fix the typo here: `rolr` to `role`
     console.log("Email:", email, "Password:", password, "Role:", role);
   };
+  useEffect(() => {
+    sessionStorage.setItem("role", role);
+    console.log("Role:", role);
+  }, [role]);
   return (
     <div>
       <Navbar />

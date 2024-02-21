@@ -2,11 +2,26 @@ import React, { useState } from "react";
 import Navbar from "../LandingPage/Navbar"
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 
 const vender_form = () => {
     const token = localStorage.getItem("token");
     console.log("Token:", token);
+    const [name, setName] = useState("");
+    const [officeAddress, setOfficeAddress] = useState("");
+    const [contact, setContact] = useState("");
+    const [aadhar, setAadhar] = useState("");
+    const [GST, setGST] = useState("");
+    const [OrganizationName, setOrganizationName] = useState("");
+    const [WorkDescription, setWorkDescription] = useState("");
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        dispatch(register_vendor({ name, officeAddress, contact, aadhar, GST, OrganizationName, WorkDescription }, navigate));
+        console.log("Email:", email, "Password:", password, "Role:", role);
+    };
     return (
         <div >
 
@@ -23,16 +38,18 @@ const vender_form = () => {
                         Join the community by creating an identity
                     </p>
 
-                    <form  action="#" id="form" className=" mb-0 mt-6 space-y-4 rounded-sm p-2 shadow-lg sm:p-6 lg:p-8" onSubmit={() => handleSubmit()}>
+                    <form action="#" className="mb-0 mt-6 space-y-4 rounded-sm p-2 shadow-lg sm:p-6 lg:p-8" onSubmit={handleSubmit}>
                         <p className="text-center text-lg font-medium">Registration For Vender</p>
 
                         <div>
-                            <label htmlFor="name" className="sr-only">Name</label>
+                            <label htmlFor="name" className="sr-only"  >Name</label>
                             <tr>Name</tr>
                             <input
                                 type="text"
                                 className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
                                 placeholder="Enter Name"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
                                 required
                             />
                         </div>
@@ -44,6 +61,8 @@ const vender_form = () => {
                                     type="text"
                                     className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
                                     placeholder="Location"
+                                    value={officeAddress}
+                                    onChange={(e) => setOfficeAddress(e.target.value)}
                                 />
                             </div>
 
@@ -54,6 +73,8 @@ const vender_form = () => {
                                     type="number"
                                     className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
                                     placeholder="Enter Phone No."
+                                    value={contact}
+                                    onChange={(e) => setContact(e.target.value)}
                                     required
                                 />
                             </div>
@@ -100,6 +121,8 @@ const vender_form = () => {
                                         type="number"
                                         className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
                                         placeholder="Enter Aadhar No."
+                                        value={aadhar}
+                                        onChange={(e) => setAadhar(e.target.value)}
                                         required
                                     />
 
@@ -128,6 +151,8 @@ const vender_form = () => {
                                     type="varchar"
                                     className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
                                     placeholder="Enter GST no."
+                                    value={GST}
+                                    onChange={(e) => setGST(e.target.value)}
                                     required
                                 />
                             </div>
@@ -140,19 +165,23 @@ const vender_form = () => {
                                 type="varchar"
                                 className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
                                 placeholder="Enter Shop/business name"
+                                value={OrganizationName}
+                                onChange={(e) => setOrganizationName(e.target.value)}
                                 required
                             />
                         </div>
-                        <div>
+                        {/* <div>
                             <label htmlFor="name" className="sr-only">Occupation</label>
                             <tr>Occupation</tr>
                             <input
                                 type="text"
                                 className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
                                 placeholder="eg:- Carpenter, Software solutions etc."
+                                value={occupation}
+                                onChange={(e) => setEmail(e.target.value)}
                                 required
                             />
-                        </div>
+                        </div> */}
                         {/* <div style={{ display: "flex", justifyContent: "space-between" }}>
                             <div style={{ width: "48%" }}>
                                 <label htmlFor="year" className="sr-only">Year of experience</label>
@@ -181,7 +210,8 @@ const vender_form = () => {
                             <textarea
                                 className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
                                 placeholder="Example, We are a software solutions company providing services to various clients. We have a team of 10 people and have been in this field for 5 years."
-
+                                value={WorkDescription}
+                                onChange={(e) => setWorkDescription(e.target.value)}
                                 rows={3}
                             />
                         </div>
