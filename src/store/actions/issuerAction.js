@@ -6,7 +6,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 export const GET_ISSUER_DETAILS = "GET_ISSUER_DETAILS";
 
 export const getIssuerDetails = () => {
-    return async (dispatch) => {
+    return async (dispatch,getState) => {
         try {
             const response = await fetch(`${API_URL}/issuers/getIssuerDetail`, {
                 method: "GET",

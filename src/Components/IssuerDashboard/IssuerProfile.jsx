@@ -1,83 +1,67 @@
-import React, { useEffect } from 'react'
-import { getAllServices } from '../../store/actions/vendorActions'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useState, useEffect } from 'react';
+import { UserOutlined } from '@ant-design/icons';
+import '../../CSS/vendorProfile.css';
+import { useDispatch, useSelector } from 'react-redux';
 import { getIssuerDetails } from '../../store/actions/issuerAction';
-export default function Profile() {
+
+
+
+const IssuerProfile = () => {
+const data = useSelector(state => state.issuer.issuer);
   const dispatch = useDispatch();
-  const data = useSelector(state => state.vendor)
-  
+
   useEffect(() => {
-    // Assuming getVendorDetails returns a Promise with vendor details
     dispatch(getIssuerDetails());
-	console.log(data)
-  }, []);
-  return (
-    <section className="p-6 bg-gray-100 text-gray-900">
-	<form novalidate="" action="" className="container flex flex-col mx-auto space-y-12">
-		<fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm bg-gray-50">
-			<div className="space-y-2 col-span-full lg:col-span-1">
-				<p className="font-medium">Personal Inormation</p>
-				<p className="text-xs">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci fuga autem eum!</p>
-			</div>
-			<div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
-				<div className="col-span-full sm:col-span-3">
-					<label for="firstname" className="text-sm">First name</label>
-					<input id="firstname" type="text" placeholder="First name" className="w-full rounded-md focus:ring focus:ri focus:ri border-gray-300 text-gray-900" />
-				</div>
-				<div className="col-span-full sm:col-span-3">
-					<label for="lastname" className="text-sm">Last name</label>
-					<input id="lastname" type="text" placeholder="Last name" className="w-full rounded-md focus:ring focus:ri focus:ri border-gray-300 text-gray-900" />
-				</div>
-				<div className="col-span-full sm:col-span-3">
-					<label for="email" className="text-sm">Email</label>
-					<input id="email" type="email" placeholder="Email" className="w-full rounded-md focus:ring focus:ri focus:ri border-gray-300 text-gray-900" />
-				</div>
-				<div className="col-span-full">
-					<label for="address" className="text-sm">Address</label>
-					<input id="address" type="text" placeholder="" className="w-full rounded-md focus:ring focus:ri focus:ri border-gray-300 text-gray-900" />
-				</div>
-				<div className="col-span-full sm:col-span-2">
-					<label for="city" className="text-sm">City</label>
-					<input id="city" type="text" placeholder="" className="w-full rounded-md focus:ring focus:ri focus:ri border-gray-300 text-gray-900" />
-				</div>
-				<div className="col-span-full sm:col-span-2">
-					<label for="state" className="text-sm">State / Province</label>
-					<input id="state" type="text" placeholder="" className="w-full rounded-md focus:ring focus:ri focus:ri border-gray-300 text-gray-900" />
-				</div>
-				<div className="col-span-full sm:col-span-2">
-					<label for="zip" className="text-sm">ZIP / Postal</label>
-					<input id="zip" type="text" placeholder="" className="w-full rounded-md focus:ring focus:ri focus:ri border-gray-300 text-gray-900" />
-				</div>
-			</div>
-		</fieldset>
-		<fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm bg-gray-50">
-			<div className="space-y-2 col-span-full lg:col-span-1">
-				<p className="font-medium">Profile</p>
-				<p className="text-xs">Adipisci fuga autem eum!</p>
-			</div>
-			<div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
-				<div className="col-span-full sm:col-span-3">
-					<label for="username" className="text-sm">Username</label>
-					<input id="username" type="text" placeholder="Username" className="w-full rounded-md focus:ring focus:ri focus:ri border-gray-300 text-gray-900" />
-				</div>
-				<div className="col-span-full sm:col-span-3">
-					<label for="website" className="text-sm">Website</label>
-					<input id="website" type="text" placeholder="https://" className="w-full rounded-md focus:ring focus:ri focus:ri border-gray-300 text-gray-900" />
-				</div>
-				<div className="col-span-full">
-					<label for="bio" className="text-sm">Bio</label>
-					<textarea id="bio" placeholder="" className="w-full rounded-md focus:ring focus:ri focus:ri border-gray-300 text-gray-900"></textarea>
-				</div>
-				<div className="col-span-full">
-					<label for="bio" className="text-sm">Photo</label>
-					<div className="flex items-center space-x-2">
-						<img src="https://source.unsplash.com/30x30/?random" alt="" className="w-10 h-10 rounded-full bg-gray-500 bg-gray-300" />
-						<button type="button" className="px-4 py-2 border rounded-md border-gray-800">Change</button>
-					</div>
-				</div>
-			</div>
-		</fieldset>
-	</form>
-</section>
-  )
-}
+  }, [dispatch]); 
+
+  useEffect(() => {
+    console.log(data); 
+  }, [data]); 
+
+    return (
+        <div className="full-page-content">
+            <div className="profile-header">
+                {/* Profile Image and Name on Right */}
+                <div id='container' className="profile-right ">
+                    <div className="profile-image">
+                        {/* Use UserOutlined from Ant Design as a placeholder */}
+                        <UserOutlined />
+                    </div>
+                    <div className="profile-name">
+                        <h1 className="text-2xl font-bold text-gray-900">{data.name}</h1>
+                        <p className="text-gray-500 text-[20px]">IssuerType: {data.IssuerType}</p>
+                    </div>
+                </div>
+
+                {/* Profile Details on Left */}
+                <div className="profile-details">
+                    <dl className="-my-3 divide-y divide-gray-100 text-sm">
+
+                    {Object.entries(data).map(([key, value]) => {
+                        if (key !== 'createdAt' && key !== 'userId') { 
+                            return (
+                                <div key={key} className="grid grid-cols-1 gap-1 py-3 even:bg-gray-50">
+                                    <div>
+                                        <dt className="font-medium text-gray-900">
+                                            {key.replace(/([a-z0-9])([A-Z])/g, '$1 $2').toUpperCase()}:
+                                        </dt>
+                                    </div>
+                                    <div>
+                                        <dd className="text-gray-700">{value}</dd>
+                                    </div>
+                                </div>
+                            );
+                        }
+                        return null; 
+                    })}
+
+
+
+                    </dl>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default IssuerProfile;

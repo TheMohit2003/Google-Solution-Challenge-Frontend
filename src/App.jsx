@@ -11,6 +11,8 @@ import Profile from "./Pages/Profile";
 // import Livebidding from "./Components/LiveBidding/Livebidding";
 
 import BiddingPage from "./Pages/BiddingPage";
+import ServiceInfo from "./Components/Dashboard/ServiceInfo";
+// import LiveBids from "./Components/LiveBidding/livebids";
 
 export default function App() {
   return (
@@ -27,6 +29,7 @@ export default function App() {
         <Route path="/issuer-form" element={<IssuerFrom />} />
         <Route path="/vendor-dashboard" element={<VendorDashboard />} />
         <Route path="/example" element={<Example />} />
+        <Route path="/service-info" element={<ServiceInfo />} />
         <Route path="/issuer-dashboard" element={<IssuerDashboard />} />
         <Route path="/profile" element={<Profile />} />
 
