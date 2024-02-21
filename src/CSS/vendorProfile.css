@@ -1,0 +1,33 @@
+#container {
+
+    margin: 10px 0px 10px 0px;
+}
+
+.profile-image {
+    font-size: 120px;
+    color: #1890ff;
+    margin: 30px 10px 10px 50px;
+}
+
+.profile-name {
+    font-size: 30px;
+    margin: 10px 10px 10px 50px;
+}
+
+.profile-details {
+    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
+    box-shadow: 0px 0px 2px 0px rgba(152, 152, 152, 0.5);
+    border-radius: 5px;
+    width: 100%;
+}
+
+.profile-header {
+    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px 0px rgba(152, 152, 152, 0.5);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}

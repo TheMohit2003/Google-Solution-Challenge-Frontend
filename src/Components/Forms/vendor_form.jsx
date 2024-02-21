@@ -8,10 +8,10 @@ const vender_form = () => {
     const token = localStorage.getItem("token");
     console.log("Token:", token);
     return (
-        <div>
+        <div >
 
             <Navbar />
-            <div style={{
+            <div  style={{
                 display: "flex", flexWrap: "wrap",
             }}
                 className="mx-auto max-w-screen-xl  px-4 py-16  sm:px-6 lg:px-8">
@@ -23,7 +23,7 @@ const vender_form = () => {
                         Join the community by creating an identity
                     </p>
 
-                    <form action="#" id="form"  className=" mb-0 mt-6 space-y-4 rounded-sm p-2 shadow-lg sm:p-6 lg:p-8" onSubmit={() => handleSubmit()}>
+                    <form  action="#" id="form" className=" mb-0 mt-6 space-y-4 rounded-sm p-2 shadow-lg sm:p-6 lg:p-8" onSubmit={() => handleSubmit()}>
                         <p className="text-center text-lg font-medium">Registration For Vender</p>
 
                         <div>

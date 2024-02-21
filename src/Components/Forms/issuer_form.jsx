@@ -5,13 +5,13 @@ const Issuer_form = () => {
   const [role, setRole] = useState(""); // Define role state variable and setRole function
 
   return (
-    <div>
+    <div >
       <Navbar />
       <div style={{ display: "flex", flexWrap: "wrap" }} className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
-        <div style={{ width: "45%", height: "100%" }} className="mx-auto ml-4 max-w-lg-">
+        <div style={{ width: "45%", height: "100%" }} className="mx-auto  max-w-lg-">
           <h1 className="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">Welcome to the community</h1>
           <p className="mx-auto mt-4 max-w-md text-center text-gray-500">Join the community by creating an identity</p>
-          <form action="#" className="mb-0 mt-6 space-y-4 rounded-lg p-2 shadow-lg sm:p-6 lg:p-8">
+          <form action="#" id="form1" className="mb-0 mt-6 space-y-4 rounded-lg p-2 shadow-lg sm:p-6 lg:p-8">
             <p className="text-center text-lg font-medium">Registration for Issuer</p>
 
             <div>
@@ -89,7 +89,7 @@ const Issuer_form = () => {
             </div>
           </form>
         </div>
-        <div style={{ position: "relative", top: "120px", left: "50px" }} className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
+        <div id="img-2" style={{ position: "relative", top: "120px", left: "50px" }} className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
           <img src="src\Components\Forms\memphis.png" alt="img" />
         </div>
       </div>
