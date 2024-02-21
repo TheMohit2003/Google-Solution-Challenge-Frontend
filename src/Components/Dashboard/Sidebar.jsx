@@ -44,6 +44,7 @@ const Sidebar = () => {
           <Link to="/profile">Profile</Link>
         </Menu.Item>
       </Menu>
+      
     </Sider>
   );
 };
