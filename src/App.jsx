@@ -12,14 +12,15 @@ import Profile from "./Pages/Profile";
 
 import BiddingPage from "./Pages/BiddingPage";
 import ServiceInfo from "./Components/Dashboard/ServiceInfo";
-// import LiveBids from "./Components/LiveBidding/livebids";
+import LiveBids from "./Components/LiveBidding/livebids";
+import Livebids from "./Components/LiveBidding/livebids";
 
 export default function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        {/* <Route path="/live-bidding" element={<Livebidding />} /> */}
+        <Route path="/live-bids" element={<Livebids />} />
 
         <Route path="/sign-up" element={<Signup />} />
 
