@@ -21,7 +21,7 @@ const VendorDashboard = (props) => {
         <Layout>
           <Content style={{ padding: "20px" }}>
             <Services />
-            <p>This is your main content.</p>
+            
           </Content>
         </Layout>
       </Layout>
