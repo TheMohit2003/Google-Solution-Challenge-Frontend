@@ -3,7 +3,8 @@ import { Card } from "antd";
 
 const Services = ({ services }) => {
   console.log(services);
-
+  const serviceId = services?.id;
+  console.log(serviceId);
   if (!Array.isArray(services)) {
     // Handle the case when services is not an array (e.g., set a default value or show a loading message)
     return <p>Loading...</p>;

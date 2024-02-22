@@ -4,14 +4,16 @@ import '../../CSS/vendorProfile.css';
 import { getVendorDetails } from '../../store/actions/vendorActions';
 import { useDispatch } from 'react-redux';
 import '../../CSS/serviceInfo.css';
+import { getServiceDetails } from '../../store/actions/biddingActions';
 
 const ServiceInfo = () => {
     const [vendorDetails, setVendorDetails] = useState(null);
     const dispatch = useDispatch();
     useEffect(() => {
         // Assuming getVendorDetails returns a Promise with vendor details
-        dispatch(getVendorDetails());
+        dispatch(getServiceDetails());
     }, []);
+
 
 
     return (
@@ -46,7 +48,7 @@ const ServiceInfo = () => {
 
                             <div id='container1' className=" grid grid-cols-1 gap-1 py-3 even:bg-gray-50">
                                 <tr><td className="font-medium text-gray-900">Location: </td>
-                                <td className="text-gray-700">asd fgh erty erty</td></tr>
+                                    <td className="text-gray-700">asd fgh erty erty</td></tr>
                             </div>
 
                             <div id='container1' className=" grid grid-cols-1 gap-1 py-3 even:bg-gray-50">

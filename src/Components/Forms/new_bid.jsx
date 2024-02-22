@@ -3,14 +3,11 @@ import React from "react";
 import { newBid } from "../../store/actions/biddingActions";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { message } from "antd";
 const NewBid = () => {
 
-  const dispatch = useDispatch()
-  useEffect((event) => {
-    event.preventDefault();
-    dispatch(newBid(serviceId, amount, message));
-    //workcategoy date location
-  }, [dispatch]);
+ 
   return (
     <div>
 
@@ -25,6 +22,7 @@ const NewBid = () => {
           <form
             action="#"
             className="mb-0 mt-6 space-y-4 rounded-sm p-2 shadow-lg sm:p-6 lg:p-8"
+            onSubmit={handleSubmit}
           >
             <p className="text-center text-lg font-medium">
               Registration for Issuer
@@ -47,8 +45,8 @@ const NewBid = () => {
                   type="text"
                   className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
                   placeholder="Enter Work Category"
-                  value={work}
-                  onChange={(e) => setAmount(e.target.value)}
+                  // value={work}
+                  // onChange={(e) => setAmount(e.target.value)}
                   required
                 />
               </div>
@@ -90,6 +88,8 @@ const NewBid = () => {
                 <textarea
                   className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
                   placeholder="Description of Work"
+                  value={message}
+                  onChange={(e) => setAmount(e.target.value)}
                   rows={5}
                 />
               </div>
