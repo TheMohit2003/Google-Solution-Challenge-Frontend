@@ -4,7 +4,7 @@
 //  /      place bid ----post
 //
 
-
+const API_URL = import.meta.env.VITE_API_URL;
 export const newBid = (formData, navigate) => {
     return async (dispatch) => {
         try {
