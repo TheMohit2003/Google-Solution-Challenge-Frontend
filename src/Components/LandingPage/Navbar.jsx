@@ -35,7 +35,7 @@ export default function Navbar() {
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <div className="flex-1 md:flex md:items-center md:gap-12">
-              <div style={{ margin: "-40px 0px 0px 0px", height: "1.5vh", width: "90px" }}><img id="logo-btn" src="src\Components\LandingPage\logo.png" alt="logo-btn" /></div>
+              <div style={{ margin: "-40px 0px 0px 0px", height: "1.5vh", width: "90px" }}><img id="logo-btn" src="public\images\logo.png" alt="logo-btn" /></div>
               <a className="block text-indigo-500" href="#">
                 <span className="sr-only">Home</span>
                 <svg
