@@ -137,7 +137,7 @@ export const register_vendor = (formData, navigate) => {
 export const register_Issuer = (formData, navigate) => {
   return async (dispatch) => {
     try {
-
+      const role = sessionStorage.getItem("role");
       const response = await fetch(`${API_URL}/issuers`, {
         method: "POST",
         headers: {

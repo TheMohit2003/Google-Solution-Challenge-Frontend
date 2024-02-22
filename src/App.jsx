@@ -8,6 +8,9 @@ import Example from "./Components/Forms/Example";
 import IssuerDashboard from "./Pages/IssuerDashboard";
 import VendorDashboard from "./Pages/VendorDashboard";
 import Profile from "./Pages/Profile";
+// import Livebidding from "./Components/LiveBidding/Livebidding";
+
+import BiddingPage from "./Pages/BiddingPage";
 import ServiceInfo from "./Components/Dashboard/ServiceInfo";
 // import LiveBids from "./Components/LiveBidding/livebids";
 
@@ -16,12 +19,13 @@ export default function App() {
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        {/* <Route path="/live-bidding" element={<Livebidding />} /> */}
 
         <Route path="/sign-up" element={<Signup />} />
 
         <Route path="/log-in" element={<LogIn />} />
         <Route path="/vendor-form" element={<VendorFrom />} />
-        {/* <Route path="/bidding-page" element={<BiddingPage />} /> */}
+        <Route path="/bidding-page" element={<BiddingPage />} />
         <Route path="/issuer-form" element={<IssuerFrom />} />
         <Route path="/vendor-dashboard" element={<VendorDashboard />} />
         <Route path="/example" element={<Example />} />
