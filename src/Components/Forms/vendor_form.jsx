@@ -86,36 +86,6 @@ const vender_form = () => {
 
                         </div>
 
-                        {/* <div>
-                            <label htmlFor="email" className="sr-only">Email</label>
-                            <tr>Email</tr>
-
-                            <div className="relative">
-                                <input
-                                    type="email"
-                                    className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
-                                    placeholder="Enter email"
-                                    required
-                                />
-
-                                <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        className="size-4 text-gray-400"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth="2"
-                                            d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
-                                        />
-                                    </svg>
-                                </span>
-                            </div>
-                        </div> */}
                         <div style={{ display: "flex", justifyContent: "space-between" }}>
                             <div>
                                 <label htmlFor="aadhar" className="sr-only">Aadhar</label>
@@ -175,40 +145,6 @@ const vender_form = () => {
                                 required
                             />
                         </div>
-                        {/* <div>
-                            <label htmlFor="name" className="sr-only">Occupation</label>
-                            <tr>Occupation</tr>
-                            <input
-                                type="text"
-                                className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
-                                placeholder="eg:- Carpenter, Software solutions etc."
-                                value={occupation}
-                                onChange={(e) => setEmail(e.target.value)}
-                                required
-                            />
-                        </div> */}
-                        {/* <div style={{ display: "flex", justifyContent: "space-between" }}>
-                            <div style={{ width: "48%" }}>
-                                <label htmlFor="year" className="sr-only">Year of experience</label>
-                                <tr>Year of experience</tr>
-                                <input
-                                    type="number"
-                                    className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
-                                    placeholder="Year of Experience"
-                                    required
-                                />
-                            </div>
-                            <div style={{ width: "48%" }}>
-                                <label htmlFor="teamSize" className="sr-only">Team size</label>
-                                <tr>Team size</tr>
-                                <input
-                                    type="number"
-                                    className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
-                                    placeholder="Enter team size"
-                                    required
-                                />
-                            </div>
-                        </div> */}
 
                         <div className="col-span-2">
                             <label htmlFor="workDescription">Work Description</label>

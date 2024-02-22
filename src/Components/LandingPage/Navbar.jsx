@@ -1,41 +1,31 @@
-import React from "react";
-import {
-  AppstoreOutlined,
-  MailOutlined,
-  SettingOutlined,
-} from "@ant-design/icons";
-import { Menu } from "antd";
-import { Button, Dropdown } from "antd";
-import { Link } from "react-router-dom";
-import { DownOutlined } from "@ant-design/icons";
-function getItem(label, key, icon, children, type) {
-  return {
-    key,
-    icon,
-    children,
-    label,
-    type,
-  };
-}
+import { useNavigate } from "react-router-dom";
 
-const menu = (
-  <Menu>
-
-    <Menu.Item key="login"><Link to={"/log-in"}>Login</Link></Menu.Item>
-    <Menu.Item key="register"><Link to={"/sign-up"}>Register</Link></Menu.Item>
-    {/* <Menu.Item key="register">Register as Issuer</Menu.Item> */}
-  </Menu>
-);
 
 export default function Navbar() {
+  const navigate = useNavigate();
+
+  const handleClick = ()=>{
+    navigate("/")
+  }
+
+  const handleLogin = ()=>{
+    navigate("/log-in")
+  }
+
+  const handleSignIn = ()=>{
+    navigate("/sign-up")
+  }
+
   return (
     <div >
-      <header className="">
+      <header className="pt-5">
 
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <div className="flex-1 md:flex md:items-center md:gap-12">
-              <div style={{ margin: "-40px 0px 0px 0px", height: "1.5vh", width: "90px" }}><img id="logo-btn" src="src\Components\LandingPage\logo.png" alt="logo-btn" /></div>
+              <div style={{ margin: "-40px 0px 0px 0px", height: "1.5vh", width: "90px" }} onClick={() => handleClick()}>
+              <img id="logo-btn" src="src\Components\LandingPage\logo.png" alt="logo-btn" />
+              </div>
               <a className="block text-indigo-500" href="#">
                 <span className="sr-only">Home</span>
                 <svg
@@ -58,15 +48,6 @@ export default function Navbar() {
                       href="/"
                     >
                       {" "}
-                      Home{" "}
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="text-gray-500 transition hover:text-gray-500/75"
-                      href="#"
-                    >
-                      {" "}
                       About{" "}
                     </a>
                   </li>
@@ -75,18 +56,19 @@ export default function Navbar() {
 
               <div className="flex items-center gap-4">
                 <div className="sm:flex sm:gap-4">
-                  <Dropdown overlay={menu} className="mx-4">
-                    <Button
-                      type="primary"
-                      style={{
-                        backgroundColor: "#483d8b	",
-                        border: "1px solid",
-                        color: "white",
-                      }}
-                    >
-                      Login/Register <DownOutlined />
-                    </Button>
-                  </Dropdown>
+                <button 
+                type="button" 
+                onClick={() => handleLogin()}
+                className="hidden px-6 py-2 font-semibold rounded lg:block text-gray-50 bg-indigo-600">
+                Log In
+                </button>
+
+                <button 
+                type="button" 
+                onClick={() => handleSignIn()}
+                className="hidden px-6 py-2 font-semibold rounded lg:block text-gray-50 bg-indigo-600">
+                Sign In
+                </button>
                 </div>
 
                 <div className="block md:hidden">
