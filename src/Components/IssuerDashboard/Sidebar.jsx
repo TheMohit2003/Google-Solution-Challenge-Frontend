@@ -30,11 +30,12 @@ const Sidebar = ({ onMenuItemSelect }) => {
       theme="light"
       className="sidebar"
     >
-      <div className="logo">Logo</div>
+
       <div className="profile-section">
+
         {/* Add your profile photo component or placeholder here */}
-        <div className="profile-photo" />
-        <span className="profile-name">John Doe</span>
+        <div style={{ margin: "0px 0px 0px -10px", height: "3vh", width: "170px" }}><img id="logo-btn" src="public\images\logo.png" alt="logo-btn" /></div>
+
       </div>
       <Menu
         mode="vertical"
@@ -42,13 +43,13 @@ const Sidebar = ({ onMenuItemSelect }) => {
         defaultSelectedKeys={["1"]}
         onClick={({ key }) => handleMenuClick(key)}
       >
-        <Menu.Item key="dashboard" icon={<DashboardOutlined />} title="Dashboard">
+        <Menu.Item id="menu-Item" key="dashboard" icon={<DashboardOutlined />} title="Dashboard">
           Dashboard
         </Menu.Item>
-        <Menu.Item key="live-bids" icon={<AppstoreAddOutlined />} title="LiveBids">
+        <Menu.Item id="menu-Item" key="live-bids" icon={<AppstoreAddOutlined />} title="LiveBids">
           Live bids
         </Menu.Item>
-        <Menu.Item key="profile" icon={<UserOutlined />} title="Profile">
+        <Menu.Item id="menu-Item" key="profile" icon={<UserOutlined />} title="Profile">
           Profile
         </Menu.Item>
       </Menu>

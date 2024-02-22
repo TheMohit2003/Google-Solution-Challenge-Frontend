@@ -1,0 +1,11 @@
+.digital-clock {
+    font-family: 'Digital-7', sans-serif;
+    /* You can replace this with your preferred digital font */
+    font-size: 3em;
+    color: #004293;
+    /* Adjust the color as needed */
+    background-color: #eef9ff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

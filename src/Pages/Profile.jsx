@@ -18,7 +18,7 @@ const Profile = (props) => {
                 <Layout>
                     <Content style={{ padding: "20px" }}>
                         {role === "ISSUER" ? <IssuerProfile /> : <VendorProfile />}
-                        <p>This is your main content.</p>
+                        
                     </Content>
                 </Layout>
             </Layout>

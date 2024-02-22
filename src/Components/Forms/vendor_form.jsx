@@ -232,7 +232,7 @@ const vender_form = () => {
                 </div>
                 <div id="img-1" style={{ position: "relative", top: "120px", left: "50px" }}
                     className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-                    <img src="src\Components\Forms\memphis.png" alt="img" />
+                    <img src="public\images\memphis.png" alt="img" />
 
                 </div>
             </div>

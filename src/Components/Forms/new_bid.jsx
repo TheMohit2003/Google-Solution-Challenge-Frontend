@@ -1,10 +1,19 @@
 import Navbar from "../LandingPage/Navbar";
 import React from "react";
-
+import { newBid } from "../../store/actions/biddingActions";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 const NewBid = () => {
+
+  const dispatch = useDispatch()
+  useEffect((event) => {
+    event.preventDefault();
+    dispatch(newBid(serviceId, amount, message));
+    //workcategoy date location
+  }, [dispatch]);
   return (
     <div>
-      
+
       <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-lg-2">
           <h1 className="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">
@@ -27,6 +36,8 @@ const NewBid = () => {
                 <input
                   type="number"
                   className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
+                  value={amount}
+                  onChange={(e) => setAmount(e.target.value)}
                   placeholder="Enter Max Bid"
                 />
               </div>
@@ -36,6 +47,8 @@ const NewBid = () => {
                   type="text"
                   className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
                   placeholder="Enter Work Category"
+                  value={work}
+                  onChange={(e) => setAmount(e.target.value)}
                   required
                 />
               </div>
