@@ -3,7 +3,7 @@ import { combineReducers } from "redux";
 import loginReducer from "./loginReducer.js";
 import vendorReducer from "./vendorReducer.js";
 import servicesReducer from "./servicesReducer.js";
-import IssuerReducer from "./IssuerReducer.js";
+import IssuerReducer from "./issuerReducer.js";
 const rootReducer = combineReducers({
   login: loginReducer,
   vendor: vendorReducer,

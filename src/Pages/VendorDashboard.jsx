@@ -23,8 +23,8 @@ const VendorDashboard = () => {
         <Sidebar />
         <Layout>
           <Content style={{ padding: "20px" }}>
-            <Services services={services} />
-            <p>This is your main content.</p>
+            <Services />
+            
           </Content>
         </Layout>
       </Layout>

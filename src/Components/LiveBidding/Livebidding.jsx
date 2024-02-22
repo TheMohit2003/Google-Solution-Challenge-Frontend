@@ -48,7 +48,10 @@ export default function Livebidding() {
             <CardBody>
                 <Heading size='xxl' className='digital-clock'>{minimumBid}</Heading>
             </CardBody>
-           
+            <CardFooter>
+                <Button colorScheme='blue'>place bid</Button>
+            </CardFooter>
+
             <SimpleGrid spacing={4} templateColumns='1fr 1fr 1fr'>
                 <Card>
                     <CardHeader>
@@ -60,6 +63,7 @@ export default function Livebidding() {
                     <CardFooter>
                         <Button>View here</Button>
                     </CardFooter>
+
                 </Card>
                 <Card>
                     <CardHeader>
