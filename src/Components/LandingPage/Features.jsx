@@ -122,7 +122,7 @@ export default function Features() {
 				</div>
 			</div>
 			<div aria-hidden="true" className="mt-10 lg:mt-0">
-				<img src="https://source.unsplash.com/random/360x480" alt="" className="mx-auto rounded-lg shadow-lg bg-gray-500" />
+				<img src="/images/dashboard.png" alt="" className="mx-auto rounded-lg shadow-lg bg-gray-500" />
 			</div>
 		</div>
 		<div>
@@ -173,7 +173,7 @@ export default function Features() {
 					</div>
 				</div>
 				<div className="mt-10 lg:mt-0 lg:col-start-1 lg:row-start-1">
-					<img src="https://source.unsplash.com/random/361x481" alt="" className="mx-auto rounded-lg shadow-lg bg-gray-500" />
+					<img src="/images/dashboard.png" alt="" className="mx-auto rounded-lg shadow-lg bg-gray-500" />
 				</div>
 			</div>
 		</div>
