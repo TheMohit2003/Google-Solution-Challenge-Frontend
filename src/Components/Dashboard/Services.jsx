@@ -60,9 +60,10 @@ const Services = ({ services }) => {
         visible={visible}
         onCancel={handleCancel}
         footer={null}
-        width={900}
+        width={800}
+        height={1000}
       >
-        {selectedService && <ServiceInfo serviceId={selectedService.id}/>}
+        {selectedService && <ServiceInfo serviceId={selectedService.id} />}
       </Modal>
     </section>
   );

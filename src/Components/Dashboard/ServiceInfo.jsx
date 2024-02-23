@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { UserOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { getServiceDetails } from '../../store/actions/biddingActions';
+// import { useEffect } from 'react';
+import "../../CSS/serviceInfo.css";
+
 
 const ServiceInfo = ({ serviceId }) => {
     const dispatch = useDispatch();
