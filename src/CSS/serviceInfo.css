@@ -4,9 +4,9 @@
 }
 
 .profile-image-1 {
-    font-size: 90px;
+    font-size: 40px;
     color: #1890ff;
-    margin: -55px 0px 0px 30px;
+    margin: -5px 0px 0px 30px;
 }
 
 .profile-name-1 {
@@ -20,7 +20,7 @@
     box-shadow: 0px 0px 2px 0px rgba(152, 152, 152, 0.5);
     border-radius: 5px;
 
-    width: 99%;
+    width: 100%;
 }
 
 .profile-header-1 {
@@ -28,13 +28,14 @@
     padding: 10px 10px 10px 10px;
     border-radius: 5px;
     box-shadow: 0px 0px 2px 0px rgba(152, 152, 152, 0.5);
-    width: 50%;
+    width: 90%;
     justify-content: space-between;
 }
 
 #info-btn {
     margin: 12px auto 5px auto;
-    width: 17%;
+    width: 60%;
+    padding: 10px;
     text-align: center;
     color: white;
     background-color: #1890ff;

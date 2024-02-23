@@ -76,11 +76,11 @@ const Services = ({ services }) => {
       </div>
 
       <Modal
-        title="Service Info"
+        title=""
         visible={visible}
         onCancel={handleCancel}
         footer={null}
-        width={800}
+        width={600}
         height={1000}
       >
         {selectedService && <ServiceInfo serviceId={selectedService.id} />}
