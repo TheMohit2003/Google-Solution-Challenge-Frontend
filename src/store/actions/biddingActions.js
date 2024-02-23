@@ -1,7 +1,11 @@
+// import { GET_SERVICES_DETAILS } from "./servicesActions";
 
 const API_URL = import.meta.env.VITE_API_URL;
 export const GET_NEW_BID = "GET_NEW_BID";
+export const GET_ALL_SERVICES = "GET_ALL_SERVICES";
+export const GET_SERVICES_DETAILS = "GET_SERVICES_DETAILS";
 export const newBid = (formData, navigate) => {
+    
     return async (dispatch) => {
         try {
             const role = sessionStorage.getItem("role");
@@ -43,11 +47,14 @@ export const newBid = (formData, navigate) => {
     };
 };
 
-export const getServiceDetails = () => {
-    const serviceId = sessionStorage.getItem("serviceId");
+export const getServiceDetails = (serviceId) => {
+    // const serviceId = sessionStorage.getItem("serviceId");
+    const token = localStorage.getItem("token");
+    console.log("Token:", token);
+    console.log("ServiceId:", serviceId);
     return async (dispatch) => {
         try {
-            const response = await fetch(`${API_URL}/service/getServiceById/${serviceId}` , {
+            const response = await fetch(`${API_URL}/service/getServiceById/${serviceId}`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -57,7 +64,7 @@ export const getServiceDetails = () => {
             const data = await response.json();
             console.log(data);
             dispatch({
-                type: GET_ALL_SERVICES,
+                type: GET_SERVICES_DETAILS,
                 payload: data,
             });
         } catch (error) {
@@ -65,5 +72,4 @@ export const getServiceDetails = () => {
         }
     };
 }
-// service/cearteService  --create service post
-// service/getAllServices --get all services get
+
