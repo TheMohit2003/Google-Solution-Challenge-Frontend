@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { UserOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { getServiceDetails } from '../../store/actions/biddingActions';
-
+import "../../CSS/serviceInfo.css";
 const ServiceInfo = ({ serviceId }) => {
     const dispatch = useDispatch();
     const serviceDetails = useSelector(state => state.bidding.services); // Assuming the reducer key is 'services'
