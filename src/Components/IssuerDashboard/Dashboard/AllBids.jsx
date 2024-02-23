@@ -1,9 +1,18 @@
-import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllServicesByIssuer } from '../../../store/actions/issuerAction';
+import { useEffect } from 'react';
 
-export default function AllBids({ bids }) {
+export default function AllBids() {
+  const dispatch = useDispatch();
+  const bids = useSelector(state => state.issuer.IssuerServices)
+
+  useEffect(() =>{
+    dispatch(getAllServicesByIssuer())
+  },[dispatch]);
+
   return (
     <>
-      <h1 className='font-medium text-3xl text-gray-500 mx-5'> All bids</h1>
+      <h1 className='font-medium text-3xl text-gray-500 mx-5'> All previous services posted</h1>
 
       {/* Conditionally render based on whether there are bids */}
       {bids && bids.length > 0 ? (

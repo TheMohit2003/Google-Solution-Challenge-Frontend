@@ -21,6 +21,7 @@ export default function App() {
       <Routes>
         {/* landing page routes */}
         <Route path="/" element={<LandingPage />} />
+        <Route path="/about" element={<AboutUs/>}/>
         {/* <Route path="/live-bidding" element={<Livebidding />} /> */}
         <Route path="/sign-up" element={<Signup />} />
         <Route path="/log-in" element={<LogIn />} />

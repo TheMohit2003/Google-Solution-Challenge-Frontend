@@ -45,7 +45,7 @@ export default function Navbar() {
                   <li>
                     <a
                       className="text-gray-500 transition hover:text-gray-500/75"
-                      href="/"
+                      href="/about"
                     >
                       {" "}
                       About{" "}
@@ -67,7 +67,7 @@ export default function Navbar() {
                 type="button" 
                 onClick={() => handleSignIn()}
                 className="hidden px-6 py-2 font-semibold rounded lg:block text-gray-50 bg-indigo-600">
-                Sign In
+                Register
                 </button>
                 </div>
 
