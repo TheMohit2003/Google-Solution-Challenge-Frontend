@@ -13,6 +13,7 @@ const ServiceInfo = () => {
         // Assuming getVendorDetails returns a Promise with vendor details
         dispatch(getServiceDetails());
     }, []);
+    
 
 
 
