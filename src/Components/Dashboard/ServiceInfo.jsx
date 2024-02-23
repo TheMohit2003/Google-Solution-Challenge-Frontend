@@ -30,7 +30,7 @@ const ServiceInfo = ({ serviceId }) => {
 
     return (
         <div>
-            <h1 style={{ fontSize: "3rem", margin: "2% 41%", color: "grey" }}>Service Info</h1>
+            <h1 style={{ fontSize: "2rem", margin: "2% 30%", color: "grey" }}>Service Info</h1>
             <div className="full-page-content">
                 <div className="profile-header-1">
                     <div id='container1' className="profile-right">
