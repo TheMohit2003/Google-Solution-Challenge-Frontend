@@ -1,10 +1,26 @@
-import React from "react";
-import { Card } from "antd";
+
 import moment from "moment";
+import React, { useState } from "react";
+import { Card, Modal } from "antd";
+import ServiceInfo from "./ServiceInfo";
+import { useDispatch } from "react-redux";
+import { getServiceDetails } from "../../store/actions/biddingActions";
+
 const Services = ({ services }) => {
-  console.log(services);
-  const serviceId = services?.id;
-  console.log(serviceId);
+  const [visible, setVisible] = useState(false);
+  const [selectedService, setSelectedService] = useState(null);
+  const dispatch = useDispatch();
+  const showModal = (service) => {
+    setSelectedService(service);
+    setVisible(true);
+    dispatch(getServiceDetails(String(service.id)));
+  };
+
+
+  const handleCancel = () => {
+    setVisible(false);
+  };
+
   if (!Array.isArray(services)) {
     // Handle the case when services is not an array (e.g., set a default value or show a loading message)
     return
@@ -41,7 +57,11 @@ const Services = ({ services }) => {
                   <div style={{ display: "flex" }}><img style={{ height: "1.7vh", marginTop: "4px" }} src="public\images\google-maps.png" alt="navi-btn" />
                     <h2 className="title-font text-sm font-medium text-gray-700 mb-3">{service.location}</h2></div>
                   <div className="flex items-center flex-wrap">
-                    <a className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+                    <a
+                      onClick={() => showModal(service)}
+                      className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0"
+                    >
+                      Learn More
                       <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M5 12h14"></path>
                         <path d="M12 5l7 7-7 7"></path>
@@ -54,6 +74,16 @@ const Services = ({ services }) => {
           ))}
         </div>
       </div>
+
+      <Modal
+        title="Service Info"
+        visible={visible}
+        onCancel={handleCancel}
+        footer={null}
+        width={900}
+      >
+        {selectedService && <ServiceInfo serviceId={selectedService.id}/>}
+      </Modal>
     </section>
   );
 };
