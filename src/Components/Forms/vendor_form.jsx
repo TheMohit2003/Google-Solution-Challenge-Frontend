@@ -25,7 +25,7 @@ const vender_form = () => {
         const GST = parseInt(GSTint)
         console.log(typeof (GST))
         dispatch(register_vendor({ name, officeAddress, contact, aadhar, GST, OrganizationName, WorkDescription }, navigate));
-        console.log("Email:", email, "Password:", password, "Role:", role);
+        // console.log("Email:", email, "Password:", password, "Role:", role);
     };
     return (
         <div >

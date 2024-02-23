@@ -1,10 +1,21 @@
 
 
 import React, { useState } from 'react';
-import { Modal} from 'antd';
+import { Modal } from 'antd';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { newBid } from '../../../store/actions/biddingActions'
 
 export default function NewBidCard() {
   const [modalVisible, setModalVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [amountInt, setAmount] = useState(0);
+  const [title, setWorkTitle] = useState("");
+  const [biddingDate, setBiddingDate] = useState("");
+  const [location, setLocation] = useState("");
+  const [projectStartDate, setProjectStartDate] = useState("");
+  const [description, setMessage] = useState("");
+  const [serviceId, setServiceId] = useState("");
 
   const handleModalOpen = () => {
     setModalVisible(true);
@@ -15,22 +26,20 @@ export default function NewBidCard() {
   };
 
   const [formData, setFormData] = useState({
-    "price" : 0,
-    "title" : "",
+    "price": 0,
+    "title": "",
     "description": "",
   })
 
-  const handleChange = (e) =>{
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
-
-  const handleSubmit = ()=>{
-    console.log(formData)
-  }
-
+  const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const amount = parseInt(amountInt);
+    dispatch(newBid({ title, amount, description, biddingDate, projectStartDate, location }), navigate);
+    setLoading(true)
+    // console.log("Amount:", amount, "Message:", message);
+  };
   return (
     <>
       <article className="rounded-xl bg-white p-4 ring ring-indigo-50 sm:p-6 lg:p-8 my-10">
@@ -67,62 +76,78 @@ export default function NewBidCard() {
               footer={null}
             >
               <form
-            action="#"
-            className="mb-0 mt-6 space-y-4 rounded-sm p-2 shadow-lg sm:p-6 lg:p-8"
-          >
-             <h1 className="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">
-            Create New Service
-          </h1>
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-1 lg:grid-cols-2">
-              <div>
-                <label htmlFor="maxBid">Max Bid</label>
-                <input
-                  type="number"
-                  name="price"
-                  onChange={(e) => handleChange(e)}
-                  value = {formData.price}
-                  className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
-                  placeholder="Enter Max Bid"
-                />
-              </div>
-              <div>
-                <label htmlFor="workCategory">Work Title</label>
-                <input
-                  type="text"
-                  name="title"
-                  value={formData.title}
-                  onChange={e => handleChange(e)}
-                  className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
-                  placeholder="Enter Work Category"
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="location">Location</label>
-                <input
-                  type="text"
-                  className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
-                  placeholder="Enter Location"
-                />
-              </div>
-              <div>
-                <label htmlFor="duration">Date</label>
-                <input
-                  type="date"
-                  className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
-                  placeholder="Enter Time Duration"
-                />
-              </div>
-              <div className="col-span-2">
-                <label htmlFor="workDescription">Work Description</label>
-                <textarea
-                  name = "description"
-                  value={formData.description}
-                  onChange={e => handleChange(e)}
-                  className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
-                  placeholder="Description of Work"
-                  rows={5}
-                />
+                action="#"
+                className="mb-0 mt-6 space-y-4 rounded-sm p-2 shadow-lg sm:p-6 lg:p-8"
+                onSubmit={handleSubmit}
+              >
+                <h1 className="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">
+                  Create New Service
+                </h1>
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-1 lg:grid-cols-2">
+                  <div>
+                    <label htmlFor="maxBid">Max Bid</label>
+                    <input
+                      type="number"
+                      name="price"
+                      value={amountInt}
+                      onChange={(e) => setAmount(e.target.value)}
+                      className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
+                      placeholder="Enter Max Bid"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="workCategory">Work Title</label>
+                    <input
+                      type="text"
+                      name="title"
+                      value={title}
+                      onChange={(e) => setWorkTitle(e.target.value)}
+                      className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
+                      placeholder="Enter Work Category"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="location">Location</label>
+                    <input
+                      type="text"
+                      className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
+                      placeholder="Enter Location"
+                      value={location}
+                      onChange={(e) => setLocation(e.target.value)}
+
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="duration">Bidding Date</label>
+                    <input
+                      type="date"
+                      className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
+                      placeholder="Enter Time Duration"
+                      value={biddingDate}
+                      onChange={(e) => { setBiddingDate(e.target.value) }}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="duration">Project start Date</label>
+                    <input
+                      type="date"
+                      className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
+                      placeholder="Enter Time Duration"
+                      value={projectStartDate}
+                      onChange={(e) => { setProjectStartDate(e.target.value) }}
+                    />
+                  </div>
+                  <div className="col-span-2">
+                    <label htmlFor="workDescription">Work Description</label>
+                    <textarea
+                      name="description"
+                      value={description}
+                      onChange={(e) => setMessage(e.target.value)}
+                      className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
+                      placeholder="Description of Work"
+                      rows={5}
+                    />
                   </div>
                   <div className="col-span-2">
                     <label htmlFor="workDescription">File</label>
@@ -131,19 +156,18 @@ export default function NewBidCard() {
                       className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
                       placeholder="Enter Time Duration"
                     />
-                  </div>    
-            </div>
+                  </div>
+                </div>
 
-            <div>
-              <button
-                type="button"
-                onClick={() => handleSubmit()}
-                className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
-              >
-                Submit
-              </button>
-            </div>
-          </form>
+                <div>
+                  <button
+                    type="submit"
+                    className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </form>
             </Modal>
           </div>
         </div>

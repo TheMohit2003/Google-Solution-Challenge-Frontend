@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Card, CardHeader, CardBody, CardFooter, Heading, Text, Button, SimpleGrid } from '@chakra-ui/react';
-import { getServices } from '../../store/actions/servicesActions';
+import { getAllServices } from '../../store/actions/vendorActions';
 import "./Livebidding.css";
 
 export default function Livebidding() {
@@ -34,7 +34,7 @@ export default function Livebidding() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getServices())
+        dispatch(getAllServices())
             .then((data) => setServices(data.slice(0, 5)));
     }, [dispatch]);
 
