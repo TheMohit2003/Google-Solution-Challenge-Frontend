@@ -1,34 +1,69 @@
-import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllServicesByIssuer } from '../../../store/actions/issuerAction';
+import { useEffect } from 'react';
+import moment from "moment";
 
-export default function AllBids({ bids }) {
+
+export default function AllBids() {
+  const dispatch = useDispatch();
+  const bids = useSelector(state => state.issuer.IssuerServices)
+
+  useEffect(() =>{
+    dispatch(getAllServicesByIssuer())
+  },[dispatch]);
+
   return (
     <>
-      <h1 className='font-medium text-3xl text-gray-500 mx-5'> All bids</h1>
+      <h1 className='font-medium text-3xl text-gray-500 mx-5'> All Services Posted</h1>
 
-      {/* Conditionally render based on whether there are bids */}
-      {bids && bids.length > 0 ? (
-        <div className='my-10'>
-          {/* Map over the bids array to render multiple cards */}
-          {bids.map((bid, index) => (
-            <div key={index} className="p-6 sm:p-12 bg-gray-50 text-gray-800">
-              <div className="flex flex-col space-y-4 md:space-y-0 md:space-x-6 md:flex-row">
-                <img src="https://source.unsplash.com/75x75/?portrait" alt="" className="self-center flex-shrink-0 w-24 h-24 border rounded-full md:justify-self-start bg-gray-500 border-gray-300" />
-                <div className="flex flex-col">
-                  <h4 className="text-lg font-semibold text-center md:text-left">Bid name</h4>
-                  <p className="text-gray-600">{bid.description}</p>
+      <section className="text-gray-600 body-font">
+      <div className="container px-5 pt-[60px] mx-auto">
+        <div className="flex flex-wrap -m-4">
+          {bids.map((service) => (
+            <div key={service.id} className="p-4 md:w-1/3">
+              <div style={{ backgroundColor: "white", boxShadow: "0px 0px 2px 0px rgba(152, 152, 152, 0.5)" }} className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                <div className="p-6">
+                  <div style={{ display: "flex", justifyContent: "space-between" }}>
+                    <h2 style={{}} className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CATEGORY</h2>
+                    <h2 style={{ fontWeight: "700", }} className="tracking-widest text-[15px] title-font font-medium text-gray-500 mb-1">Max Bid: </h2>
+                  </div>
+                  <div style={{ display: "flex", justifyContent: "space-between" }}>
+                    <h1 className="title-font text-lg font-medium text-gray-700 mb-3">{service.title}</h1>
+
+                  </div>
+                  <p className="leading-relaxed text-gray-500 mb-3">{service.description.slice(0, 100)}</p>
+                  <div style={{ display: "flex", justifyContent: "space-between" }}>
+                    <h2 style={{}} className="tracking-widest text-xs title-font font-medium text-gray-450 mb-1">Bid Date:{service.biddingDate ?
+                      moment(
+                        service.biddingDate
+                      ).format('DD-MM-YYYY') : N / A}</h2>
+                    <h2 style={{}} className="tracking-widest text-xs title-font font-medium text-gray-450 mb-1">Start-Date:{service.projectStartDate ?
+                      moment(
+                        service.projectStartDate
+                      ).format('DD-MM-YYYY') : N / A}</h2>
+                  </div>
+                  <div style={{ display: "flex" }}><img style={{ height: "1.7vh", marginTop: "4px" }} src="public\images\google-maps.png" alt="navi-btn" />
+                    <h2 className="title-font text-sm font-medium text-gray-700 mb-3">{service.location}</h2></div>
+                  <div className="flex items-center flex-wrap">
+                    <a
+                      onClick={() => showModal(service)}
+                      className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0"
+                    >
+                      Learn More
+                      <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14"></path>
+                        <path d="M12 5l7 7-7 7"></path>
+                      </svg>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
-      ) : (
-        // Show a picture or placeholder content if there are no bids
-        <div className="my-5">
-          <img 
-          src="https://img.freepik.com/free-vector/microsites-concept-illustration_114360-7302.jpg?w=996&t=st=1708512654~exp=1708513254~hmac=7f228ad4183dd3d709110a5ea59599359f836a1a7ac60ff9a32ccce139bba9f2" alt="Placeholder" className="mx-auto" />
-          <p className="text-center text-gray-600 mt-4">No bids available</p>
-        </div>
-      )}
+      </div>
+
+    </section>
     </>
   );
 }

@@ -6,13 +6,14 @@ import BreadCrumb from "../Components/IssuerDashboard/Dashboard/BreadCrumb";
 import NewBidCard from "../Components/IssuerDashboard/Dashboard/NewBidCard";
 import AllBids from "../Components/IssuerDashboard/Dashboard/AllBids";
 import Profile from "../Components/IssuerDashboard/IssuerProfile";
-import Stopwatch from "../Components/IssuerDashboard/Stopwatch"
+import LiveBidding from "../Components/LiveBidding/Livebidding";
 const { Content } = Layout;
 
 const Dashboard = () => {
   const [selectedMenuItem, setSelectedMenuItem] = useState("dashboard");
 
   const handleMenuItemSelect = (menuItem) => {
+    console.log(menuItem)
     setSelectedMenuItem(menuItem);
   };
 
@@ -29,10 +30,10 @@ const Dashboard = () => {
         );
       case "profile":
         return <Profile />;
-      case "LiveBids":
+      case "live-bids":
         return (
           <>
-            <Stopwatch/>
+            <LiveBidding/>
           </>
         )
       default:
