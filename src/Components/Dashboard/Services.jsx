@@ -28,7 +28,7 @@ const Services = ({ services }) => {
 
   return (
     <section className="text-gray-600 body-font">
-      <h1 style={{ fontSize: "3rem", margin: "auto 33%" }}>Your services</h1>
+      <h1 style={{ fontSize: "3rem", margin: "auto 33%" }}>Services</h1>
       <div className="container px-5 pt-[60px] mx-auto">
         <div className="flex flex-wrap -m-4">
           {services.map((service) => (
@@ -54,7 +54,7 @@ const Services = ({ services }) => {
                         service.projectStartDate
                       ).format('DD-MM-YYYY') : N / A}</h2>
                   </div>
-                  <div style={{ display: "flex" }}><img style={{ height: "1.7vh", marginTop: "4px" }} src="public\images\google-maps.png" alt="navi-btn" />
+                  <div style={{ display: "flex" }}><img style={{ height: "1.7vh", margin: "4px 3px 0px 0px" }} src="public\images\google-maps.png " alt="navi-btn" />
                     <h2 className="title-font text-sm font-medium text-gray-700 mb-3">{service.location}</h2></div>
                   <div className="flex items-center flex-wrap">
                     <a
