@@ -1,8 +1,10 @@
 import React from 'react'
+import Navbar from "./Navbar"
 
 export default function AboutUs() {
   return (
     <div>
+    <Navbar/>
       <body class="bg-gray-100">
   <header class="bg-blue-600 text-white text-center py-4">
     <h1 class="text-3xl font-bold">About Us</h1>
