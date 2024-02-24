@@ -30,12 +30,10 @@ const Sidebar = ({ onMenuItemSelect }) => {
       theme="light"
       className="sidebar"
     >
-
       <div className="profile-section">
 
         {/* Add your profile photo component or placeholder here */}
         <div style={{ margin: "0px 0px 0px -10px", height: "3vh", width: "170px" }}><img id="logo-btn" src="public\images\logo.png" alt="logo-btn" /></div>
-
       </div>
       <Menu
         mode="vertical"
