@@ -16,6 +16,7 @@ export default function NewBidCard() {
   const [projectStartDate, setProjectStartDate] = useState("");
   const [description, setMessage] = useState("");
   const [serviceId, setServiceId] = useState("");
+  const [error, setError] = useState("");
 
   const handleModalOpen = () => {
     setModalVisible(true);
@@ -23,6 +24,30 @@ export default function NewBidCard() {
 
   const handleModalClose = () => {
     setModalVisible(false);
+  };
+
+  const handleProjectStartDateChange = (e) => {
+    const selectedDate = new Date(e.target.value);
+    const currentDate = new Date();
+
+    if (selectedDate < currentDate || selectedDate < biddingDate) {
+      setError("Project start date must be after or equal to the present date.");
+    } else {
+      setError("");
+      setProjectStartDate(e.target.value);
+    }
+  };
+
+  const handleBiddingDateChange = (e) => {
+    const selectedDate = new Date(e.target.value);
+    const currentDate = new Date();
+
+    if (selectedDate < currentDate) {
+      setError("Bidding date must be after or equal to the present date and project start date.");
+    } else {
+      setError("");
+      setBiddingDate(e.target.value);
+    }
   };
 
   const [formData, setFormData] = useState({
@@ -38,7 +63,7 @@ export default function NewBidCard() {
     const amount = parseInt(amountInt);
     dispatch(newBid({ title, amount, description, biddingDate, projectStartDate, location }), navigate);
     setLoading(true)
-    // console.log("Amount:", amount, "Message:", message);
+    handleModalClose()
   };
   return (
     <>
@@ -83,6 +108,8 @@ export default function NewBidCard() {
                 <h1 className="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">
                   Create New Service
                 </h1>
+                {error && <h2 className="text-red-500 text-center">{error}</h2>}
+
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-1 lg:grid-cols-2">
                   <div>
                     <label htmlFor="maxBid">Max Bid</label>
@@ -125,17 +152,18 @@ export default function NewBidCard() {
                       className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
                       placeholder="Enter Time Duration"
                       value={biddingDate}
-                      onChange={(e) => { setBiddingDate(e.target.value) }}
+                      onChange={handleBiddingDateChange}
                     />
                   </div>
                   <div>
                     <label htmlFor="duration">Project start Date</label>
                     <input
                       type="date"
+                      id="projectStartDate"
                       className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
-                      placeholder="Enter Time Duration"
+                      placeholder="Enter Project Start Date"
                       value={projectStartDate}
-                      onChange={(e) => { setProjectStartDate(e.target.value) }}
+                      onChange={handleProjectStartDateChange}
                     />
                   </div>
                   <div className="col-span-2">
