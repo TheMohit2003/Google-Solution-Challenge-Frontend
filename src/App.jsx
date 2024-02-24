@@ -13,8 +13,9 @@ import AboutUs from "./Components/LandingPage/AboutUs";
 
 import BiddingPage from "./Pages/BiddingPage";
 import ServiceInfo from "./Components/Dashboard/ServiceInfo";
-import LiveBids from "./Components/LiveBidding/livebids";
-import Livebids from "./Components/LiveBidding/livebids";
+// import LiveBids from "./Components/LiveBidding/livebids";
+// import Livebids from "./Components/LiveBidding/livebids";
+import Live_Bids from "./Components/Dashboard/Live_bids";
 
 export default function App() {
   return (
@@ -22,9 +23,9 @@ export default function App() {
       <Routes>
         {/* landing page routes */}
         <Route path="/" element={<LandingPage />} />
-        <Route path="/about" element={<AboutUs/>}/>
+        <Route path="/about" element={<AboutUs />} />
         {/* <Route path="/live-bidding" element={<Livebidding />} /> */}
-        <Route path="/live-bids" element={<Livebids />} />
+        <Route path="/live-bids" element={<Live_Bids />} />
 
         <Route path="/sign-up" element={<Signup />} />
         <Route path="/log-in" element={<LogIn />} />

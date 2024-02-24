@@ -18,6 +18,7 @@ const Sidebar = () => {
     setCollapsed(!collapsed);
   };
 
+
   return (
     <Sider
       collapsible
@@ -27,11 +28,10 @@ const Sidebar = () => {
       theme="light"
       className="sidebar"
     >
-      <div className="logo">Logo</div>
+      
       <div className="profile-section">
         {/* Add your profile photo component or placeholder here */}
-        <div className="profile-photo" />
-        <span className="profile-name">John Doe</span>
+        <div style={{ margin: "0px 0px 0px -10px", height: "3vh", width: "170px" }}><img id="logo-btn" src="public\images\logo.png" alt="logo-btn" /></div>
       </div>
       <Menu mode="vertical" theme="light" defaultSelectedKeys={["1"]}>
         <Menu.Item key="1" icon={<DashboardOutlined />} title="Dashboard">
