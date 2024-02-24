@@ -25,6 +25,27 @@ export const getAllServices = () => {
         }
     };
 }
+export const getLiveServices = () => {
+    return async (dispatch) => {
+        try {
+            const response = await fetch(`${API_URL}/service/getAllLiveServices`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-access-token": localStorage.getItem('token')
+                }
+            });
+            const data = await response.json();
+            console.log(data);
+            dispatch({
+                type: GET_ALL_SERVICES,
+                payload: data,
+            });
+        } catch (error) {
+            console.error("Get Vendor Details failed:", error);
+        }
+    };
+}
 export const getVendorDetails = () => {
     return async (dispatch) => {
         try {
