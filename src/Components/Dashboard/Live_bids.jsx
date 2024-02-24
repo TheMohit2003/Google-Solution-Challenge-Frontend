@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { Layout } from "antd";
-import Navbar from "../Dashboard/Navbar";
-import Sidebar from "../Dashboard/Sidebar";
+import Navbar from "./Navbar";
+import Sidebar from "./Sidebar";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import Livebids from "../LiveBidding/livebids";
+// import Livebids from "../LiveBidding/livebids";
 
 const { Content } = Layout;
 

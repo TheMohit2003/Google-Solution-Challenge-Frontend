@@ -2,14 +2,14 @@
 import moment from "moment";
 import React, { useState, useEffect } from "react";
 import { Card, Modal } from "antd";
-import ServiceInfo from "../Dashboard/ServiceInfo";
+import ServiceInfo from "../Components/Dashboard/ServiceInfo";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 // import { getServiceDetails } from "../../store/actions/biddingActions";
-import { getServiceDetails } from "../../store/actions/biddingActions";
+import { getServiceDetails } from "../store/actions/biddingActions";
 
 
-import { getLiveServices } from "../../store/actions/vendorActions";
+import { getLiveServices } from "../store/actions/vendorActions";
 
 const LiveBids = () => {
 

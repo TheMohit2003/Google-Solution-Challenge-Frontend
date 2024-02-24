@@ -4,7 +4,7 @@ import { Layout } from "antd";
 import Navbar from "../Components/Dashboard/Navbar";
 import Sidebar from "../Components/Dashboard/Sidebar";
 import Profile from "../Pages/Profile";
-import LiveBids from "../Components/LiveBidding/LiveBids";
+import LiveBids from "./livebids";
 import Services from "../Components/Dashboard/Services";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllServices, getLiveServices } from "../store/actions/vendorActions";
@@ -24,7 +24,7 @@ const VendorDashboard = () => {
   };
   sessionStorage.setItem("role", "VENDOR");
 
-  
+
   // Render content based on selected menu item
   const renderContent = () => {
     switch (selectedMenuItem) {
