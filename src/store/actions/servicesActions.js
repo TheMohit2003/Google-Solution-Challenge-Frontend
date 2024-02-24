@@ -1,6 +1,22 @@
 
 const API_URL = import.meta.env.VITE_API_URL;
 export const GET_SERVICES_DETAILS = "GET_ISSUER_DETAILS";
+// /vendor/interests --token  --post               
+// serviceid
+
+// /vendor/listIntrestedServices --token --get token
+
+// /sevice/getAllLiveServices --token --get
+
+
+// new bid
+// /bids --post --token, service id, amount, description
+
+// /service/getLowestBidForService --get --token, serviceid
+
+
+// /service/getLowestBidForService /: serviceId
+// GET
 
 export const getServices = () => {
     return async (dispatch) => {

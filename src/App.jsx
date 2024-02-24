@@ -9,13 +9,13 @@ import IssuerDashboard from "./Pages/IssuerDashboard";
 import VendorDashboard from "./Pages/VendorDashboard";
 import Profile from "./Pages/Profile";
 import AboutUs from "./Components/LandingPage/aboutus1";
-// import Livebidding from "./Components/LiveBidding/Livebidding";
+import Livebidding from "./Components/LiveBidding/Livebidding";
 
 import BiddingPage from "./Pages/BiddingPage";
 import ServiceInfo from "./Components/Dashboard/ServiceInfo";
+import WatchList from "./Components/Dashboard/WatchList";
 // import LiveBids from "./Components/LiveBidding/livebids";
-// import Livebids from "./Components/LiveBidding/livebids";
-import Live_Bids from "./Components/Dashboard/Live_bids";
+// import LiveBids from "./Components/LiveBidding/livebids";
 
 export default function App() {
   return (
@@ -24,23 +24,25 @@ export default function App() {
         {/* landing page routes */}
         <Route path="/" element={<LandingPage />} />
         <Route path="/about" element={<AboutUs />} />
-        {/* <Route path="/live-bidding" element={<Livebidding />} /> */}
-        <Route path="/live-bids" element={<Live_Bids />} />
-
+        <Route path="/live-bidding" element={<Livebidding />} />
+        {/* <Route path="/live-bids" element={<LiveBids />} /> */}
+        <Route path="/bidding-page" element={<BiddingPage />}/>
         <Route path="/sign-up" element={<Signup />} />
         <Route path="/log-in" element={<LogIn />} />
         <Route path="/vendor-form" element={<VendorFrom />} />
         <Route path="/issuer-form" element={<IssuerFrom />} />
+        <Route path="/watch-list" element={<WatchList />} />
+
 
         {/* issuer dashboard routes */}
         <Route path="/issuer-dashboard" element={<IssuerDashboard />} />
 
         {/* vendor dashboard routes */}
-        <Route path="/bidding-page" element={<BiddingPage />} />
+        {/* <Route path="/live-bids" element={<BiddingPage />} /> */}
         <Route path="/vendor-dashboard" element={<VendorDashboard />} />
         <Route path="/example" element={<Example />} />
-        <Route path="/service-info" element={<ServiceInfo />} />
-        <Route path="/profile" element={<Profile />} />
+        {/* <Route path="/service-info" element={<ServiceInfo />} />
+        <Route path="/profile" element={<Profile />} /> */}
 
       </Routes>
     </Router>

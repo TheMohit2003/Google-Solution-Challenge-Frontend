@@ -15,6 +15,7 @@ export default function NewBidCard() {
   const [location, setLocation] = useState("");
   const [projectStartDate, setProjectStartDate] = useState("");
   const [description, setMessage] = useState("");
+  const [attachment, setAttachment] = useState("");
   const [serviceId, setServiceId] = useState("");
   const [error, setError] = useState("");
 
@@ -61,7 +62,7 @@ export default function NewBidCard() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const amount = parseInt(amountInt);
-    dispatch(newBid({ title, amount, description, biddingDate, projectStartDate, location }), navigate);
+    dispatch(newBid({ title, amount, description, biddingDate, projectStartDate, location, attachment }), navigate);
     setLoading(true)
     handleModalClose()
   };
@@ -183,6 +184,8 @@ export default function NewBidCard() {
                       type="file"
                       className="w-full rounded-sm border p-2 pe-12 text-sm shadow-sm"
                       placeholder="Enter Time Duration"
+                      value={attachment}
+                      onChange={(e) => { setAttachment(e.target.value) }}
                     />
                   </div>
                 </div>
