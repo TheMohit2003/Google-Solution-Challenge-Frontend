@@ -2,6 +2,7 @@
 // vendor/getVendorDetails
 export const GET_VENDOR_DETAILS = "GET_VENDOR_DETAILS";
 export const GET_ALL_SERVICES = "GET_ALL_SERVICES";
+export const GET_LIVE_SERVICES = "GET_LIVE_SERVICES";
 const API_URL = import.meta.env.VITE_API_URL;
 
 export const getAllServices = () => {
@@ -16,8 +17,31 @@ export const getAllServices = () => {
             });
             const data = await response.json();
             console.log(data);
+            const token = localStorage.getItem('token');
+            console.log("Token:", token);
             dispatch({
                 type: GET_ALL_SERVICES,
+                payload: data,
+            });
+        } catch (error) {
+            console.error("Get Vendor Details failed:", error);
+        }
+    };
+}
+export const getLiveServices = () => {
+    return async (dispatch) => {
+        try {
+            const response = await fetch(`${API_URL}/service/getAllLiveServices`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-access-token": localStorage.getItem('token')
+                }
+            });
+            const data = await response.json();
+            console.log(data);
+            dispatch({
+                type: GET_LIVE_SERVICES,
                 payload: data,
             });
         } catch (error) {

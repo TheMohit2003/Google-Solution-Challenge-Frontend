@@ -2,7 +2,7 @@
 
 const API_URL = import.meta.env.VITE_API_URL;
 export const GET_NEW_BID = "GET_NEW_BID";
-export const GET_ALL_SERVICES = "GET_ALL_SERVICES";
+// export const GET_ALL_SERVICES = "GET_ALL_SERVICES";
 export const GET_SERVICES_DETAILS = "GET_SERVICES_DETAILS";
 
 

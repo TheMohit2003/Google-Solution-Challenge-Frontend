@@ -2,27 +2,50 @@
 import moment from "moment";
 import React, { useState, useEffect } from "react";
 import { Card, Modal } from "antd";
-import ServiceInfo from "../Dashboard/ServiceInfo";
+import ServiceInfo from "../Components/Dashboard/ServiceInfo";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 // import { getServiceDetails } from "../../store/actions/biddingActions";
-import { getServiceDetails } from "../../store/actions/biddingActions";
+import { getServiceDetails } from "../store/actions/biddingActions";
 
-const Livebids = () => {
+
+import { getLiveServices } from "../store/actions/vendorActions";
+
+const LiveBids = () => {
 
     const [visible, setVisible] = useState(false);
-    const services = useSelector((state) => state.vendor.services);
-
-    // useEffect(() => {
-    //     dispatch(getAllServices());
-    // }, [dispatch]);
     const [selectedService, setSelectedService] = useState(null);
     const dispatch = useDispatch();
     const showModal = (service) => {
         setSelectedService(service);
         setVisible(true);
-        // dispatch(getServiceDetails(String(service.id)));
+        dispatch(getServiceDetails(String(service.id)));
     };
+    const services = useSelector((state) => state.vendor.services.services);
+
+    useEffect(() => {
+        dispatch(getLiveServices());
+    }, [dispatch]);
+
+    console.log("services", services)
+    const handleCancel = () => {
+        setVisible(false);
+    };
+
+    // if (!Array.isArray(services)) {
+    //     // Handle the case when services is not an array (e.g., set a default value or show a loading message)
+    //     return
+    // }
+
+    if (!Array.isArray(services) || services.length === 0) {
+        return (
+            <div style={{ textAlign: "center", margin: "50px 0", fontSize: "1.5rem" }}>
+                There are no live auctions today.
+            </div>
+        );
+    }
+
+
 
 
 
@@ -77,9 +100,19 @@ const Livebids = () => {
                 </div>
             </div>
 
-        </section>
+            <Modal
+                title=""
+                visible={visible}
+                onCancel={handleCancel}
+                footer={null}
+                width={600}
+                height={1000}
+            >
+                {selectedService && <ServiceInfo serviceId={selectedService.id} />}
+            </Modal>
+
+        </section >
     );
 };
 
-export default Livebids;
-
+export default LiveBids;

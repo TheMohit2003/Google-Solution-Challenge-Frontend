@@ -1,4 +1,3 @@
-// Sidebar.jsx
 import React, { useState } from "react";
 import { Layout, Menu } from "antd";
 import {
@@ -11,13 +10,16 @@ import "./Sidebar.css"; // Import the CSS file for styling
 
 const { Sider } = Layout;
 
-const Sidebar = () => {
+const Sidebar = ({ onMenuItemSelect }) => {
   const [collapsed, setCollapsed] = useState(false);
 
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
   };
 
+  const handleMenuClick = (key) => {
+    onMenuItemSelect(key);
+  };
 
   return (
     <Sider
@@ -28,23 +30,27 @@ const Sidebar = () => {
       theme="light"
       className="sidebar"
     >
-      
       <div className="profile-section">
+
         {/* Add your profile photo component or placeholder here */}
         <div style={{ margin: "0px 0px 0px -10px", height: "3vh", width: "170px" }}><img id="logo-btn" src="public\images\logo.png" alt="logo-btn" /></div>
       </div>
-      <Menu mode="vertical" theme="light" defaultSelectedKeys={["1"]}>
-        <Menu.Item key="1" icon={<DashboardOutlined />} title="Dashboard">
-          <Link to="/vendor-dashboard">Dashboard</Link>
+      <Menu
+        mode="vertical"
+        theme="light"
+        defaultSelectedKeys={["1"]}
+        onClick={({ key }) => handleMenuClick(key)}
+      >
+        <Menu.Item id="menu-Item" key="services" icon={<DashboardOutlined />} title="Services">
+          Dashboard
         </Menu.Item>
-        <Menu.Item key="2" icon={<AppstoreAddOutlined />} title="Apps">
-          <Link to="/live-bids">Live bids</Link>
+        <Menu.Item id="menu-Item" key="live-bids" icon={<AppstoreAddOutlined />} title="LiveBids">
+          Live bids
         </Menu.Item>
-        <Menu.Item key="3" icon={<UserOutlined />} title="Profile">
-          <Link to="/profile">Profile</Link>
+        <Menu.Item id="menu-Item" key="profile" icon={<UserOutlined />} title="Profile">
+          Profile
         </Menu.Item>
       </Menu>
-      
     </Sider>
   );
 };

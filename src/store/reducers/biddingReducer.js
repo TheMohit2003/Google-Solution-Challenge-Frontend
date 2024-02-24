@@ -1,5 +1,6 @@
 import { GET_NEW_BID } from '../actions/biddingActions';
 import { GET_SERVICES_DETAILS } from '../actions/biddingActions';
+
 const initialState = {
     newBid: {},
     loading: false,
@@ -13,6 +14,7 @@ const BiddingReducer = (state = initialState, action) => {
     if (action.type === GET_SERVICES_DETAILS) {
         return { ...state, services: action.payload.service }
     }
+
     return state;
 }
 export default BiddingReducer;

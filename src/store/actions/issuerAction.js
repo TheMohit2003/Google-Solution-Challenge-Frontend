@@ -16,6 +16,7 @@ export const getIssuerDetails = () => {
                     "x-access-token": localStorage.getItem('token')
                 }
             });
+            console.log("Token:", localStorage.getItem('token'));
             const data = await response.json();
             // console.log(data);
             dispatch({
@@ -29,7 +30,7 @@ export const getIssuerDetails = () => {
 }
 
 export const getAllServicesByIssuer = () => {
-    return async (dispatch) => { 
+    return async (dispatch) => {
         try {
             const response = await fetch(`${API_URL}/service/getAllServicesByIssuer`, {
                 method: "GET",
@@ -41,7 +42,7 @@ export const getAllServicesByIssuer = () => {
             const data = await response.json();
             console.log(data);
             dispatch({
-                type: GET_ALL_SERVICES_BY_ISSUER, 
+                type: GET_ALL_SERVICES_BY_ISSUER,
                 payload: data,
             });
         } catch (error) {

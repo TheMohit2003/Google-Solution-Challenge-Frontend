@@ -12,13 +12,13 @@ const Profile = (props) => {
     console.log(role);
     return (
         <Layout style={{ minHeight: "100vh" }}>
-            <Navbar />
+
             <Layout>
-                <Sidebar />
+
                 <Layout>
-                    <Content style={{ padding: "20px", }}>
-                        {role === "ISSUER" ? < IssuerProfile /> : <VendorProfile />}
-                        
+                    <Content style={{ padding: "20px" }}>
+                        <VendorProfile />
+
                     </Content>
                 </Layout>
             </Layout>
