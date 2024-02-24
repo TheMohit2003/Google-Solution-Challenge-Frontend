@@ -8,7 +8,7 @@ import Example from "./Components/Forms/Example";
 import IssuerDashboard from "./Pages/IssuerDashboard";
 import VendorDashboard from "./Pages/VendorDashboard";
 import Profile from "./Pages/Profile";
-import AboutUs from "./Components/LandingPage/AboutUs";
+import AboutUs from "./Components/LandingPage/aboutus1";
 // import Livebidding from "./Components/LiveBidding/Livebidding";
 
 import BiddingPage from "./Pages/BiddingPage";
