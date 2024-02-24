@@ -16,8 +16,8 @@ const Profile = (props) => {
             <Layout>
                 <Sidebar />
                 <Layout>
-                    <Content style={{ padding: "20px" }}>
-                        {role === "ISSUER" ? <IssuerProfile /> : <VendorProfile />}
+                    <Content style={{ padding: "20px", }}>
+                        {role === "ISSUER" ? < IssuerProfile /> : <VendorProfile />}
                         
                     </Content>
                 </Layout>
