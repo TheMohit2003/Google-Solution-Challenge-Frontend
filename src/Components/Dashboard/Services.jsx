@@ -4,9 +4,12 @@ import React, { useState } from "react";
 import { Card, Modal } from "antd";
 import ServiceInfo from "./ServiceInfo";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 import { getServiceDetails } from "../../store/actions/biddingActions";
+import { getAllServices } from "../../store/actions/vendorActions";
 
-const Services = ({ services }) => {
+const Services = () => {
   const [visible, setVisible] = useState(false);
   const [selectedService, setSelectedService] = useState(null);
   const dispatch = useDispatch();
@@ -15,8 +18,11 @@ const Services = ({ services }) => {
     setVisible(true);
     dispatch(getServiceDetails(String(service.id)));
   };
+  const services = useSelector((state) => state.vendor.services);
 
-
+  useEffect(() => {
+    dispatch(getAllServices());
+  }, [dispatch]);
   const handleCancel = () => {
     setVisible(false);
   };
@@ -28,7 +34,7 @@ const Services = ({ services }) => {
 
   return (
     <section className="text-gray-600 body-font">
-      <h1 style={{ fontSize: "3rem", margin: "auto 33%" }}>Your services</h1>
+      <h1 style={{ fontSize: "3rem", margin: "auto 33%" }}>Market Place</h1>
       <div className="container px-5 pt-[60px] mx-auto">
         <div className="flex flex-wrap -m-4">
           {services.map((service) => (
