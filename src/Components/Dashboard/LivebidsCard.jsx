@@ -41,7 +41,7 @@ const LivebidsCard = ({ serviceId }) => {
                             <UserOutlined />
                         </div>
                         <div className="profile-name-1">
-                            <h1 className="text-2xl font-bold text-gray-900">{serviceDetails.issuer.name}</h1>
+                            {/* <h1 className="text-2xl font-bold text-gray-900">{serviceDetails.issuer.name}</h1> */}
                         </div>
                     </div>
                     <div className="profile-details-1">
