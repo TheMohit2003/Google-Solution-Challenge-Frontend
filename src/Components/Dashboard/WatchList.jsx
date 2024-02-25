@@ -6,84 +6,79 @@ import { getServiceDetails } from '../../store/actions/biddingActions';
 import "../../CSS/serviceInfo.css";
 import moment from "moment";
 
-const WatchList = ({ serviceId }) => {
-    const dispatch = useDispatch();
-    const serviceDetails = useSelector(state => state.bidding.services); // Assuming the reducer key is 'services'
-    console.log(serviceDetails);
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                // Dispatch action to get service details
-                await dispatch(getServiceDetails(serviceId));
-            } catch (error) {
-                console.error("Error fetching service details:", error);
-            }
-        };
+const WatchList = () => {
 
-        fetchData();
-    }, [dispatch, serviceId]);
+    return (
+        <div >
+            <div>
+                <h1 style={{ margin: "1% 40%" }} className='text-4xl text-gray-700 my-10'>WatchList</h1>
 
-    if (!serviceDetails) {
-        // Handle loading state or error state
-        return <p>Loading...</p>;
-    }
+                <div className="h-full bg-gray-100 hover:bg-gray-160 border-opacity-60 rounded-xs overflow-hidden mx-4 my-8">
+                    <div className="p-6">
+                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                            <h2 style={{}} className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CATEGORY</h2>
+                            <h2 style={{ fontWeight: "700", }} className="tracking-widest text-[15px] title-font font-medium text-gray-500 mb-1">Max Bid: </h2>
+                        </div>
+                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                            <h1 className="title-font text-lg font-medium text-gray-700 mb-3"></h1>
 
+                        </div>
+                        <p className="leading-relaxed text-gray-500 mb-3"></p>
+                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                            <h2 style={{}} className="tracking-widest text-xs title-font font-medium text-gray-450 mb-1">Bid Date:</h2>
+                            <h2 style={{}} className="tracking-widest text-xs title-font font-medium text-gray-450 mb-1">Start-Date:</h2>
+                        </div>
+                        <div style={{ display: "flex" }}><img style={{ height: "1.7vh", margin: "4px 3px 0px 0px" }} src="public\images\google-maps.png " alt="navi-btn" />
+                            <h2 className="title-font text-sm font-medium text-gray-700 mb-3"></h2></div>
+                        <div className="flex items-center flex-wrap">
+                            <a
+                                onClick={() => showModal(service)}
+                                className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0"
+                            >
+                                View More
+                                <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"></path>
+                                    <path d="M12 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-  return (
-      <div>
-          <h1 style={{ fontSize: "2rem", margin: "2% 30%", color: "grey" }}>Service Info</h1>
-          <div className="full-page-content">
-              <div className="profile-header-1">
-                  <div id='container1' className="profile-right">
-                      <div className="profile-image-1">
-                          <UserOutlined />
-                      </div>
-                      <div className="profile-name-1">
-                          <h1 className="text-2xl font-bold text-gray-900">{serviceDetails.issuer.name}</h1>
-                      </div>
-                  </div>
-                  <div className="profile-details-1">
-                      <form className="-my-3 divide-y divide-gray-100 text-sm">
-                          <div id='container1' className="grid grid-cols-1 gap-1 py-3 even:bg-gray-50">
-                              <div><td style={{ fontSize: "1.2rem", fontWeight: "600" }} className="font-medium text-gray-900">Max bid: </td></div>
-                              <div><td style={{ fontSize: "1.2rem", fontWeight: "600" }} className="text-gray-700">{serviceDetails.amount}</td></div>
-                          </div>
-                          <div id='container1' className="grid grid-cols-1 gap-1 py-3 even:bg-gray-50">
-                              <tr><td className="font-medium text-gray-900">Bidding Date: </td>
-                                  <td className="text-gray-700">{serviceDetails.biddingDate ?
-                                      moment(
-                                          serviceDetails.biddingDate
-                                      ).format('DD-MM-YYYY') : N / A}</td></tr>
-                          </div>
-                          <div id='container1' className="grid grid-cols-1 gap-1 py-3 even:bg-gray-50">
-                              <tr><td className="font-medium text-gray-900">Project Starts From: </td>
-                                  <td className="text-gray-700">{serviceDetails.projectStartDate ?
-                                      moment(
-                                          serviceDetails.projectStartDate
-                                      ).format('DD-MM-YYYY') : N / A}</td></tr>
-                          </div>
-                          <div id='container1' className="grid grid-cols-1 gap-1 py-3 even:bg-gray-50">
-                              <tr><td className="font-medium text-gray-900">Location: </td>
-                                  <td className="text-gray-700">{serviceDetails.location}</td></tr>
-                          </div>
-                          <div id='container1' className="grid grid-cols-1 gap-1 py-3 even:bg-gray-50">
-                              <div><td className="font-medium text-gray-900">Work Category: </td></div>
-                              <div><td className="text-gray-700">{serviceDetails.title}</td></div>
-                          </div>
-                          <div id='container1' className="grid grid-cols-1 gap-1 py-3 even:bg-gray-50">
-                              <div><tr className="font-medium text-gray-900">Work Description: </tr></div>
-                              <div><td className="text-gray-700">{serviceDetails.description}</td></div>
-                          </div>
-                          <div id='container1' className="grid grid-cols-1 gap-1 py-3 even:bg-gray-50">
-                              <div><tr className="font-medium text-gray-900">Attachments </tr></div>
-                              {/* <div><td className="text-gray-700">{serviceDetails.description}</td></div> */}
-                          </div>
-                      </form>
-                  </div>
-                  <div id='info-btn'><button>I'm Interested ➡️</button></div>
-              </div>
-          </div>
-      </div>
-  )
-}
+                <div className="h-full bg-gray-100 hover:bg-gray-160 border-opacity-60 rounded-xs overflow-hidden mx-4 my-8">
+                    <div className="p-6">
+                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                            <h2 style={{}} className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CATEGORY</h2>
+                            <h2 style={{ fontWeight: "700", }} className="tracking-widest text-[15px] title-font font-medium text-gray-500 mb-1">Max Bid: </h2>
+                        </div>
+                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                            <h1 className="title-font text-lg font-medium text-gray-700 mb-3"></h1>
+
+                        </div>
+                        <p className="leading-relaxed text-gray-500 mb-3"></p>
+                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                            <h2 style={{}} className="tracking-widest text-xs title-font font-medium text-gray-450 mb-1">Bid Date:</h2>
+                            <h2 style={{}} className="tracking-widest text-xs title-font font-medium text-gray-450 mb-1">Start-Date:</h2>
+                        </div>
+                        <div style={{ display: "flex" }}><img style={{ height: "1.7vh", margin: "4px 3px 0px 0px" }} src="public\images\google-maps.png " alt="navi-btn" />
+                            <h2 className="title-font text-sm font-medium text-gray-700 mb-3"></h2></div>
+                        <div className="flex items-center flex-wrap">
+                            <a
+                                onClick={() => showModal(service)}
+                                className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0"
+                            >
+                                View More
+                                <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"></path>
+                                    <path d="M12 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
 export default WatchList;
