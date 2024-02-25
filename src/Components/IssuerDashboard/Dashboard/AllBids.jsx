@@ -79,18 +79,18 @@ export default function AllBids() {
           </div>
         </div>
 
-        <Modal
-          title=""
-          visible={visible}
-          onCancel={handleCancel}
-          footer={null}
-          width={600}
-          height={1000}
-        >
-          {selectedService && <ServiceInfo service={selectedService} />}
-        </Modal>
+      <Modal
+        title=""
+        visible={visible}
+        onCancel={handleCancel}
+        footer={null}
+        width={600}
+        height={1000}
+      >
+        {selectedService && <ServiceInfo service={selectedService} />}
+      </Modal>
 
-      </section>
+    </section>
     </>
   );
 }
