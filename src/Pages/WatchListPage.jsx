@@ -47,7 +47,7 @@ const WatchListPage = (props) => {
                 <Sidebar onMenuItemSelect={handleMenuItemSelect} />
 
                 <Layout>
-                    <Content style={{ padding: "20px", backgroundColor: "white" }}>
+                    <Content style={{ padding: "20px", }}>
                         {selectedMenuItem == "" ? (
                             <WatchList />
                         ) : (

@@ -28,7 +28,7 @@ const WatchList = () => {
             {watchlist ? watchlist.map((service) => (
                 <div
                     key={service.id}
-                    className='h-full bg-gray-100 hover:bg-gray-160 border-opacity-60 rounded-xs overflow-hidden mx-[100px] my-8'
+                    className='h-full bg-white hover:bg-gray-160 border-opacity-60 rounded-xs overflow-hidden mx-[100px] my-8'
                 >
                     <div className='p-6'>
                         {/* Render service details here */}
