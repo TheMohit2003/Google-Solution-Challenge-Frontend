@@ -13,6 +13,8 @@ import Livebidding from "./Components/LiveBidding/Livebidding";
 
 import BiddingPage from "./Pages/BiddingPage";
 import ServiceInfo from "./Components/Dashboard/ServiceInfo";
+
+import WatchListPage from "./Pages/WatchListPage";
 // import LiveBids from "./Components/LiveBidding/livebids";
 // import LiveBids from "./Components/LiveBidding/livebids";
 
@@ -30,6 +32,8 @@ export default function App() {
         <Route path="/log-in" element={<LogIn />} />
         <Route path="/vendor-form" element={<VendorFrom />} />
         <Route path="/issuer-form" element={<IssuerFrom />} />
+        <Route path="/watch-listPage" element={<WatchListPage />} />
+
 
         {/* issuer dashboard routes */}
         <Route path="/issuer-dashboard" element={<IssuerDashboard />} />
