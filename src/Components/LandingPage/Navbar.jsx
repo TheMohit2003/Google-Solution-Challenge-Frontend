@@ -24,7 +24,7 @@ export default function Navbar() {
           <div className="flex h-16 items-center justify-between">
             <div className="flex-1 md:flex md:items-center md:gap-12">
               <div style={{ margin: "-40px 0px 0px 0px", height: "1.5vh", width: "90px" }}>
-              <img id="logo-btn" src="public\images\logo.png" alt="logo-btn" onClick={() => handleClick()}/>
+              <img id="logo-btn" src="https://res.cloudinary.com/dx7uxfrne/image/upload/v1708870762/assets/logo_be8pwm.png" alt="logo-btn" onClick={() => handleClick()}/>
               </div>
               <a className="block text-indigo-500" href="#">
                 <span className="sr-only">Home</span>

@@ -19,7 +19,7 @@ export const newBid = (formData, navigate) => {
                 },
                 body: JSON.stringify(formData),
             });
-
+            console.log("response", response);
             const data = await response.json();
 
             // Assuming the server response has a 'token' property
@@ -42,6 +42,7 @@ export const newBid = (formData, navigate) => {
             //     }
             //     // Redirect to /vendor-form if signup was successful
             // }
+            return data;
         } catch (error) {
             console.error("Signup failed:", error);
             // Handle any error or dispatch an error action if needed
@@ -60,6 +61,7 @@ export const CreateBid = (formData, navigate) => {
                 },
                 body: JSON.stringify(formData),
             });
+            console.log("response", response);
 
             const data = await response.json();
 
@@ -83,6 +85,7 @@ export const CreateBid = (formData, navigate) => {
             //     }
             //     // Redirect to /vendor-form if signup was successful
             // }
+            return data;
         } catch (error) {
             console.error("Signup failed:", error);
             // Handle any error or dispatch an error action if needed

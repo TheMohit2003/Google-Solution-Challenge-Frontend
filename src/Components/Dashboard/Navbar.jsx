@@ -9,7 +9,7 @@ const { Header } = Layout;
 const Navbar = () => {
   const menu = (
     <Menu>
-      <Menu.Item key="profile"><a href="/">Profile</a></Menu.Item>
+      <Menu.Item key="profile">Profile</Menu.Item>
       <Menu.Item key="settings">Settings</Menu.Item>
       <Menu.Item key="logout">Logout</Menu.Item>
     </Menu>
@@ -30,7 +30,7 @@ const Navbar = () => {
         <Dropdown overlay={menu}>
           <div style={{ display: "flex" }}>
             <UserOutlined style={{ cursor: "pointer", fontSize: "18px", marginRight: "8px" }} />
-            John Doe
+          
           </div>
         </Dropdown>
       </div>

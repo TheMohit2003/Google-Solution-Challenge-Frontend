@@ -3,6 +3,7 @@ import Navbar from "../LandingPage/Navbar";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { register_Issuer } from "../../store/actions/loginActions";
+import { useToast } from "@chakra-ui/react";
 
 const Issuer_form = () => {
   const [IssuerType, setIssuerType] = useState(""); // Define role state variable and setRole function
@@ -14,17 +15,58 @@ const Issuer_form = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");
+  const toast = useToast();
   console.log("Token:", token);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const contact = parseInt(contactInt)
-    console.log(typeof (contact))
-    const GST = parseInt(GSTint)
-    console.log(typeof (GST))
-    dispatch(register_Issuer({ name, contact, aadhar, IssuerType, OrganizationName, GST }, navigate));
-    // console.log("Name:", name, "Contact:", contact, "Aadhar:", aadhar, "Role:", role, "Organization Name:", organizationName, "GST:", GST);
+  const handleSubmit = async (event) => {
+    try {
+      event.preventDefault();
+      const contact = parseInt(contactInt);
+      const GST = parseInt(GSTint);
+
+      // Dispatch the register_Issuer action
+      const response = await dispatch(register_Issuer({ name, contact, aadhar, IssuerType, OrganizationName, GST }, navigate));
+
+      if (response?.userId) {
+        // Registration successful
+        toast({
+          title: 'Registration Successful',
+          status: 'success',
+          position: 'top',
+          duration: 3000,
+          isClosable: true,
+        });
+
+        // Redirect or perform any other actions on successful registration
+      } else {
+        // Registration failed
+        toast({
+          title: 'Registration Failed',
+          description: response?.message || 'An error occurred during registration.',
+          status: 'error',
+          position: 'top',
+          duration: 3000,
+          isClosable: true,
+          variant: 'solid',
+          colorScheme: 'red',
+        });
+      }
+    } catch (error) {
+      // Handle any unexpected errors
+      console.error('Registration error:', error);
+      toast({
+        title: 'An error occurred',
+        description: 'Please try again later.',
+        status: 'error',
+        position: 'top',
+        duration: 3000,
+        isClosable: true,
+        variant: 'solid',
+        colorScheme: 'red',
+      });
+    }
   };
+
   return (
     <div >
       <Navbar />
