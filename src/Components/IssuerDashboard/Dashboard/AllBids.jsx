@@ -25,7 +25,7 @@ export default function AllBids() {
                 <div className="p-6">
                   <div style={{ display: "flex", justifyContent: "space-between" }}>
                     <h2 style={{}} className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CATEGORY</h2>
-                    <h2 style={{ fontWeight: "700", }} className="tracking-widest text-[15px] title-font font-medium text-gray-500 mb-1">Max Bid: </h2>
+                    <h2 style={{ fontWeight: "700", }} className="tracking-widest text-[15px] title-font font-medium text-gray-500 mb-1">Max Bid: {service.amount}</h2>
                   </div>
                   <div style={{ display: "flex", justifyContent: "space-between" }}>
                     <h1 className="title-font text-lg font-medium text-gray-700 mb-3">{service.title}</h1>
