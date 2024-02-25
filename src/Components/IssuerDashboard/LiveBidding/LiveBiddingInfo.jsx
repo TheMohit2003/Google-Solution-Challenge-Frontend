@@ -1,9 +1,15 @@
 import { UserOutlined } from '@ant-design/icons';
 import "../../../CSS/serviceInfo.css";
 import moment from "moment";
+import { useNavigate } from 'react-router-dom';
 
 const ServiceInfo = (service) => {
     const serviceDetails = service.service;
+    const navigate = useNavigate();
+
+    const handleClick = ()=>{
+        navigate('/bidding-page')
+    }
 
     if (!serviceDetails) {
         return <p>Loading...</p>;
@@ -17,9 +23,6 @@ const ServiceInfo = (service) => {
                     <div id='container1' className="profile-right">
                         <div className="profile-image-1">
                             <UserOutlined />
-                        </div>
-                        <div className="profile-name-1">
-                            {/* <h1 className="text-2xl font-bold text-gray-900">{serviceDetails.issuer.name}</h1> */}
                         </div>
                     </div>
                     <div className="profile-details-1">
@@ -58,6 +61,9 @@ const ServiceInfo = (service) => {
                             <div id='container1' className="grid grid-cols-1 gap-1 py-3 even:bg-gray-50">
                                 <div><tr className="font-medium text-gray-900">Attachments </tr></div>
                             </div>
+                            <div id='info-btn'>
+                                <button className='text-white' onClick={()=> handleClick()}>See Bidding ➡️</button>
+                        </div>
                         </form>
                     </div>
                 </div>

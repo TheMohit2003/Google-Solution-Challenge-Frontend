@@ -21,7 +21,7 @@ export default function AllBids() {
   const showModal = (service) => {
     setSelectedService(service);
     setVisible(true);
-    dispatch(getServiceDetails(String(service.id)));
+    // dispatch(getServiceDetails(String(service.id)));
   };
 
   const handleCancel = () => {
@@ -87,7 +87,7 @@ export default function AllBids() {
         width={600}
         height={1000}
       >
-        {selectedService && <ServiceInfo serviceId={selectedService.id} />}
+        {selectedService && <ServiceInfo service={selectedService} />}
       </Modal>
 
     </section>

@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllLiveServicesByIssuer } from '../../store/actions/issuerAction';
+import { getAllLiveServicesByIssuer } from '../../../store/actions/issuerAction';
 import { useEffect, useState } from 'react';
 import moment from "moment";
 import { Card, Modal } from "antd";
+import LiveBiddingInfo from './LiveBiddingInfo';
 
 
 export default function AllBids() {
@@ -19,14 +20,14 @@ export default function AllBids() {
   const showModal = (service) => {
     setSelectedService(service);
     setVisible(true);
-    dispatch(getServiceDetails(String(service.id)));
   };
 
   const handleCancel = () => {
     setVisible(false);
   };
 
-  return (
+  if(bids.length > 0){
+   return (
     <>
       <h1 className='font-bold text-4xl text-indigo-500 my-5 text-center'> Today's Live Bids</h1>
 
@@ -85,10 +86,19 @@ export default function AllBids() {
         width={600}
         height={1000}
       >
-        {/* {selectedService && <ServiceInfo serviceId={selectedService.id} />} */}
+        {selectedService && <LiveBiddingInfo service={selectedService} />}
       </Modal>
 
     </section>
     </>
   );
+  }
+  else{
+    return (
+      <h1 className='font-bold text-4xl text-indigo-500 my-5 text-center'> No Live Bids Today</h1>
+    );
+  }
 }
+
+
+
