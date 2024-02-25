@@ -1,10 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllServicesByIssuer } from '../../../store/actions/issuerAction';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import moment from "moment";
+import { Card, Modal } from "antd";
+import ServiceInfo from './ServiceInfo';
+
 
 
 export default function AllBids() {
+  const [visible, setVisible] = useState(false);
+  const [selectedService, setSelectedService] = useState(null);
+
   const dispatch = useDispatch();
   const bids = useSelector(state => state.issuer.IssuerServices)
 
@@ -12,9 +18,19 @@ export default function AllBids() {
     dispatch(getAllServicesByIssuer())
   },[dispatch]);
 
+  const showModal = (service) => {
+    setSelectedService(service);
+    setVisible(true);
+    dispatch(getServiceDetails(String(service.id)));
+  };
+
+  const handleCancel = () => {
+    setVisible(false);
+  };
+
   return (
     <>
-      <h1 className='font-medium text-3xl text-gray-500 mx-5'> All Services Posted</h1>
+      <h1 className='font-bold text-3xl text-indigo-500 text-center py-5'> All Services Posted</h1>
 
       <section className="text-gray-600 body-font">
       <div className="container px-5 pt-[60px] mx-auto">
@@ -62,6 +78,17 @@ export default function AllBids() {
           ))}
         </div>
       </div>
+
+      <Modal
+        title=""
+        visible={visible}
+        onCancel={handleCancel}
+        footer={null}
+        width={600}
+        height={1000}
+      >
+        {selectedService && <ServiceInfo serviceId={selectedService.id} />}
+      </Modal>
 
     </section>
     </>

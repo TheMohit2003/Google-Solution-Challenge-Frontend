@@ -7,6 +7,7 @@ import NewBidCard from "../Components/IssuerDashboard/Dashboard/NewBidCard";
 import AllBids from "../Components/IssuerDashboard/Dashboard/AllBids";
 import Profile from "../Components/IssuerDashboard/IssuerProfile";
 import LiveBidding from "../Components/LiveBidding/Livebidding";
+import LiveServicesCards from "../Components/IssuerDashboard/LiveServicsCards"
 const { Content } = Layout;
 
 const Dashboard = () => {
@@ -33,7 +34,7 @@ const Dashboard = () => {
       case "live-bids":
         return (
           <>
-            <LiveBidding/>
+            <LiveServicesCards/>
           </>
         )
       default:
