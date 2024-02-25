@@ -55,14 +55,14 @@ const LivebidsCard = ({ serviceId }) => {
                                         <td className="text-gray-700">{serviceDetails.biddingDate ?
                                             moment(
                                                 serviceDetails.biddingDate
-                                            ).format('DD-MM-YYYY') : N / A}</td></tr>
+                                            ).format('DD-MM-YYYY') : "N / A"}</td></tr>
                                 </div>
                                 <div id='container1' className="grid grid-cols-1 gap-1 py-3 even:bg-gray-50">
                                     <tr><td className="font-medium text-gray-900">Project Starts From: </td>
                                         <td className="text-gray-700">{serviceDetails.projectStartDate ?
                                             moment(
                                                 serviceDetails.projectStartDate
-                                            ).format('DD-MM-YYYY') : N / A}</td></tr>
+                                            ).format('DD-MM-YYYY') : "N / A"}</td></tr>
                                 </div>
                                 <div id='container1' className="grid grid-cols-1 gap-1 py-3 even:bg-gray-50">
                                     <tr><td className="font-medium text-gray-900">Location: </td>
