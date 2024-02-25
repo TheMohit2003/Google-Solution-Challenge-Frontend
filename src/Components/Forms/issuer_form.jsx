@@ -129,7 +129,7 @@ const Issuer_form = () => {
           </form>
         </div>
         <div id="img-2" style={{ position: "relative", top: "120px", left: "50px" }} className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-          <img src="public\images\memphis.png" alt="img" />
+          <img src="https://res.cloudinary.com/dx7uxfrne/image/upload/v1708870764/assets/memphis_s7undi.png" alt="img" />
         </div>
       </div>
     </div>
