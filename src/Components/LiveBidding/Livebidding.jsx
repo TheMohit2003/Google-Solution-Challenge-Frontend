@@ -103,7 +103,7 @@ const DummyUserCards = ({ bids }) => {
                             <Td>{bid.vendor.name}</Td>
                             <Td>${bid.amount}</Td>
                             {/* You may need to format the time according to your needs */}
-                            <Td>{/* Format and display time here */}</Td>
+                            <Td>{bid.currentTime}</Td>
                         </Tr>
                     ))}
                 </Tbody>
