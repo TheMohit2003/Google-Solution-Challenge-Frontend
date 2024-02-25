@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { signup } from "../store/actions/loginActions";
 import { useNavigate } from "react-router-dom"
+import { useToast } from "@chakra-ui/react";
 export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -11,23 +12,60 @@ export default function SignUp() {
   const [isLoading, setIsLoading] = useState(false); // State for loader
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const handleSubmit = (event) => {
+  const toast = useToast();
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
-    try {
-      // Set loading to true when starting the signup process
-      setIsLoading(true);
 
+    try {
       // Call the signup action and pass the history object
-      dispatch(signup({ email, password, role }, navigate));
+      const response = await dispatch(signup({ email, password, role }, navigate));
       setIsLoading(false);
+
+      if (response?.token) {
+        // Login successful
+        toast({
+          title: 'Signup Successful',
+          status: 'success',
+          position: 'top',
+          duration: 3000,
+          isClosable: true,
+          
+        });
+
+        // // Redirect based on role
+        // if (role === "VENDOR") {
+        //   navigate("/vendor-dashboard");
+        // } else if (role === "ISSUER") {
+        //   navigate("/issuer-dashboard");
+        // }
+      } else {
+        // Signup failed
+        toast({
+          title: 'Signup Failed',
+          description: response?.message || 'An error occurred during signup.',
+          status: 'error',
+          position: 'top',
+          duration: 3000,
+          isClosable: true,
+          variant: 'solid',
+          colorScheme: 'red',
+        });
+      }
     } catch (error) {
-      console.error("Error during signup:", error);
-    } finally {
-      // Set loading back to false when signup is complete (whether success or failure)
-      setIsLoading(false);
-    } // Fix the typo here: `rolr` to `role`
-    console.log("Email:", email, "Password:", password, "Role:", role);
+      // Handle any unexpected errors
+      console.error('Signup error:', error);
+      toast({
+        title: 'An error occurred',
+        description: 'Please try again later.',
+        status: 'error',
+        position: 'top',
+        duration: 3000,
+        isClosable: true,
+        variant: 'solid',
+        colorScheme: 'red',
+      });
+    }
   };
   useEffect(() => {
     sessionStorage.setItem("role", role);

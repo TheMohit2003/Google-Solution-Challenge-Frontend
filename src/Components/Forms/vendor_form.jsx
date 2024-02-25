@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { register_vendor } from "../../store/actions/loginActions";
-
+import { useToast } from "@chakra-ui/react";
 
 const vender_form = () => {
     const token = localStorage.getItem("token");
-    console.log("Token:", token);
+    // console.log("Token:", token);
     const [name, setName] = useState("");
     const [officeAddress, setOfficeAddress] = useState("");
     const [contactInt, setContact] = useState("");
@@ -16,22 +16,70 @@ const vender_form = () => {
     const [GSTint, setGST] = useState("");
     const [OrganizationName, setOrganizationName] = useState("");
     const [WorkDescription, setWorkDescription] = useState("");
+    const toast = useToast();
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        const contact = parseInt(contactInt)
-        console.log(typeof (contact))
-        const GST = parseInt(GSTint)
-        console.log(typeof (GST))
-        dispatch(register_vendor({ name, officeAddress, contact, aadhar, GST, OrganizationName, WorkDescription }, navigate));
-        // console.log("Email:", email, "Password:", password, "Role:", role);
+
+        const contact = parseInt(contactInt);
+        const GST = parseInt(GSTint);
+
+        try {
+            // Dispatch the register_vendor action
+            const response = await dispatch(
+                register_vendor(
+                    { name, officeAddress, contact, aadhar, GST, OrganizationName, WorkDescription },
+                    navigate
+                )
+            );
+            console.log("Response:", response);
+
+            if (response?.userId) {
+                // Registration successful
+                toast({
+                    title: 'Registration Successful',
+                    status: 'success',
+                    position: 'top',
+                    duration: 3000,
+                    isClosable: true,
+                    
+                });
+
+                // Redirect or perform any other actions on successful registration
+            } else {
+                // Registration failed
+                toast({
+                    title: 'Registration Failed',
+                    description: response?.message || 'An error occurred during registration.',
+                    status: 'error',
+                    position: 'top',
+                    duration: 3000,
+                    isClosable: true,
+                    variant: 'solid',
+                    colorScheme: 'red',
+                });
+            }
+        } catch (error) {
+            // Handle any unexpected errors
+            console.error('Registration error:', error);
+            toast({
+                title: 'An error occurred',
+                description: 'Please try again later.',
+                status: 'error',
+                position: 'top',
+                duration: 3000,
+                isClosable: true,
+                variant: 'solid',
+                colorScheme: 'red',
+            });
+        }
     };
     return (
         <div >
 
             <Navbar />
-            <div  style={{
+            <div style={{
                 display: "flex", flexWrap: "wrap",
             }}
                 className="mx-auto max-w-screen-xl  px-4 py-16  sm:px-6 lg:px-8">

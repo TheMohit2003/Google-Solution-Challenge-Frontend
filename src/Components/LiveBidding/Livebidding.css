@@ -19,7 +19,11 @@
 } */
 .input {
     margin: 0% 0% 0% 65%;
+}
 
+#countdown {
+    margin: -67% 0% 0% -23%;
+    font-size: 1.2rem;
 }
 
 #place-bid-btn {

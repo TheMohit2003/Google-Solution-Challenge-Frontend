@@ -38,6 +38,7 @@ export const login = (formData, navigate) => {
         // Redirect to /vendor-form if signup was successful
 
       }
+      return data;
     } catch (error) {
       console.error("Login failed:", error);
       // Handle any error or dispatch an error action if needed
@@ -60,7 +61,7 @@ export const signup = (formData, navigate) => {
       });
 
       const data = await response.json();
-
+      console.log(data);
       // Assuming the server response has a 'token' property
       const token = data.token;
       console.log("Token:", token);
@@ -84,6 +85,7 @@ export const signup = (formData, navigate) => {
         // Redirect to /vendor-form if signup was successful
 
       }
+      return data;
     } catch (error) {
       console.error("Signup failed:", error);
       // Handle any error or dispatch an error action if needed
@@ -103,7 +105,7 @@ export const register_vendor = (formData, navigate) => {
         },
         body: JSON.stringify(formData),
       });
-
+      console.log(response);
       const data = await response.json();
 
       // Assuming the server response has a 'token' property
@@ -129,6 +131,7 @@ export const register_vendor = (formData, navigate) => {
         // Redirect to /vendor-form if signup was successful
 
       }
+      return data;
     } catch (error) {
       console.error("Signup failed:", error);
       // Handle any error or dispatch an error action if needed
@@ -149,7 +152,7 @@ export const register_Issuer = (formData, navigate) => {
       });
 
       const data = await response.json();
-
+      console.log(response);
       // Assuming the server response has a 'token' property
       const token = localStorage.getItem("token");
       console.log("Token:", token);
@@ -173,6 +176,7 @@ export const register_Issuer = (formData, navigate) => {
         // Redirect to /vendor-form if signup was successful
 
       }
+      return data;
     } catch (error) {
       console.error("Signup failed:", error);
       // Handle any error or dispatch an error action if needed

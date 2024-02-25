@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from "react-router-dom";
 import { CreateBid, getLowestBid } from '../../store/actions/biddingActions';
+import { useToast } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
 // import { getLowestBid } from '../../store/actions/biddingActions';
 import {
@@ -134,12 +135,12 @@ export default function Livebidding() {
     const [loading, setLoading] = useState(false);
     const [showAllBids, setShowAllBids] = useState(false);
     const [bidSubmitted, setBidSubmitted] = useState(false);
+    const [bidPlaced, setBidPlaced] = useState(false);
+    const toast = useToast();
 
 
     // Function to toggle between showing limited and all bids
-    const toggleShowAllBids = () => {
-        setShowAllBids((prev) => !prev);
-    };
+
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const serviceId = sessionStorage.getItem("serviceId");
@@ -183,22 +184,65 @@ export default function Livebidding() {
 
 
     const handlePlaceBidClick = () => {
+
         setShowBidInput(true);
-        setBidSubmitted(false); // Reset the bidSubmitted state when placing a new bid
+        setBidPlaced(false); // Reset bidPlaced state when placing a new bid
     };
+
 
     const handleSubmit = async (event) => {
-        event.preventDefault();
-        setLoading(true);
+        try {
+            event.preventDefault();
+            setLoading(true);
 
-        // Rest of your code
-        const amount = parseInt(bidAmount);
-        await dispatch(CreateBid({ amount, serviceId }, navigate));
-        setLoading(false); // Set loading to false after the operation is complete
+            // Rest of your code
+            const amount = parseInt(bidAmount);
 
-        setBidSubmitted(true);
-        console.log("Bid:", bidAmount);
+            // Dispatch the CreateBid action
+            const response = await dispatch(CreateBid({ amount, serviceId }, navigate));
+            setLoading(false);
+            console.log("Response:", response);
+            if (response?.id) {
+                // Bid placed successfully
+                setBidPlaced(true);
+
+                // Show success toast
+                toast({
+                    title: 'Bid Placed Successfully',
+                    status: 'success',
+                    position: 'top',
+                    duration: 3000,
+                    isClosable: true,
+                });
+            } else {
+                // Bid placement failed
+                toast({
+                    title: 'Bid Placement Failed',
+                    description: response?.message || 'An error occurred during bid placement.',
+                    status: 'error',
+                    position: 'top',
+                    duration: 3000,
+                    isClosable: true,
+                    variant: 'solid',
+                    colorScheme: 'red',
+                });
+            }
+        } catch (error) {
+            // Handle any unexpected errors
+            console.error('Bid placement error:', error);
+            toast({
+                title: 'An error occurred',
+                description: 'Please try again later.',
+                status: 'error',
+                position: 'top',
+                duration: 3000,
+                isClosable: true,
+                variant: 'solid',
+                colorScheme: 'red',
+            });
+        }
     };
+
 
     const fetchData = async () => {
         await dispatch(getLowestBid(serviceId));
@@ -239,7 +283,7 @@ export default function Livebidding() {
                                             onChange={(e) => setBid(e.target.value)}
                                         />
                                         <InputRightElement width="4.5rem">
-                                            <Button type="submit" colorScheme='blue'>
+                                            <Button type="submit" colorScheme='blue' onClick={handlePlaceBidClick}>
                                                 Submit
                                             </Button>
                                         </InputRightElement>
@@ -258,7 +302,7 @@ export default function Livebidding() {
                     </CardFooter>
 
                     <CardFooter className='remaining-time'>
-                        <Text fontSize='lg'>Remaining Time: {formatTime(remainingSeconds)}</Text>
+                        <Text id='countdown' fontSize='lg'>Remaining Time: {formatTime(remainingSeconds)}</Text>
                     </CardFooter>
                     <CardFooter>
 
