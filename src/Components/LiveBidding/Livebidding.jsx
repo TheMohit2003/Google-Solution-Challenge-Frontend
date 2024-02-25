@@ -133,6 +133,8 @@ export default function Livebidding() {
     // Replace with your actual bid value
     const [loading, setLoading] = useState(false);
     const [showAllBids, setShowAllBids] = useState(false);
+    const [bidSubmitted, setBidSubmitted] = useState(false);
+
 
     // Function to toggle between showing limited and all bids
     const toggleShowAllBids = () => {
@@ -157,12 +159,9 @@ export default function Livebidding() {
         const minutes = Math.floor((seconds % 3600) / 60);
         const secs = seconds % 60;
 
-        return `${String(hours).padStart(2, '0') }:${String(minutes).padStart(2, '0') }:${String(secs).padStart(2, '0') }`;
+        return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
     };
 
-    const handlePlaceBidClick = () => {
-        setShowBidInput(true);
-    };
     const calculateRemainingSeconds = () => {
         const now = new Date();
         const eightAM = new Date(now);
@@ -183,6 +182,11 @@ export default function Livebidding() {
     }, []);
 
 
+    const handlePlaceBidClick = () => {
+        setShowBidInput(true);
+        setBidSubmitted(false); // Reset the bidSubmitted state when placing a new bid
+    };
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         setLoading(true);
@@ -191,6 +195,8 @@ export default function Livebidding() {
         const amount = parseInt(bidAmount);
         await dispatch(CreateBid({ amount, serviceId }, navigate));
         setLoading(false); // Set loading to false after the operation is complete
+
+        setBidSubmitted(true);
         console.log("Bid:", bidAmount);
     };
 
@@ -226,7 +232,7 @@ export default function Livebidding() {
                         {showBidInput ? (
                             <form onSubmit={handleSubmit}>
                                 <FormControl isInvalid={!!formError}>
-                                    <InputGroup>
+                                    <InputGroup className='input'>
                                         <Input
                                             placeholder="Enter your bid"
                                             value={bidAmount}
