@@ -16,11 +16,13 @@ const BiddingPage = () => {
     const dispatch = useDispatch();
     const services = useSelector((state) => state.vendor.services);
 
-    const [selectedMenuItem, setSelectedMenuItem] = useState("services");
+    const [selectedMenuItem, setSelectedMenuItem] = useState("");
 
     const handleMenuItemSelect = (menuItem) => {
         setSelectedMenuItem(menuItem);
+
     };
+    console.log(selectedMenuItem);
     sessionStorage.setItem("role", "VENDOR");
     useEffect(() => {
         dispatch(getLiveServices());
@@ -41,10 +43,15 @@ const BiddingPage = () => {
         <Layout style={{ minHeight: "100vh" }}>
             <Navbar />
             <Layout>
+                
                 <Sidebar onMenuItemSelect={handleMenuItemSelect} />
                 <Layout>
-                    <Content style={{ padding: "20px" }}>
-                        <Livebidding />
+                    <Content style={{ padding: "20px" }} >
+                        {selectedMenuItem == "" ? (
+                            <Livebidding />
+                        ) : (
+                            renderContent()
+                        )}
                         {/* <p>This is your main content.</p> */}
                     </Content>
                 </Layout>
