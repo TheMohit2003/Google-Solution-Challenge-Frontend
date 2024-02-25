@@ -5,6 +5,8 @@
     color: #004293;
     /* Adjust the color as needed */
     background-color: #eef9ff;
+    width: 40%;
+    /* margin: 100px; */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
