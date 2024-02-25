@@ -4,9 +4,12 @@ import React, { useState } from "react";
 import { Card, Modal } from "antd";
 import ServiceInfo from "./ServiceInfo";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 import { getServiceDetails } from "../../store/actions/biddingActions";
+import { getAllServices } from "../../store/actions/vendorActions";
 
-const Services = ({ services }) => {
+const Services = () => {
   const [visible, setVisible] = useState(false);
   const [selectedService, setSelectedService] = useState(null);
   const dispatch = useDispatch();
@@ -15,8 +18,11 @@ const Services = ({ services }) => {
     setVisible(true);
     dispatch(getServiceDetails(String(service.id)));
   };
+  const services = useSelector((state) => state.vendor.services);
 
-
+  useEffect(() => {
+    dispatch(getAllServices());
+  }, [dispatch]);
   const handleCancel = () => {
     setVisible(false);
   };
@@ -28,7 +34,7 @@ const Services = ({ services }) => {
 
   return (
     <section className="text-gray-600 body-font">
-      <h1 style={{ fontSize: "3rem", margin: "auto 33%" }}>Your services</h1>
+      <h1 style={{ fontSize: "3rem", margin: "auto 33%" }}>Market Place</h1>
       <div className="container px-5 pt-[60px] mx-auto">
         <div className="flex flex-wrap -m-4">
           {services.map((service) => (
@@ -54,14 +60,14 @@ const Services = ({ services }) => {
                         service.projectStartDate
                       ).format('DD-MM-YYYY') : N / A}</h2>
                   </div>
-                  <div style={{ display: "flex" }}><img style={{ height: "1.7vh", marginTop: "4px" }} src="public\images\google-maps.png" alt="navi-btn" />
+                  <div style={{ display: "flex" }}><img style={{ height: "1.7vh", margin: "4px 3px 0px 0px" }} src="public\images\google-maps.png " alt="navi-btn" />
                     <h2 className="title-font text-sm font-medium text-gray-700 mb-3">{service.location}</h2></div>
                   <div className="flex items-center flex-wrap">
                     <a
                       onClick={() => showModal(service)}
                       className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0"
                     >
-                      Learn More
+                      View More
                       <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M5 12h14"></path>
                         <path d="M12 5l7 7-7 7"></path>
