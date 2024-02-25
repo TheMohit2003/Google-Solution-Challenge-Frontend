@@ -33,6 +33,7 @@ const LivebidsCard = ({ serviceId }) => {
     return (
         <div>
             <h1 style={{ fontSize: "2rem", margin: "2% 30%", color: "grey" }}>Service Info</h1>
+            {serviceDetails ? (
             <div className="full-page-content">
                 <div className="profile-header-1">
                     <div id='container1' className="profile-right">
@@ -88,6 +89,9 @@ const LivebidsCard = ({ serviceId }) => {
                     </div>
                 </div>
             </div>
+            ) : (
+                <p>No service details available</p>
+            )}
         </div>
     );
 };
