@@ -252,7 +252,7 @@ export default function Livebidding() {
                     </CardFooter>
 
                     <CardFooter className='remaining-time'>
-                        <Text fontSize='lg'>Remaining Time: {formatTime(remainingSeconds)}</Text>
+                        <Text id='countdown' fontSize='lg'>Remaining Time: {formatTime(remainingSeconds)}</Text>
                     </CardFooter>
                     <CardFooter>
 
