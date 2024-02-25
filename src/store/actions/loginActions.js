@@ -30,6 +30,7 @@ export const login = (formData, navigate) => {
       });
       if (token) {
         if (role === "VENDOR") {
+
           navigate("/vendor-dashboard");
         } else if (role === "ISSUER") {
           navigate("/issuer-dashboard");

@@ -2,13 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { UserOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { getServiceDetails } from '../../store/actions/biddingActions';
+import { interest } from '../../store/actions/vendorActions';
 // import { useEffect } from 'react';
 import "../../CSS/serviceInfo.css";
+import { useNavigate } from 'react-router-dom';
 import moment from "moment";
 
 const ServiceInfo = ({ serviceId }) => {
     const dispatch = useDispatch();
-    const serviceDetails = useSelector(state => state.bidding.services); // Assuming the reducer key is 'services'
+    const serviceDetails = useSelector(state => state.bidding.services);
+    const navigate = useNavigate();
+    // Assuming the reducer key is 'services'
     console.log(serviceDetails);
     useEffect(() => {
         const fetchData = async () => {
@@ -28,6 +32,12 @@ const ServiceInfo = ({ serviceId }) => {
         return <p>Loading...</p>;
     }
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        dispatch(interest({ serviceId }, navigate));
+
+    };
+
     return (
         <div>
             <h1 style={{ fontSize: "2rem", margin: "2% 30%", color: "grey" }}>Service Info</h1>
@@ -38,7 +48,7 @@ const ServiceInfo = ({ serviceId }) => {
                             <UserOutlined />
                         </div>
                         <div className="profile-name-1">
-                            <h1 className="text-2xl font-bold text-gray-900">{serviceDetails.issuer.name}</h1>
+                            {/* <h1 className="text-2xl font-bold text-gray-900">{serviceDetails.issuer.name}</h1> */}
                         </div>
                     </div>
                     <div className="profile-details-1">
@@ -52,14 +62,14 @@ const ServiceInfo = ({ serviceId }) => {
                                     <td className="text-gray-700">{serviceDetails.biddingDate ?
                                         moment(
                                             serviceDetails.biddingDate
-                                        ).format('DD-MM-YYYY') : N / A}</td></tr>
+                                        ).format('DD-MM-YYYY') : "N / A"}</td></tr>
                             </div>
                             <div id='container1' className="grid grid-cols-1 gap-1 py-3 even:bg-gray-50">
                                 <tr><td className="font-medium text-gray-900">Project Starts From: </td>
                                     <td className="text-gray-700">{serviceDetails.projectStartDate ?
                                         moment(
                                             serviceDetails.projectStartDate
-                                        ).format('DD-MM-YYYY') : N / A}</td></tr>
+                                        ).format('DD-MM-YYYY') : " N / A"}</td></tr>
                             </div>
                             <div id='container1' className="grid grid-cols-1 gap-1 py-3 even:bg-gray-50">
                                 <tr><td className="font-medium text-gray-900">Location: </td>
@@ -79,7 +89,11 @@ const ServiceInfo = ({ serviceId }) => {
                             </div>
                         </form>
                     </div>
-                    <div id='info-btn'><button>I'm Interested ➡️</button></div>
+                    <form onSubmit={handleSubmit}>
+                        <div id='info-btn'>
+
+                            <button>I'm Interested ➡️</button></div>
+                    </form>
                 </div>
             </div>
         </div>
