@@ -40,10 +40,8 @@ const WatchListPage = (props) => {
     console.log(role);
     return (
         <Layout style={{ minHeight: "100vh" }}>
-
             <Navbar key="watch-list" />
             <Layout>
-
                 <Sidebar onMenuItemSelect={handleMenuItemSelect} />
 
                 <Layout>
@@ -51,7 +49,6 @@ const WatchListPage = (props) => {
                         {selectedMenuItem == "" ? (
                             <WatchList />
                         ) : (
-
                             renderContent()
                         )}
                     </Content>

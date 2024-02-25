@@ -5,23 +5,77 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
+import { useToast } from "@chakra-ui/react";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setrole] = useState("");
-  const  [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
+  const toast = useToast();
 
   // localStorage.setItem("role");
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    dispatch(login({ email, password, role }, navigate));
-    setLoading(true)
+    setLoading(true);
+
+    try {
+      // Dispatch the login action
+      const response = await dispatch(login({ email, password, role }, navigate));
+      console.log("Response:", response);
+      // Check if the login was successful based on the response
+      if (response?.token) {
+        // Login successful
+        toast({
+          title: 'Login Successful',
+          status: 'success',
+          position: 'top',
+          duration: 3000,
+          isClosable: true,
+          
+        });
+
+        // Redirect based on role
+        if (role === "VENDOR") {
+          navigate("/vendor-dashboard");
+        } else if (role === "ISSUER") {
+          navigate("/issuer-dashboard");
+        }
+      } else {
+        // Login failed
+        toast({
+          title: 'Login Failed',
+          description: response?.message || 'An error occurred during login.',
+          status: 'error',
+          position: 'top',
+          duration: 3000,
+          isClosable: true,
+          variant: 'solid',
+          colorScheme: 'red',
+        });
+      }
+    } catch (error) {
+      // Handle any unexpected errors
+      console.error('Login error:', error);
+      toast({
+        title: 'An error occurred',
+        description: 'Please try again later.',
+        status: 'error',
+        position: 'top',
+        duration: 3000,
+        isClosable: true,
+        variant: 'solid',
+        colorScheme: 'red',
+      });
+    }
+
+    setLoading(false);
+
     console.log("Email:", email, "Password:", password, "Role:", role);
   };
+
   useEffect(() => {
     // Set the role in sessionStorage
     sessionStorage.setItem("role", role);
@@ -131,18 +185,18 @@ export default function Login() {
                 className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
               >
                 Log in
-                
+
               </button>
               <div className="flex justify-center pt-3">
-              <ClipLoader
-        color="blue"
-        loading={loading}
-        size={50}
-        aria-label="Loading Spinner"
-        data-testid="loader"
-        className="text-center flex justify-center items-center w-full h-full"
-      />
-      </div>
+                <ClipLoader
+                  color="blue"
+                  loading={loading}
+                  size={50}
+                  aria-label="Loading Spinner"
+                  data-testid="loader"
+                  className="text-center flex justify-center items-center w-full h-full"
+                />
+              </div>
             </div>
 
             <p className="text-center text-sm text-gray-500">
@@ -152,7 +206,7 @@ export default function Login() {
           </form>
         </div>
       </div>
-      
+
     </div>
   );
 }
