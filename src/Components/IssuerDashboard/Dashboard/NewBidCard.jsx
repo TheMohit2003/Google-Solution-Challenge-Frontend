@@ -5,6 +5,8 @@ import { Modal } from 'antd';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { newBid } from '../../../store/actions/biddingActions'
+import { useEffect } from 'react';
+import { useToast } from '@chakra-ui/react';
 
 export default function NewBidCard() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -18,6 +20,7 @@ export default function NewBidCard() {
   const [attachment, setAttachment] = useState("");
   const [serviceId, setServiceId] = useState("");
   const [error, setError] = useState("");
+  const toast = useToast();
 
   const handleModalOpen = () => {
     setModalVisible(true);
@@ -59,13 +62,55 @@ export default function NewBidCard() {
 
   const dispatch = useDispatch()
   const navigate = useNavigate();
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const amount = parseInt(amountInt);
-    dispatch(newBid({ title, amount, description, biddingDate, projectStartDate, location, attachment }), navigate);
-    setLoading(true)
-    handleModalClose()
+  const handleSubmit = async (event) => {
+    try {
+      event.preventDefault();
+      const amount = parseInt(amountInt);
+
+      // Dispatch the newBid action
+      const response = await dispatch(newBid({ title, amount, description, biddingDate, projectStartDate, location, attachment }), navigate);
+      console.log("Response:", response);
+      if (response?.service) {
+        // Show success toast
+        toast({
+          title: 'Service Created Successfully',
+          status: 'success',
+          position: 'top',
+          duration: 3000,
+          isClosable: true,
+        });
+
+        // Close the modal after the dispatch
+        handleModalClose();
+      } else {
+        // Show failure toast
+        toast({
+          title: 'Service Creation Failed',
+          description: response?.message || 'An error occurred during service creation.',
+          status: 'error',
+          position: 'top',
+          duration: 3000,
+          isClosable: true,
+          variant: 'solid',
+          colorScheme: 'red',
+        });
+      }
+    } catch (error) {
+      // Handle any unexpected errors
+      console.error('Service creation error:', error);
+      toast({
+        title: 'An error occurred',
+        description: 'Please try again later.',
+        status: 'error',
+        position: 'top',
+        duration: 3000,
+        isClosable: true,
+        variant: 'solid',
+        colorScheme: 'red',
+      });
+    }
   };
+
   return (
     <>
       <article className="rounded-xl bg-white p-4 ring ring-indigo-50 sm:p-6 lg:p-8 my-10">
@@ -85,7 +130,7 @@ export default function NewBidCard() {
 
           <div>
             <h3 className="mt-4 text-lg font-medium sm:text-xl">
-              <p className="hover:underline">Create a new bid</p>
+              <p className="hover:underline">Create a new service</p>
             </h3>
 
             <p className="mt-1 text-sm text-gray-700">
