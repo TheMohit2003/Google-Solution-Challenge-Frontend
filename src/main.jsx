@@ -24,12 +24,12 @@ function configureStore(initialState) {
 const store = configureStore();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  
+
   <ChakraProvider>
-  <Provider store={store}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </Provider>
+    <Provider store={store}>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </Provider>
   </ChakraProvider>,
 );

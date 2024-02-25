@@ -41,9 +41,11 @@ const Sidebar = ({ onMenuItemSelect }) => {
         defaultSelectedKeys={["1"]}
         onClick={({ key }) => handleMenuClick(key)}
       >
-        <Menu.Item id="menu-Item" key="services" icon={<DashboardOutlined />} title="Services">
-          Dashboard
-        </Menu.Item>
+        <Link to="/vendor-dashboard">
+          <Menu.Item id="menu-Item" key="services" icon={<DashboardOutlined />} title="Services">
+            Dashboard
+          </Menu.Item>
+        </Link>
         <Menu.Item id="menu-Item" key="live-bids" icon={<AppstoreAddOutlined />} title="LiveBids">
           Live bids
         </Menu.Item>

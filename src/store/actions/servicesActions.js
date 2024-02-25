@@ -1,7 +1,7 @@
 
 const API_URL = import.meta.env.VITE_API_URL;
 export const GET_SERVICES_DETAILS = "GET_ISSUER_DETAILS";
-// /vendor/interests --token  --post               
+// /vendor/interest --token  --post               
 // serviceid
 
 // /vendor/listIntrestedServices --token --get token
