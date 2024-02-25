@@ -1,26 +1,143 @@
+
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Card, CardHeader, CardBody, CardFooter, Heading, Text, Button, SimpleGrid } from '@chakra-ui/react';
+import { useParams } from "react-router-dom";
+import { CreateBid, getLowestBid } from '../../store/actions/biddingActions';
+import { useSelector } from 'react-redux';
+// import { getLowestBid } from '../../store/actions/biddingActions';
+import {
+    Card,
+    CardHeader,
+    CardBody,
+    CardFooter,
+    Heading,
+    Text,
+    Table,
+    Thead,
+    Tbody,
+    Tr,
+    Th,
+    Td,
+    Button,
+    SimpleGrid,
+    Input,
+    Stack,
+    List,
+    ListItem,
+    FormControl,
+    FormLabel,
+    FormErrorMessage,
+    Avatar,
+    Box,
+} from '@chakra-ui/react';
+import {
+    InputGroup,
+    InputRightElement,
+} from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
+
+
 import { getAllServices } from '../../store/actions/vendorActions';
-import "./Livebidding.css";
+import { UserOutlined } from '@ant-design/icons';
+import './Livebidding.css';
+
+
+
+// Dummy component to represent a user card
+const UserCard = ({ vendor, bid }) => (
+    <Box
+        p={4}
+        borderWidth="1px"
+        borderRadius="lg"
+        overflow="hidden"
+        textAlign="center"
+        boxShadow="md"
+        padding="30px"
+        margin="30px"
+
+    >
+        <UserOutlined size="xl" name={vendor.name} src={vendor.profilePhoto} borderColor="blue.500" />
+        <Heading mt={4} size="md">
+            {vendor.name}
+        </Heading>
+        <Text mt={2} color="gray.600">
+            Last Bid: {bid}
+        </Text>
+    </Box>
+);
+// Dummy component to display three dummy user cards
+const DummyUserCards = ({ bids }) => {
+    if (!Array.isArray(bids)) {
+        // If bids is not an array, handle it accordingly (e.g., show an error message)
+        return (
+            <Box mb={4}>
+                <Heading mb={4} size="md">
+                    Vendors Who Placed Bids
+                </Heading>
+                <Text>Error: Bids data is not available</Text>
+            </Box>
+        );
+    }
+
+    // Exclude the first three bids
+    const remainingBids = bids.slice(3);
+
+    return (
+        <Box mb={4}>
+            <Heading mb={4} size="md">
+                Vendors Who Placed Bids
+            </Heading>
+            <Table variant="striped" colorScheme="teal">
+                <Thead>
+                    <Tr>
+                        <Th>Vendor ID</Th>
+                        <Th>Vendor Name</Th>
+                        <Th>Amount</Th>
+                        <Th>Time</Th>
+                    </Tr>
+                </Thead>
+                <Tbody>
+                    {remainingBids.map((bid) => (
+                        <Tr key={bid.id}>
+                            <Td>{bid.vendor.userId}</Td>
+                            <Td>{bid.vendor.name}</Td>
+                            <Td>${bid.amount}</Td>
+                            {/* You may need to format the time according to your needs */}
+                            <Td>{/* Format and display time here */}</Td>
+                        </Tr>
+                    ))}
+                </Tbody>
+            </Table>
+        </Box>
+    );
+};
+
+
+
 
 export default function Livebidding() {
     const totalSeconds = 24 * 60 * 60; // 24 hours in seconds
     const [remainingSeconds, setRemainingSeconds] = useState(totalSeconds);
+    const [services, setServices] = useState([]);
+    const [showBidInput, setShowBidInput] = useState(false);
+    const [bidAmount, setBid] = useState('');
+    const [formError, setFormError] = useState(null);
+    // Replace with your actual bid value
+    const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setRemainingSeconds((prevSeconds) => prevSeconds - 1);
-        }, 1000);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const serviceId = sessionStorage.getItem("serviceId");
+    console.log(serviceId);
+    const Lowestbid = useSelector((state) => state.bidding.data);
 
-        // Clear the interval when the timer reaches 0
-        if (remainingSeconds === 0) {
-            clearInterval(interval);
-        }
+    // console.log(Lowestbid.vendor);
 
-        // Clean up the interval when the component unmounts
-        return () => clearInterval(interval);
-    }, [remainingSeconds]);
+    const name = Lowestbid;
+    console.log(name);
+
+
+    const minimumBid = "41000"; // Replace with your actual minimum bid value
 
     const formatTime = (seconds) => {
         const hours = Math.floor(seconds / 3600);
@@ -30,15 +147,45 @@ export default function Livebidding() {
         return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
     };
 
-    const [services, setServices] = useState([]);
-    const dispatch = useDispatch();
+    const handlePlaceBidClick = () => {
+        setShowBidInput(true);
+    };
+    const calculateRemainingSeconds = () => {
+        const now = new Date();
+        const eightAM = new Date(now);
+        eightAM.setHours(8, 0, 0, 0); // Set the time to 8 am
+        const endTime = eightAM.getTime() + 24 * 60 * 60 * 1000; // 24 hours later
+
+        return Math.max(0, Math.floor((endTime - now.getTime()) / 1000));
+    };
 
     useEffect(() => {
-        dispatch(getAllServices())
-            .then((data) => setServices(data.slice(0, 5)));
-    }, [dispatch]);
+        setRemainingSeconds(calculateRemainingSeconds());
 
-    const minimumBid = "41000"; // Replace with your actual minimum bid value
+        const interval = setInterval(() => {
+            setRemainingSeconds(calculateRemainingSeconds());
+        }, 1000);
+
+        return () => clearInterval(interval);
+    }, []);
+
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        setLoading(true);
+        // Rest of your code
+
+        const amount = parseInt(bidAmount);
+        dispatch((CreateBid({ amount, serviceId }, navigate)));
+        setLoading(true)
+        console.log("Bid:", bid);
+    };
+    const fetchData = async () => {
+        await dispatch(getLowestBid(serviceId));
+    };
+    useEffect(() => {
+        fetchData();
+    }, [dispatch, serviceId]);
 
     return (
         <Card align='center'>
@@ -46,53 +193,64 @@ export default function Livebidding() {
                 <Heading size='lg'>PLACE YOUR BID</Heading>
             </CardHeader>
             <CardBody>
-                <Heading size='xxl' className='digital-clock'>{minimumBid}</Heading>
+                <Heading size='xxl' className='digital-clock'>
+                    {Lowestbid ? Lowestbid[0].amount : 'N / A'}
+                </Heading>
             </CardBody>
             <CardFooter>
-                <Button colorScheme='blue'>place bid</Button>
+                {showBidInput ? (
+                    <form onSubmit={handleSubmit}>
+                        <FormControl isInvalid={!!formError}>
+                            <InputGroup>
+                                <Input
+                                    placeholder="Enter your bid"
+                                    value={bidAmount}
+                                    onChange={(e) => setBid(e.target.value)}
+                                />
+                                <InputRightElement width="4.5rem">
+                                    <Button type="submit" colorScheme='blue'>
+                                        Submit
+                                    </Button>
+                                </InputRightElement>
+                            </InputGroup>
+                            <FormErrorMessage>{formError}</FormErrorMessage>
+                        </FormControl>
+                    </form>
+                ) : (
+                    <Button
+                        colorScheme='blue'
+                        onClick={handlePlaceBidClick}
+                    >
+                        Place bid
+                    </Button>
+                )}
             </CardFooter>
 
-            <SimpleGrid spacing={4} templateColumns='1fr 1fr 1fr'>
-                <Card>
-                    <CardHeader>
-                        <Heading size='md'> Customer dashboard</Heading>
-                    </CardHeader>
-                    <CardBody>
-                        <Text>View a summary of all your customers over the last month.</Text>
-                    </CardBody>
-                    <CardFooter>
-                        <Button>View here</Button>
-                    </CardFooter>
-
-                </Card>
-                <Card>
-                    <CardHeader>
-                        <Heading size='md'> Customer dashboard</Heading>
-                    </CardHeader>
-                    <CardBody>
-                        <Text>View a summary of all your customers over the last month.</Text>
-                    </CardBody>
-                    <CardFooter>
-                        <Button>View here</Button>
-                    </CardFooter>
-                </Card>
-                <Card>
-                    <CardHeader>
-                        <Heading size='md'> Customer dashboard</Heading>
-                    </CardHeader>
-                    <CardBody>
-                        <Text>View a summary of all your customers over the last month.</Text>
-                    </CardBody>
-                    <CardFooter>
-                        <Button>View here</Button>
-                    </CardFooter>
-                </Card>
-            </SimpleGrid>
             <CardFooter className='remaining-time'>
                 <Text fontSize='lg'>Remaining Time: {formatTime(remainingSeconds)}</Text>
             </CardFooter>
             <CardFooter>
-                <Button colorScheme='blue'>View here</Button>
+                <List>
+                    <div style={{ display: "flex" }}>
+                        {Lowestbid ? (
+                            Lowestbid.map((bid, index) => {
+                                if (index < 3 && bid && bid.vendor) {
+                                    return <UserCard key={bid.vendor.userId} vendor={bid.vendor} bid={bid.amount} />;
+                                }
+                                return null;
+                            })
+                        ) : (
+                            <Text>No bids available</Text>
+                        )}
+                    </div>
+                    {Lowestbid ? (
+                        // If there are bids, render DummyUserCards for the rest
+                        <DummyUserCards bids={Lowestbid || []} />
+                    ) : (
+                        // If no bids are available, show a message or loading indicator
+                        <Text>No bids available</Text>
+                    )}
+                </List>
             </CardFooter>
         </Card>
     );

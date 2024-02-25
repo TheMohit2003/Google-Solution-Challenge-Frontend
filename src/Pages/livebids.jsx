@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 // import { getServiceDetails } from "../../store/actions/biddingActions";
 import { getServiceDetails } from "../store/actions/biddingActions";
-
+import LivebidsCard from "../Components/Dashboard/LivebidsCard";
 
 import { getLiveServices } from "../store/actions/vendorActions";
 
@@ -44,12 +44,6 @@ const LiveBids = () => {
             </div>
         );
     }
-
-
-
-
-
-
 
     return (
         <section className="text-gray-600 body-font">
@@ -108,7 +102,7 @@ const LiveBids = () => {
                 width={600}
                 height={1000}
             >
-                {selectedService && <ServiceInfo serviceId={selectedService.id} />}
+                {selectedService && <LivebidsCard serviceId={selectedService.id} />}
             </Modal>
 
         </section >
