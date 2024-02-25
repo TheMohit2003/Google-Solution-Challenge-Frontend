@@ -20,7 +20,7 @@ export default function AboutUs() {
                         className="block rounded-xl  p-8 shadow-md transition hover:border-pink-500/10 hover:shadow-pink-500/10"
                         href="#"
                     >
-                        <img src="public\images\leadership.png" alt="img" />
+                        <img src="https://res.cloudinary.com/dx7uxfrne/image/upload/v1708870761/assets/leadership_vrjqsq.png" alt="img" />
 
                         <h2 className="mt-4 text-xl font-bold text-black">Our Mission</h2>
 
@@ -33,7 +33,7 @@ export default function AboutUs() {
                         className="block rounded-xl  p-8 shadow-md transition hover:border-pink-500/10 hover:shadow-pink-500/10"
                         href="#"
                     >
-                        <img src="public\images\opportunity.png" alt="img" />
+                        <img src="https://res.cloudinary.com/dx7uxfrne/image/upload/v1708870766/assets/opportunity_n2dzwz.png" alt="img" />
 
                         <h2 className="mt-4 text-xl font-bold text-black">Our Vision</h2>
 
@@ -46,7 +46,7 @@ export default function AboutUs() {
                         className="block rounded-xl  p-8 shadow-md transition hover:border-pink-500/10 hover:shadow-pink-500/10"
                         href="#"
                     >
-                        <img src="public\images\key-performance-indicator.png" alt="img" />
+                        <img src="https://res.cloudinary.com/dx7uxfrne/image/upload/v1708870760/assets/key-performance-indicator_leqghi.png" alt="img" />
 
                         <h2 className="mt-4 text-xl font-bold text-black">Efficient Project Management</h2>
 
@@ -59,7 +59,7 @@ export default function AboutUs() {
                         className="block rounded-xl  p-8 shadow-md transition hover:border-pink-500/10 hover:shadow-pink-500/10"
                         href="#"
                     >
-                        <img src="public\images\heart.png" alt="img" />
+                        <img src="https://res.cloudinary.com/dx7uxfrne/image/upload/v1708870761/assets/heart_dkg2zs.png" alt="img" />
 
                         <h2 className="mt-4 text-xl font-bold text-black">Efficient Matchmaking</h2>
 
@@ -72,7 +72,7 @@ export default function AboutUs() {
                         className="block rounded-xl  p-8 shadow-md transition hover:border-pink-500/10 hover:shadow-pink-500/10"
                         href="#"
                     >
-                        <img src="public\images\visibility.png" alt="img" />
+                        <img src="https://res.cloudinary.com/dx7uxfrne/image/upload/v1708870768/assets/visibility_kx9pdl.png" alt="img" />
 
                         <h2 className="mt-4 text-xl font-bold text-black">Transparent Bidding, Pricing</h2>
 
@@ -85,7 +85,7 @@ export default function AboutUs() {
                         className="block rounded-xl  p-8 shadow-md transition hover:border-pink-500/10 hover:shadow-pink-500/10"
                         href="#"
                     >
-                        <img src="public\images\social-care.png" alt="img" />
+                        <img src="https://res.cloudinary.com/dx7uxfrne/image/upload/v1708870767/assets/social-care_x2pqir.png" alt="img" />
 
                         <h2 className="mt-4 text-xl font-bold text-black">Seamless Support</h2>
 

@@ -26,7 +26,7 @@ const Navbar = () => {
           justifyContent: "flex-end",
         }}
       >
-        <Link to={"/watch-listPage"}><img style={{ height: "2.7vh", margin: "21px", }} src="public\images\heart1.png" alt="like-icon" /></Link>
+        <Link to={"/watch-listPage"}><img style={{ height: "2.7vh", margin: "21px", }} src="https://res.cloudinary.com/dx7uxfrne/image/upload/v1708870760/assets/heart1_uljsvo.png" alt="like-icon" /></Link>
         <Dropdown overlay={menu}>
           <div style={{ display: "flex" }}>
             <UserOutlined style={{ cursor: "pointer", fontSize: "18px", marginRight: "8px" }} />

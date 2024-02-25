@@ -58,7 +58,7 @@ const Services = () => {
                         service.projectStartDate
                       ).format('DD-MM-YYYY') : N / A}</h2>
                   </div>
-                  <div style={{ display: "flex" }}><img style={{ height: "1.7vh", margin: "4px 3px 0px 0px" }} src="public\images\google-maps.png " alt="navi-btn" />
+                  <div style={{ display: "flex" }}><img style={{ height: "1.7vh", margin: "4px 3px 0px 0px" }} src="https://res.cloudinary.com/dx7uxfrne/image/upload/v1708870760/assets/google-maps_mheo9v.png" alt="navi-btn" />
                     <h2 className="title-font text-sm font-medium text-gray-700 mb-3">{service.location}</h2></div>
                   <div className="flex items-center flex-wrap">
                     <a
