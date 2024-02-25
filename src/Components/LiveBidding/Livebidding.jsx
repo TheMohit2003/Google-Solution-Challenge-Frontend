@@ -47,12 +47,12 @@ import './Livebidding.css';
 const UserCard = ({ vendor, bid }) => (
     <Box
         p={4}
-        borderWidth="1px"
-        borderRadius="lg"
-        overflow="hidden"
+        // borderWidth="1px"
+        // borderRadius="lg"
+        // overflow="hidden"
         boxShadow="md"
-        padding="50px"
-        margin="20px 70px 0px 20px"
+        // padding="50px"
+        margin="10px 50px 0px 10px"
 
     >
 
@@ -75,9 +75,9 @@ const DummyUserCards = ({ bids }) => {
         // If bids is not an array, handle it accordingly (e.g., show an error message)
         return (
             <Box mb={4}>
-                <Heading mb={4} size="md">
+                <h2 size="md">
                     Vendors Who Placed Bids
-                </Heading>
+                </h2>
                 <Text>Error: Bids data is not available</Text>
             </Box>
         );
@@ -87,34 +87,35 @@ const DummyUserCards = ({ bids }) => {
     const remainingBids = bids.slice(3);
 
     return (
-        <Box mb={4}
-            width={'30%'}
-            margin={'0px 0px 0px 200px'}
+        <Box className='table-box'
         >
-            <Heading mb={4} size="xxl">
+            <div id='head' className='text-gray text-2xl ' >
                 Vendors Who Placed Bids
-            </Heading>
-            <Table variant="striped" colorScheme="teal">
-                <Thead>
-                    <Tr>
+            </div>
+            <div className="table-container">
 
-                        <Th>Vendor Name</Th>
-                        <Th>Amount</Th>
-                        <Th>Time</Th>
-                    </Tr>
-                </Thead>
-                <Tbody>
-                    {remainingBids.map((bid) => (
-                        <Tr key={bid.id}>
+                <Table variant="striped" colorScheme="blue" title='Bidding List'>
+                    <Thead>
+                        <Tr>
 
-                            <Td>{bid.vendor.name}</Td>
-                            <Td>${bid.amount}</Td>
-                            {/* You may need to format the time according to your needs */}
-                            <Td>{moment(bid.createdAt).format(' h:mm:ss a')}</Td>
+                            <Th>Vendor Name</Th>
+                            <Th>Amount</Th>
+                            <Th>Time</Th>
                         </Tr>
-                    ))}
-                </Tbody>
-            </Table>
+                    </Thead>
+                    <Tbody>
+                        {remainingBids.map((bid) => (
+                            <Tr key={bid.id}>
+
+                                <Td>{bid.vendor.name}</Td>
+                                <Td>${bid.amount}</Td>
+                                {/* You may need to format the time according to your needs */}
+                                <Td>{moment(bid.createdAt).format(' h:mm:ss a')}</Td>
+                            </Tr>
+                        ))}
+                    </Tbody>
+                </Table>
+            </div>
         </Box>
     );
 };
@@ -156,7 +157,7 @@ export default function Livebidding() {
         const minutes = Math.floor((seconds % 3600) / 60);
         const secs = seconds % 60;
 
-        return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+        return `${String(hours).padStart(2, '0') }:${String(minutes).padStart(2, '0') }:${String(secs).padStart(2, '0') }`;
     };
 
     const handlePlaceBidClick = () => {
@@ -206,7 +207,6 @@ export default function Livebidding() {
 
         return () => clearInterval(intervalId); // Cleanup interval on component unmount
     }, [dispatch, serviceId]);
-
     return (
         <Card align='center'>
             <CardHeader>
@@ -242,7 +242,7 @@ export default function Livebidding() {
                                 </FormControl>
                             </form>
                         ) : (
-                            <Button
+                            <Button id='place-bid-btn'
                                 colorScheme='blue'
                                 onClick={handlePlaceBidClick}
                             >

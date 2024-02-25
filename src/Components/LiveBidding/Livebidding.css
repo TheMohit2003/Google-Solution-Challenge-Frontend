@@ -1,13 +1,47 @@
 .digital-clock {
     font-family: 'Digital-7', sans-serif;
     /* You can replace this with your preferred digital font */
-    font-size: 3em;
+    font-size: 3rem;
     color: #004293;
     /* Adjust the color as needed */
     background-color: #eef9ff;
-    width: 40%;
+    width: 45%;
+    text-align: center;
     /* margin: 100px; */
     padding: 20px;
+    margin: 10% 0% 0% 30%;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 2px rgb(61, 120, 229);
+}
+/* .remaining-time{
+    
+} */
+#place-bid-btn {
+    margin: 0% 0% 0% 43%;
+
+}
+
+#head {
+    margin: 0% 0% -19% 30%;
+}
+
+.table-container {
+    max-height: 490px;
+    width: 100%;
+    margin: 27% 0% 23% 25%;
+    /* Adjust the height as needed */
+    overflow-y: auto;
+}
+
+.table-container table {
+    width: 100%;
+
+
+}
+
+.table-container th {
+    position: sticky;
+    top: 0;
+
+    background-color: white;
 }
