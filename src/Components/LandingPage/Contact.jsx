@@ -14,9 +14,7 @@ export default function Contact() {
         </p>
 
         <div className="mt-8">
-          <a href="#" className="text-2xl font-bold text-indigo-500"> 0151 475 4450 </a>
 
-          <address className="mt-2 not-italic">282 Kevin Brook, Imogeneborough, CA 58517</address>
         </div>
       </div>
 

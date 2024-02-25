@@ -1,41 +1,40 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllLiveServicesByIssuer } from '../../../store/actions/issuerAction';
+import { useEffect, useState } from 'react';
 import moment from "moment";
 import { Card, Modal } from "antd";
-import ServiceInfo from "./ServiceInfo";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-import { getServiceDetails } from "../../store/actions/biddingActions";
-import { getAllServices } from "../../store/actions/vendorActions";
+import LiveBiddingInfo from './LiveBiddingInfo';
 
-const Services = () => {
+
+export default function AllBids() {
   const [visible, setVisible] = useState(false);
   const [selectedService, setSelectedService] = useState(null);
+
   const dispatch = useDispatch();
+  const bids = useSelector(state => state.issuer.LiveServices)
+
+  useEffect(() =>{
+    dispatch(getAllLiveServicesByIssuer())
+  },[dispatch]);
+
   const showModal = (service) => {
     setSelectedService(service);
     setVisible(true);
-    dispatch(getServiceDetails(String(service.id)));
   };
-  const services = useSelector((state) => state.vendor.services);
 
-  useEffect(() => {
-    dispatch(getAllServices());
-  }, [dispatch]);
   const handleCancel = () => {
     setVisible(false);
   };
 
-  if (!Array.isArray(services)) {
-    // Handle the case when services is not an array (e.g., set a default value or show a loading message)
-    return
-  }
+  if(bids.length > 0){
+   return (
+    <>
+      <h1 className='font-bold text-4xl text-indigo-500 my-5 text-center'> Today's Live Bids</h1>
 
-  return (
-    <section className="text-gray-600 body-font">
-      <h1 style={{ fontSize: "3rem", margin: "auto 33%" }}>Market Place</h1>
+      <section className="text-gray-600 body-font">
       <div className="container px-5 pt-[60px] mx-auto">
         <div className="flex flex-wrap -m-4">
-          {services.map((service) => (
+          {bids.map((service) => (
             <div key={service.id} className="p-4 md:w-1/3">
               <div style={{ backgroundColor: "white", boxShadow: "0px 0px 2px 0px rgba(152, 152, 152, 0.5)" }} className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                 <div className="p-6">
@@ -58,14 +57,14 @@ const Services = () => {
                         service.projectStartDate
                       ).format('DD-MM-YYYY') : N / A}</h2>
                   </div>
-                  <div style={{ display: "flex" }}><img style={{ height: "1.7vh", margin: "4px 3px 0px 0px" }} src="public\images\google-maps.png " alt="navi-btn" />
+                  <div style={{ display: "flex" }}><img style={{ height: "1.7vh", marginTop: "4px" }} src="public\images\google-maps.png" alt="navi-btn" />
                     <h2 className="title-font text-sm font-medium text-gray-700 mb-3">{service.location}</h2></div>
                   <div className="flex items-center flex-wrap">
                     <a
                       onClick={() => showModal(service)}
                       className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0"
                     >
-                      View More
+                      Learn More
                       <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M5 12h14"></path>
                         <path d="M12 5l7 7-7 7"></path>
@@ -87,10 +86,19 @@ const Services = () => {
         width={600}
         height={1000}
       >
-        {selectedService && <ServiceInfo serviceId={selectedService.id} />}
+        {selectedService && <LiveBiddingInfo service={selectedService} />}
       </Modal>
-    </section>
-  );
-};
 
-export default Services;
+    </section>
+    </>
+  );
+  }
+  else{
+    return (
+      <h1 className='font-bold text-4xl text-indigo-500 my-5 text-center'> No Live Bids Today</h1>
+    );
+  }
+}
+
+
+
