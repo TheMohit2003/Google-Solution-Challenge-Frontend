@@ -261,12 +261,11 @@ export default function Livebidding() {
                             <div style={{ display: "flex" }}>
 
                                 {Lowestbid ? (
-                                    Lowestbid.map((bid, index) => {
-                                        if (index < 3 && bid && bid.vendor) {
-                                            return <UserCard key={bid.vendor.userId} vendor={bid.vendor} bid={bid.amount} />;
-                                        }
-                                        return null;
-                                    })
+                                    Lowestbid.slice(0, 3).map((bid) => (
+                                        bid && bid.vendor && (
+                                            <UserCard key={bid.vendor.userId} vendor={bid.vendor} bid={bid.amount} />
+                                        )
+                                    ))
                                 ) : (
                                     <Text>No bids available</Text>
                                 )}
