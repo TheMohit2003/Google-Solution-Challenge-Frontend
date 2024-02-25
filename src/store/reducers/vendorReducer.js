@@ -1,5 +1,7 @@
 import { GET_VENDOR_DETAILS } from '../actions/vendorActions';
 import { GET_ALL_SERVICES, GET_LIVE_SERVICES } from '../actions/vendorActions';
+import { GET_WATCH_LIST } from '../actions/vendorActions';
+import { INTEREST } from '../actions/vendorActions';
 // import { GET_ALL_VENDORS } from '../actions/vendorActions';
 const initialState = {
   vendorDetails: null,
@@ -17,6 +19,10 @@ const vendorReducer = (state = initialState, action) => {
     case GET_ALL_SERVICES:
       return { ...state, services: action.payload.services, loading: false };
     case GET_LIVE_SERVICES:
+      return { ...state, services: action.payload, loading: false };
+    case GET_WATCH_LIST:
+      return { ...state, services: action.payload, loading: false };
+    case INTEREST:
       return { ...state, services: action.payload, loading: false };
     // case types.GET_ALL_VENDORS:
     //   return { ...state, vendors: action.payload, loading: false };
