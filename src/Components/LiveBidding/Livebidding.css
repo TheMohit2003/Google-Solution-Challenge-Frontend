@@ -13,9 +13,12 @@
     border-radius: 8px;
     box-shadow: 0 2px 2px rgb(61, 120, 229);
 }
-/* .remaining-time{
-    
-} */
+
+#countdown {
+    margin: -67% 0% 0% -23%;
+    font-size: 1.2rem;
+}
+
 #place-bid-btn {
     margin: 0% 0% 0% 43%;
 
