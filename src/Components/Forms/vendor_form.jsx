@@ -92,7 +92,7 @@ const vender_form = () => {
                     </p>
 
                     <form action="#" className="mb-0 mt-6 space-y-4 rounded-sm p-2 shadow-lg sm:p-6 lg:p-8" onSubmit={handleSubmit}>
-                        <p className="text-center text-lg font-medium">Registration For Vender</p>
+                        <p className="text-center text-lg font-medium">Registration For Vendor</p>
 
                         <div>
                             <label htmlFor="name" className="sr-only"  >Name</label>
@@ -216,7 +216,7 @@ const vender_form = () => {
                 </div>
                 <div id="img-1" style={{ position: "relative", top: "120px", left: "50px" }}
                     className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-                    <img src="public\images\memphis.png" alt="img" />
+                    <img src="https://res.cloudinary.com/dx7uxfrne/image/upload/v1708870764/assets/memphis_s7undi.png" alt="img" />
 
                 </div>
             </div>
