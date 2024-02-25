@@ -171,15 +171,15 @@ export default function Livebidding() {
         return Math.max(0, Math.floor((endTime - now.getTime()) / 1000));
     };
 
-    // useEffect(() => {
-    //     setRemainingSeconds(calculateRemainingSeconds());
+    useEffect(() => {
+        setRemainingSeconds(calculateRemainingSeconds());
 
-    //     const interval = setInterval(() => {
-    //         setRemainingSeconds(calculateRemainingSeconds());
-    //     }, 1000);
+        const interval = setInterval(() => {
+            setRemainingSeconds(calculateRemainingSeconds());
+        }, 1000);
 
-    //     return () => clearInterval(interval);
-    // }, []);
+        return () => clearInterval(interval);
+    }, []);
 
 
     const handleSubmit = async (event) => {
@@ -196,8 +196,15 @@ export default function Livebidding() {
     const fetchData = async () => {
         await dispatch(getLowestBid(serviceId));
     };
+
     useEffect(() => {
-        fetchData();
+        fetchData(); // Initial fetch
+
+        const intervalId = setInterval(() => {
+            fetchData(); // Fetch data every 30 seconds
+        }, 8000);
+
+        return () => clearInterval(intervalId); // Cleanup interval on component unmount
     }, [dispatch, serviceId]);
 
     return (
@@ -254,12 +261,11 @@ export default function Livebidding() {
                             <div style={{ display: "flex" }}>
 
                                 {Lowestbid ? (
-                                    Lowestbid.map((bid, index) => {
-                                        if (index < 3 && bid && bid.vendor) {
-                                            return <UserCard key={bid.vendor.userId} vendor={bid.vendor} bid={bid.amount} />;
-                                        }
-                                        return null;
-                                    })
+                                    Lowestbid.slice(0, 3).map((bid) => (
+                                        bid && bid.vendor && (
+                                            <UserCard key={bid.vendor.userId} vendor={bid.vendor} bid={bid.amount} />
+                                        )
+                                    ))
                                 ) : (
                                     <Text>No bids available</Text>
                                 )}
