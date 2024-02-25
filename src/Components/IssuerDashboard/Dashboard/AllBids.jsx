@@ -1,10 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllServicesByIssuer } from '../../../store/actions/issuerAction';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import moment from "moment";
+import { Card, Modal } from "antd";
+import ServiceInfo from './ServiceInfo';
+
 
 
 export default function AllBids() {
+  const [visible, setVisible] = useState(false);
+  const [selectedService, setSelectedService] = useState(null);
+
   const dispatch = useDispatch();
   const bids = useSelector(state => state.issuer.IssuerServices)
 
@@ -12,9 +18,19 @@ export default function AllBids() {
     dispatch(getAllServicesByIssuer())
   },[dispatch]);
 
+  const showModal = (service) => {
+    setSelectedService(service);
+    setVisible(true);
+    // dispatch(getServiceDetails(String(service.id)));
+  };
+
+  const handleCancel = () => {
+    setVisible(false);
+  };
+
   return (
     <>
-      <h1 className='font-medium text-3xl text-gray-500 mx-5'> All Services Posted</h1>
+      <h1 className='font-bold text-3xl text-indigo-500 text-center py-5'> All Services Posted</h1>
 
       <section className="text-gray-600 body-font">
       <div className="container px-5 pt-[60px] mx-auto">
@@ -25,7 +41,7 @@ export default function AllBids() {
                 <div className="p-6">
                   <div style={{ display: "flex", justifyContent: "space-between" }}>
                     <h2 style={{}} className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CATEGORY</h2>
-                    <h2 style={{ fontWeight: "700", }} className="tracking-widest text-[15px] title-font font-medium text-gray-500 mb-1">Max Bid: </h2>
+                    <h2 style={{ fontWeight: "700", }} className="tracking-widest text-[15px] title-font font-medium text-gray-500 mb-1">Max Bid: {service.amount}</h2>
                   </div>
                   <div style={{ display: "flex", justifyContent: "space-between" }}>
                     <h1 className="title-font text-lg font-medium text-gray-700 mb-3">{service.title}</h1>
@@ -62,6 +78,17 @@ export default function AllBids() {
           ))}
         </div>
       </div>
+
+      <Modal
+        title=""
+        visible={visible}
+        onCancel={handleCancel}
+        footer={null}
+        width={600}
+        height={1000}
+      >
+        {selectedService && <ServiceInfo service={selectedService} />}
+      </Modal>
 
     </section>
     </>

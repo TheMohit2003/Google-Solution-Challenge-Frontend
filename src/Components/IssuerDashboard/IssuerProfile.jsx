@@ -14,9 +14,9 @@ const data = useSelector(state => state.issuer.issuer);
     dispatch(getIssuerDetails());
   }, [dispatch]); 
 
-//   useEffect(() => {
-//     console.log(data); 
-//   }, [data]); 
+  if (!data) {
+    return <p>Loading...</p>;
+}
 
     return (
         <div className="full-page-content">
