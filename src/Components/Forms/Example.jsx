@@ -17,14 +17,14 @@ const Example = (props) => {
   // Function to handle form submissio 
   const submitForm = async (values) => {
     // Your logic for handling form submission
-    console.log("Form submitted with values:", values);
+
     // You may perform additional actions here, such as API calls or dispatching Redux actions
   };
 
   // Function to handle file upload
   const beforeUpload = (file) => {
     // Your logic for handling file upload
-    console.log("Uploading file:", file);
+
     return true; // Allow upload
   };
 

@@ -11,7 +11,6 @@ const WatchList = () => {
     const watchlist = useSelector((state) => state.vendor.services);
     const [visible, setVisible] = useState(false);
     const [selectedService, setSelectedService] = useState(null);
-    console.log(watchlist);
     useEffect(() => {
         const fetchData = async () => {
             try {

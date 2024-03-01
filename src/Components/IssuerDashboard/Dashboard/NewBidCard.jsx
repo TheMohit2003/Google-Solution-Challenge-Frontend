@@ -69,7 +69,6 @@ export default function NewBidCard() {
 
       // Dispatch the newBid action
       const response = await dispatch(newBid({ title, amount, description, biddingDate, projectStartDate, location, attachment }), navigate);
-      console.log("Response:", response);
       if (response?.service) {
         // Show success toast
         toast({

@@ -24,7 +24,6 @@ export default function Login() {
     try {
       // Dispatch the login action
       const response = await dispatch(login({ email, password, role }, navigate));
-      console.log("Response:", response);
       // Check if the login was successful based on the response
       if (response?.token) {
         // Login successful
@@ -73,13 +72,11 @@ export default function Login() {
 
     setLoading(false);
 
-    console.log("Email:", email, "Password:", password, "Role:", role);
   };
 
   useEffect(() => {
     // Set the role in sessionStorage
     sessionStorage.setItem("role", role);
-    console.log("Role:", role);
   }, [role]);
 
   return (

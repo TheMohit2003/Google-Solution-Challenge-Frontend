@@ -12,7 +12,7 @@ const initialState = {
   error: null,
 };
 const vendorReducer = (state = initialState, action) => {
-  console.log(action);
+
   switch (action.type) {
     case GET_VENDOR_DETAILS:
       return { ...state, vendor: action.data, loading: false };

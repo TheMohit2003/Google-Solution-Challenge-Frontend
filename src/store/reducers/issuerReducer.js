@@ -7,7 +7,7 @@ const initialState = {
   error: null,
 };
 const IssuerReducer = (state = initialState, action) => {
-  console.log(action)
+
     if(action.type === GET_ISSUER_DETAILS ){
       return {...state, issuer: action.payload}
     }

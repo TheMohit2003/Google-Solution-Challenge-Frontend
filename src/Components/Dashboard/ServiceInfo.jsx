@@ -13,7 +13,6 @@ const ServiceInfo = ({ serviceId }) => {
     const serviceDetails = useSelector(state => state.bidding.services);
     const navigate = useNavigate();
     // Assuming the reducer key is 'services'
-    console.log(serviceDetails);
     useEffect(() => {
         const fetchData = async () => {
             try {

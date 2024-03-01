@@ -13,7 +13,7 @@ export const getIssuerDetails = () => {
                     "x-access-token": localStorage.getItem('token')
                 }
             });
-            console.log("Token:", localStorage.getItem('token'));
+     
             const data = await response.json();
             // console.log(data);
             dispatch({
@@ -37,7 +37,7 @@ export const getAllServicesByIssuer = () => {
                 }
             });
             const data = await response.json();
-            console.log(data);
+          
             dispatch({
                 type: GET_ALL_SERVICES_BY_ISSUER,
                 payload: data,
@@ -59,7 +59,7 @@ export const getAllLiveServicesByIssuer = () => {
                 }
             });
             const data = await response.json();
-            console.log(data);
+          
             dispatch({
                 type: GET_ALL_LIVE_SERVICES_BY_ISSUER,
                 payload: data,

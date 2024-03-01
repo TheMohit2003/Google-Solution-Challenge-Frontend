@@ -11,7 +11,6 @@ export default function () {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(signup({ email, password, role })); // Fix the typo here: `rolr` to `role`
-    console.log("Email:", email, "Password:", password, "Role:", role);
   };
   return (
     <div>

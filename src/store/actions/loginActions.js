@@ -7,7 +7,7 @@ export const login = (formData, navigate) => {
   return async (dispatch) => {
     try {
       const role = sessionStorage.getItem("role");
-      console.log(role);
+   
       const response = await fetch(`${API_URL}/auth/login`, {
         method: "POST",
         headers: {
@@ -19,7 +19,7 @@ export const login = (formData, navigate) => {
 
       const data = await response.json();
       const token = data.token;
-      console.log("Token:", token);
+     
       // Save the token to local storage
       localStorage.setItem('token', token);
 
@@ -48,7 +48,7 @@ export const login = (formData, navigate) => {
 
 export const signup = (formData, navigate) => {
   const role = sessionStorage.getItem("role");
-  console.log(role);
+
   return async (dispatch) => {
     try {
 
@@ -61,10 +61,10 @@ export const signup = (formData, navigate) => {
       });
 
       const data = await response.json();
-      console.log(data);
+
       // Assuming the server response has a 'token' property
       const token = data.token;
-      console.log("Token:", token);
+    
 
       // Save the token to local storage
       localStorage.setItem('token', token);
@@ -105,12 +105,12 @@ export const register_vendor = (formData, navigate) => {
         },
         body: JSON.stringify(formData),
       });
-      console.log(response);
+
       const data = await response.json();
 
       // Assuming the server response has a 'token' property
       const token = localStorage.getItem("token");
-      console.log("Token:", token);
+
 
       // Save the token to local storage
 
@@ -152,10 +152,10 @@ export const register_Issuer = (formData, navigate) => {
       });
 
       const data = await response.json();
-      console.log(response);
+   
       // Assuming the server response has a 'token' property
       const token = localStorage.getItem("token");
-      console.log("Token:", token);
+ 
 
       // Save the token to local storage
 

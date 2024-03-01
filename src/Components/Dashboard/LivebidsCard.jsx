@@ -6,11 +6,10 @@ import { getServiceDetails } from '../../store/actions/biddingActions';
 import "../../CSS/serviceInfo.css";
 import { Link } from "react-router-dom";
 import moment from "moment";
-
+ 
 const LivebidsCard = ({ serviceId }) => {
     const dispatch = useDispatch();
     const serviceDetails = useSelector(state => state.bidding.services); // Assuming the reducer key is 'services'
-    console.log(serviceDetails);
     sessionStorage.setItem("serviceId", serviceId);
     useEffect(() => {
         const fetchData = async () => {
