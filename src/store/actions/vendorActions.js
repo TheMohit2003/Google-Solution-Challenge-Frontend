@@ -18,9 +18,9 @@ export const getAllServices = () => {
                 }
             });
             const data = await response.json();
-            console.log(data);
+          
             const token = localStorage.getItem('token');
-            console.log("Token:", token);
+           
             dispatch({
                 type: GET_ALL_SERVICES,
                 payload: data,
@@ -41,7 +41,7 @@ export const getLiveServices = () => {
                 }
             });
             const data = await response.json();
-            console.log(data);
+      
             dispatch({
                 type: GET_LIVE_SERVICES,
                 payload: data,
@@ -62,7 +62,7 @@ export const getVendorDetails = () => {
                 }
             });
             const data = await response.json();
-            console.log(data);
+           
             dispatch({
                 type: GET_VENDOR_DETAILS,
                 data: data,
@@ -83,9 +83,9 @@ export const getWatchList = () => {
                 }
             });
             const data = await response.json();
-            console.log(data);
+            
             const token = localStorage.getItem('token');
-            console.log("Token:", token);
+            
             dispatch({
                 type: GET_WATCH_LIST,
                 payload: data,
@@ -113,7 +113,7 @@ export const interest = (formData, navigate) => {
 
             // Assuming the server response has a 'token' property
             const token = localStorage.getItem("token");
-            console.log("Token:", token);
+         
 
             // Save the token to local storage
 

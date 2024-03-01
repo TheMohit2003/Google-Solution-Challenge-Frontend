@@ -19,12 +19,10 @@ export const newBid = (formData, navigate) => {
                 },
                 body: JSON.stringify(formData),
             });
-            console.log("response", response);
             const data = await response.json();
 
             // Assuming the server response has a 'token' property
             const token = localStorage.getItem("token");
-            console.log("Token:", token);
 
             // Save the token to local storage\
             dispatch({
@@ -61,13 +59,11 @@ export const CreateBid = (formData, navigate) => {
                 },
                 body: JSON.stringify(formData),
             });
-            console.log("response", response);
 
             const data = await response.json();
 
             // Assuming the server response has a 'token' property
             const token = localStorage.getItem("token");
-            console.log("Token:", token);
 
             // Save the token to local storage\
             dispatch({
@@ -96,8 +92,7 @@ export const CreateBid = (formData, navigate) => {
 export const getServiceDetails = (serviceId) => {
     // const serviceId = sessionStorage.getItem("serviceId");
     const token = localStorage.getItem("token");
-    console.log("Token:", token);
-    console.log("ServiceId:", serviceId);
+  
     return async (dispatch) => {
         try {
             const response = await fetch(`${API_URL}/service/getServiceById/${serviceId}`, {
@@ -108,7 +103,7 @@ export const getServiceDetails = (serviceId) => {
                 }
             });
             const data = await response.json();
-            console.log(data);
+      
             dispatch({
                 type: GET_SERVICES_DETAILS,
                 payload: data,
@@ -122,8 +117,7 @@ export const getServiceDetails = (serviceId) => {
 export const getLowestBid = (serviceId) => {
     // const serviceId = sessionStorage.getItem("serviceId");
     const token = localStorage.getItem("token");
-    console.log("Token:", token);
-    console.log("ServiceId:", serviceId);
+ 
     return async (dispatch) => {
         try {
             const response = await fetch(`${API_URL}/service/getLowestBidForService/${serviceId}`, {
@@ -134,7 +128,7 @@ export const getLowestBid = (serviceId) => {
                 }
             });
             const data = await response.json();
-            console.log(data);
+           
             dispatch({
                 type: GET_LOWEST_BID,
                 payload: data,

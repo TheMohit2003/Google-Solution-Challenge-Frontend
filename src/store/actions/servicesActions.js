@@ -29,7 +29,7 @@ export const getServices = () => {
                 }
             });
             const data = await response.json();
-            console.log(data);
+    
             dispatch({
                 type: GET_SERVICES_DETAILS,
                 payload: data,

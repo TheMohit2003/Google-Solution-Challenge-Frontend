@@ -11,7 +11,7 @@ const initialState = {
     data: null,
 };
 const BiddingReducer = (state = initialState, action) => {
-    console.log(action)
+ 
     if (action.type === GET_NEW_BID) {
         return { ...state, newBid: action.payload }
     }

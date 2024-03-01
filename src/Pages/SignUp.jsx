@@ -69,7 +69,6 @@ export default function SignUp() {
   };
   useEffect(() => {
     sessionStorage.setItem("role", role);
-    console.log("Role:", role);
   }, [role]);
   return (
     <div>
