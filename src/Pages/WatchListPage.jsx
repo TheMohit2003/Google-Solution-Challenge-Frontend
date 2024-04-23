@@ -37,7 +37,6 @@ const WatchListPage = (props) => {
 
     };
     const role = sessionStorage.getItem("role");
-    console.log(role);
     return (
         <Layout style={{ minHeight: "100vh" }}>
             <Navbar key="watch-list" />

@@ -27,7 +27,6 @@ const LiveBids = () => {
         dispatch(getLiveServices());
     }, [dispatch]);
 
-    console.log("services", services)
     const handleCancel = () => {
         setVisible(false);
     };

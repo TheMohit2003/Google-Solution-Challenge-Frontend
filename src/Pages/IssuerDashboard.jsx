@@ -14,7 +14,6 @@ const Dashboard = () => {
   const [selectedMenuItem, setSelectedMenuItem] = useState("dashboard");
 
   const handleMenuItemSelect = (menuItem) => {
-    console.log(menuItem)
     setSelectedMenuItem(menuItem);
   };
 

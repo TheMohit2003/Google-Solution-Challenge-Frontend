@@ -9,7 +9,6 @@ const { Content } = Layout;
 
 const Profile = (props) => {
     const role = sessionStorage.getItem("role");
-    console.log(role);
     return (
         <Layout style={{ minHeight: "100vh" }}>
 

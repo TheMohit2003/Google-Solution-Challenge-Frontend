@@ -33,7 +33,6 @@ const vender_form = () => {
                     navigate
                 )
             );
-            console.log("Response:", response);
 
             if (response?.userId) {
                 // Registration successful
